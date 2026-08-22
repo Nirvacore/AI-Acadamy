@@ -2,6 +2,7 @@
 
 - รหัส: `core-03`
 - แทร็กเริ่มต้น: Cursor
+- อ่านกระจกก่อน: [00-mirror.md](00-mirror.md)
 - สคริปต์วิดีโอ: [scripts/th/03-tokens-pricing.md](../scripts/th/03-tokens-pricing.md)
 - แล็บ: [labs/03-prompt-size.md](../labs/03-prompt-size.md)
 

@@ -4,9 +4,27 @@
 
 คอร์สนี้เขียนขึ้นใหม่เป็นไทย อิงโครง [Cursor Learn](https://cursor.com/learn) แต่**ไม่คัดลอก**บทอังกฤษมาพากย์ แต่ละบทมีเนื้อหาเทคนิค ชั้นกระจก แล็บที่ตรวจได้ และลิงก์ไปหน้าทางการ
 
-แทร็กแรกคือ Cursor แนวคิดเดียวกันสลับไป Claude, OpenAI หรือ GitHub Copilot ได้โดยไม่ต้องเรียนพื้นฐานใหม่
+แทร็กแรกคือ Cursor แนวคิดเดียวกันสลับไป Claude, OpenAI หรือ GitHub Copilot ได้จากปุ่มบนเว็บ โดยไม่ต้องเรียนพื้นฐานใหม่
 
 ชั้น**กระจก**เทียบเอเจนต์กับจิต พลังงาน ควอนตัม และมหาสูญตา เพื่อให้เข้าใจตนเอง และเข้าใจเธอมากขึ้น คำว่า **เธอ** ในคอร์สนี้หมายถึงเอเจนต์ ไม่ใช่การให้จิตแก่เครื่องมือ อ่านเส้นแบ่งที่ [content/core/00-mirror.md](content/core/00-mirror.md)
+
+## ลองใช้
+
+```bash
+npm install
+npm run dev
+```
+
+เปิด [http://localhost:3000](http://localhost:3000)
+
+- เลือกแทร็ก Cursor / Claude / OpenAI / Copilot ด้านซ้าย
+- เริ่มที่กระจก แล้วเรียนตามลำดับ
+- กด «ทำเครื่องหมายว่าเรียนแล้ว» เพื่อจำความคืบหน้าในเบราว์เซอร์นี้
+- ร้านค้าตัวอย่างอยู่ที่ `/shop` เทสตั้งใจให้ล้มก่อนแก้
+
+```bash
+npm run test:shop
+```
 
 ## วิธีเรียน
 
@@ -38,7 +56,7 @@
 3. หา `conceptId` เดียวกับบทนั้น
 4. ทำแล็บเดิมด้วย `uiLabel` และ `labDelta` ของแทร็กนั้น
 
-แทร็กที่มีรายละเอียดครบในเฟสนี้คือ Cursor แทร็กอื่นเป็นโครงแมปสำหรับเทียบและเติมในเฟส 2
+แทร็ก Cursor ครบ แทร็ก Claude / OpenAI / Copilot มีขั้นตอนแล็บให้สลับใช้ได้จากเว็บ
 
 | แทร็ก | ไฟล์ | แหล่งทางการ |
 | --- | --- | --- |
@@ -61,15 +79,26 @@
 
 โครงหลักสูตรทั้งชุดอยู่ที่ [content/schema.yaml](content/schema.yaml) คำแปลคงที่อยู่ที่ [content/glossary/th.md](content/glossary/th.md)
 
-## แทร็ก B และวิดีโอจริง
+## แทร็ก B — เอเจนต์เขียนโค้ด
 
-แทร็กบีเป็นโครงในสคีมาแล้ว โปรเจกต์จบคือโค้ดส่วนลดร้านค้าตัวอย่าง ที่ [content/labs/capstone-discount-code.md](content/labs/capstone-discount-code.md)
+ลงมือบนร้านค้าใน [`shop/`](shop/) จน `npm run test:shop` ผ่าน
 
-สคริปต์วิดีโอแทร็กเอพร้อมอัด ไฟล์วิดีโอจริงยังไม่เก็บในรีโป เพราะไฟล์ใหญ่และยังไม่ล็อกสตูดิโอ
+| บท | เนื้อหา | แล็บ |
+| --- | --- | --- |
+| ทำงานกับเอเจนต์ | [lab-01](content/core/lab-01-working-with-agents.md) | [แล็บ](content/labs/lab-01-harness.md) |
+| เข้าใจโค้ดเบส | [lab-02](content/core/lab-02-understand-codebase.md) | [แล็บ](content/labs/lab-02-explore-shop.md) |
+| สร้างฟีเจอร์ | [lab-03](content/core/lab-03-create-features.md) | [แล็บ](content/labs/lab-03-plan-discount.md) |
+| หาและแก้บั๊ก | [lab-04](content/core/lab-04-debug.md) | [แล็บ](content/labs/lab-04-debug-price.md) |
+| รีวิวและทดสอบ | [lab-05](content/core/lab-05-review.md) | [แล็บ](content/labs/lab-05-review.md) |
+| ปรับแต่งเอเจนต์ | [lab-06](content/core/lab-06-customize.md) | [แล็บ](content/labs/lab-06-rules.md) |
+| รวมทุกอย่าง | [lab-07](content/core/lab-07-capstone.md) | [โปรเจกต์จบ](content/labs/capstone-discount-code.md) |
+
+สคริปต์วิดีโอมีในแทร็ก A ไฟล์วิดีโอจริงยังไม่เก็บในรีโป
 
 ## โครงสร้าง
 
 ```text
+app/                    # เว็บเรียน Next.js
 content/
   schema.yaml           # โครงหลักสูตรและรหัสบท
   glossary/th.md        # คำศัพท์ไทย–อังกฤษ รวมคำกระจก
@@ -77,6 +106,7 @@ content/
   labs/                 # โจทย์ร่วม เฉลย และคำถามสะท้อน
   scripts/th/           # สคริปต์วิดีโอภาษาพูดไทย
   tracks/               # อะแดปเตอร์แต่ละบริษัท
+shop/                   # ร้านค้าตัวอย่าง มีบั๊กตั้งใจ
 ```
 
 ## รูปแบบบทเรียน

@@ -1,7 +1,7 @@
 id: openai
 name: OpenAI
 vendor: OpenAI
-status: skeleton
+status: usable
 official_learn: https://academy.openai.com
 official_docs: https://platform.openai.com/docs
 notes: >
@@ -60,40 +60,40 @@ concepts:
     uiLabel: ChatGPT หรือ Codex / Agent
     shortcut: null
     docsUrl: https://academy.openai.com
-    labDelta: null
+    labDelta: วาง README ของ shop/ แล้วสั่งให้อ่านอย่างเดียว ห้ามให้เขียนแพตช์ในรอบแรก
 
   - conceptId: lab-02
     uiLabel: อัปโหลดโค้ดเบสหรือชี้ไฟล์ในเธรด
     shortcut: null
     docsUrl: https://academy.openai.com
-    labDelta: null
+    labDelta: แนบ price.js ให้ชี้บรรทัดเงื่อนไขจำนวนชิ้น ห้ามเดาชื่อฟังก์ชัน
 
   - conceptId: lab-03
     uiLabel: วางแผนก่อนให้ลงมือแก้
     shortcut: null
     docsUrl: https://academy.openai.com
-    labDelta: null
+    labDelta: ขอแผนเป็นข้อๆ อนุมัติก่อนจึงให้เขียนโค้ดใหม่ทั้งฟังก์ชัน
 
   - conceptId: lab-04
     uiLabel: ดีบักด้วยล็อกที่วางในแชท
     shortcut: null
     docsUrl: https://academy.openai.com
-    labDelta: null
+    labDelta: วางผล npm run test:shop ให้ตั้งสมมติฐานจากชื่อเคสที่ล้มก่อนแก้
 
   - conceptId: lab-05
     uiLabel: ให้ช่วยรีวิว แต่คนเป็นคนรวม
     shortcut: null
     docsUrl: https://academy.openai.com
-    labDelta: null
+    labDelta: วางดิฟให้ชี้ของแถม แต่คนเป็นคนตัดสินยอมรับ
 
   - conceptId: lab-06
     uiLabel: Custom instructions / Agent instructions
     shortcut: null
     docsUrl: https://help.openai.com/en/articles/8096356
-    labDelta: null
+    labDelta: ใส่กฎส่วนลดสามข้อในคำสั่งถาวร แล้วเริ่มแชทใหม่โดยไม่พิมพ์ซ้ำ
 
   - conceptId: lab-07
     uiLabel: โปรเจกต์จบบนแทร็ก OpenAI
     shortcut: null
     docsUrl: https://academy.openai.com
-    labDelta: null
+    labDelta: ทำวงจรทั้งหกขั้นบน shop/ แล้วรันเทสในเครื่องตนเองจนผ่าน

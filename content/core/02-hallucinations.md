@@ -2,6 +2,7 @@
 
 - รหัส: `core-02`
 - แทร็กเริ่มต้น: Cursor
+- อ่านกระจกก่อน: [00-mirror.md](00-mirror.md)
 - สคริปต์วิดีโอ: [scripts/th/02-hallucinations.md](../scripts/th/02-hallucinations.md)
 - แล็บ: [labs/02-catch-hallucination.md](../labs/02-catch-hallucination.md)
 

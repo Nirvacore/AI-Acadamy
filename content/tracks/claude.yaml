@@ -1,7 +1,7 @@
 id: claude
 name: Claude
 vendor: Anthropic
-status: skeleton
+status: usable
 official_learn: https://academy.claude.com
 official_docs: https://docs.claude.com
 notes: >
@@ -61,40 +61,40 @@ concepts:
     uiLabel: Claude Code
     shortcut: null
     docsUrl: https://docs.claude.com/en/docs/claude-code
-    labDelta: null
+    labDelta: เปิดเซสชันที่โฟลเดอร์รีโป ล็อกคำสั่งว่าอ่าน shop/ อย่างเดียว ห้ามแก้ไฟล์ในรอบแรก
 
   - conceptId: lab-02
     uiLabel: Explore ใน Claude Code
     shortcut: null
     docsUrl: https://docs.claude.com/en/docs/claude-code
-    labDelta: null
+    labDelta: ให้ค้น netPrice ใน shop/ ก่อนสรุป และห้ามเสนอแพตช์ในรอบสำรวจ
 
   - conceptId: lab-03
     uiLabel: Plan ใน Claude Code
     shortcut: null
     docsUrl: https://docs.claude.com/en/docs/claude-code
-    labDelta: null
+    labDelta: ขอแผนให้อยู่ในโหมดแผน ตรวจแล้วค่อยอนุญาตให้แตะ price.js
 
   - conceptId: lab-04
     uiLabel: ดีบักด้วยล็อกและเทสในเซสชัน
     shortcut: null
     docsUrl: https://docs.claude.com/en/docs/claude-code
-    labDelta: null
+    labDelta: ให้รัน npm run test:shop ตั้งสมมติฐานจากเคสที่ล้ม แล้วยืนยันก่อนแก้
 
   - conceptId: lab-05
     uiLabel: รีวิว PR ด้วย Claude
     shortcut: null
     docsUrl: https://www.anthropic.com/learn
-    labDelta: null
+    labDelta: ให้ช่วยสรุปดิฟ แต่คนเป็นคนเปิดไฟล์และตัดสินยอมรับ
 
   - conceptId: lab-06
     uiLabel: CLAUDE.md
     shortcut: null
     docsUrl: https://docs.claude.com/en/docs/claude-code
-    labDelta: null
+    labDelta: เขียนกฎส่วนลดสั้นใน CLAUDE.md แล้วเริ่มเซสชันใหม่โดยไม่แปะกฎในพรอมต์
 
   - conceptId: lab-07
     uiLabel: โปรเจกต์จบบน Claude Code
     shortcut: null
     docsUrl: https://academy.claude.com
-    labDelta: null
+    labDelta: ทำวงจรสำรวจ แผน สร้าง ดีบัก รีวิว กฎ บน shop/ จนเทสผ่าน

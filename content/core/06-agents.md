@@ -2,6 +2,7 @@
 
 - รหัส: `core-06`
 - แทร็กเริ่มต้น: Cursor
+- อ่านกระจกก่อน: [00-mirror.md](00-mirror.md)
 - สคริปต์วิดีโอ: [scripts/th/06-agents.md](../scripts/th/06-agents.md)
 - แล็บ: [labs/06-delegate-one-task.md](../labs/06-delegate-one-task.md)
 

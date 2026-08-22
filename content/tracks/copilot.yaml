@@ -1,7 +1,7 @@
 id: copilot
 name: GitHub Copilot
 vendor: GitHub / Microsoft
-status: skeleton
+status: usable
 official_learn: https://learn.microsoft.com/training/paths/copilot
 official_docs: https://docs.github.com/copilot
 notes: >
@@ -38,7 +38,7 @@ concepts:
     labDelta: เทียบคำถามสั้นกับคำถามที่แนบไฟล์ยาว
 
   - conceptId: core-04
-    uiLabel: "#file" / อ้างไฟล์ใน Copilot Chat
+    uiLabel: "#file / อ้างไฟล์ใน Copilot Chat"
     shortcut: "#"
     docsUrl: https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide
     labDelta: อ้างเฉพาะไฟล์ที่เกี่ยวกับงาน ไม่โยนทั้งโฟลเดอร์
@@ -59,40 +59,40 @@ concepts:
     uiLabel: Copilot Chat
     shortcut: null
     docsUrl: https://learn.microsoft.com/training/paths/copilot
-    labDelta: null
+    labDelta: เปิดแชทที่โฟลเดอร์ shop/ สั่งให้อ่านอย่างเดียว ห้าม Apply ในรอบแรก
 
   - conceptId: lab-02
-    uiLabel: Workspace / "#file"
+    uiLabel: "Workspace / #file"
     shortcut: "#"
     docsUrl: https://docs.github.com/en/copilot
-    labDelta: null
+    labDelta: "อ้าง #file shop/price.js แล้วให้ชี้เงื่อนไขจำนวนชิ้นจากไฟล์ที่อ้าง"
 
   - conceptId: lab-03
     uiLabel: Copilot coding agent
     shortcut: null
     docsUrl: https://docs.github.com/en/copilot/using-github-copilot/using-copilot-coding-agent
-    labDelta: null
+    labDelta: ขอแผนในแชทก่อน ถ้ายอมรับแล้วค่อยให้ลงมือแก้ price.js
 
   - conceptId: lab-04
     uiLabel: ดีบักด้วยแชทและเทสใน IDE
     shortcut: null
     docsUrl: https://learn.microsoft.com/training/paths/copilot
-    labDelta: null
+    labDelta: รัน npm run test:shop ในเทอร์มินัล แล้ววางผลให้ตั้งสมมติฐานก่อน Apply
 
   - conceptId: lab-05
     uiLabel: Copilot code review
     shortcut: null
     docsUrl: https://docs.github.com/en/copilot/using-github-copilot/code-review
-    labDelta: null
+    labDelta: ใช้รีวิวเป็นตัวช่วยหลังอ่านดิฟเอง แล้วคนเป็นคนรวม
 
   - conceptId: lab-06
     uiLabel: copilot-instructions.md
     shortcut: null
     docsUrl: https://docs.github.com/en/copilot/customizing-copilot
-    labDelta: null
+    labDelta: เขียนกฎส่วนลดใน .github/copilot-instructions.md แล้วเริ่มแชทใหม่
 
   - conceptId: lab-07
     uiLabel: โปรเจกต์จบบนแทร็ก Copilot
     shortcut: null
     docsUrl: https://learn.microsoft.com/training/paths/copilot
-    labDelta: null
+    labDelta: ทำวงจรทั้งหกขั้นบน shop/ จน npm run test:shop ผ่าน

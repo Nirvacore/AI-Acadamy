@@ -40,10 +40,10 @@ concepts:
     labDelta: เทียบแชทสั้นกับแชทที่แนบไฟล์ยาว แล้วดูปริมาณโทเคนที่ใช้
 
   - conceptId: core-04
-    uiLabel: "@" mentions, ไฟล์ที่เปิดอยู่, Chat context
+    uiLabel: "@ mentions, ไฟล์ที่เปิดอยู่, Chat context"
     shortcut: "@"
     docsUrl: https://cursor.com/learn/context
-    labDelta: เริ่มจากเปิดหลายไฟล์ แล้วเหลือแค่ "@" ไฟล์ที่เกี่ยวกับงาน
+    labDelta: 'เริ่มจากเปิดหลายไฟล์ แล้วเหลือแค่ "@" ไฟล์ที่เกี่ยวกับงาน'
 
   - conceptId: core-05
     uiLabel: Tool calling ใน Agent, MCP

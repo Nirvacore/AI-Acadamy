@@ -124,27 +124,63 @@ modules:
   - id: track-b
     name: เอเจนต์เขียนโค้ด
     phase: 2
-    status: outline-only
-    capstone: labs/capstone-discount-code
+    status: ready
+    capstone: content/labs/capstone-discount-code.md
+    shop: shop/
     lessons:
       - id: lab-01
+        slug: working-with-agents
         title_th: ทำงานกับเอเจนต์
         focus: ฮาร์เนส = คำสั่ง + เครื่องมือ + โมเดล
+        content: content/core/lab-01-working-with-agents.md
+        lab: content/labs/lab-01-harness.md
+        official:
+          cursor: https://cursor.com/learn/working-with-agents
       - id: lab-02
+        slug: understand-codebase
         title_th: เข้าใจโค้ดเบส
         focus: สำรวจก่อนแก้
+        content: content/core/lab-02-understand-codebase.md
+        lab: content/labs/lab-02-explore-shop.md
+        official:
+          cursor: https://cursor.com/learn/understanding-your-codebase
       - id: lab-03
+        slug: create-features
         title_th: สร้างฟีเจอร์
         focus: แผนก่อนลงมือ
+        content: content/core/lab-03-create-features.md
+        lab: content/labs/lab-03-plan-discount.md
+        official:
+          cursor: https://cursor.com/learn/creating-features
       - id: lab-04
+        slug: debug
         title_th: หาและแก้บั๊ก
         focus: สมมติฐานแล้วพิสูจน์
+        content: content/core/lab-04-debug.md
+        lab: content/labs/lab-04-debug-price.md
+        official:
+          cursor: https://cursor.com/learn/finding-fixing-bugs
       - id: lab-05
+        slug: review
         title_th: รีวิวและทดสอบ
         focus: คนตรวจ เอเจนต์ไม่แทน
+        content: content/core/lab-05-review.md
+        lab: content/labs/lab-05-review.md
+        official:
+          cursor: https://cursor.com/learn/reviewing-testing
       - id: lab-06
+        slug: customize
         title_th: ปรับแต่งเอเจนต์
         focus: ทำให้ทำซ้ำได้
+        content: content/core/lab-06-customize.md
+        lab: content/labs/lab-06-rules.md
+        official:
+          cursor: https://cursor.com/learn/customizing-agents
       - id: lab-07
+        slug: capstone
         title_th: รวมทุกอย่าง
         focus: โปรเจกต์จบชิ้นเดียว
+        content: content/core/lab-07-capstone.md
+        lab: content/labs/capstone-discount-code.md
+        official:
+          cursor: https://cursor.com/learn/putting-it-together
