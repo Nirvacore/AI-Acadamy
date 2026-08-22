@@ -1,0 +1,133 @@
+# AI-Acadamy curriculum schema
+# Core concepts stay vendor-neutral. Tracks only remap UI, shortcuts, and lab steps.
+
+version: 1
+course:
+  id: ai-acadamy
+  name: AI-Acadamy
+  language: th
+  tagline: เรียนแนวคิดเอเจนต์จากแหล่งต้นฉบับ แล้วลงมือเป็นภาษาไทย
+  copyright: original-thai
+  official_source_policy: >
+    เนื้อหาในรีโปนี้เป็นต้นฉบับภาษาไทย สอนแนวคิดเดียวกับแหล่งทางการ
+    แต่ไม่คัดลอกข้อความต้นฉบับ แต่ละบทลิงก์ไปบทอังกฤษให้อ่านคู่กัน
+
+layers:
+  - id: core
+    name: แนวคิดร่วม
+    description: สอนครั้งเดียว ใช้ได้กับทุกบริษัท
+  - id: adapter
+    name: แทร็กบริษัท
+    description: แผนที่ปุ่ม โหมด และคำสั่งของแต่ละเครื่องมือ
+  - id: lab
+    name: แล็บ
+    description: โจทย์เดียวกัน เปลี่ยนเฉพาะขั้นตอนตามแทร็กที่เลือก
+
+tracks:
+  default: cursor
+  available:
+    - cursor
+    - claude
+    - openai
+    - copilot
+
+lesson_template:
+  - goal
+  - core_idea
+  - tool_demo
+  - lab
+  - pitfalls
+  - official_reading
+
+video:
+  language: th
+  target_minutes_min: 8
+  target_minutes_max: 12
+  style: spoken-thai
+  screen: english-product-ui
+  narration: thai
+  ending:
+    - lab_prompt
+    - official_source_link
+
+modules:
+  - id: track-a
+    name: พื้นฐาน AI
+    phase: 1
+    lessons:
+      - id: core-01
+        slug: how-models-work
+        title_th: โมเดลทำงานอย่างไร
+        content: content/core/01-how-models-work.md
+        lab: content/labs/01-fast-vs-smart.md
+        script: content/scripts/th/01-how-models-work.md
+        official:
+          cursor: https://cursor.com/learn/how-ai-models-work
+      - id: core-02
+        slug: hallucinations
+        title_th: ภาพหลอนและข้อจำกัด
+        content: content/core/02-hallucinations.md
+        lab: content/labs/02-catch-hallucination.md
+        script: content/scripts/th/02-hallucinations.md
+        official:
+          cursor: https://cursor.com/learn/hallucination-limitations
+      - id: core-03
+        slug: tokens-pricing
+        title_th: โทเคนและราคา
+        content: content/core/03-tokens-pricing.md
+        lab: content/labs/03-prompt-size.md
+        script: content/scripts/th/03-tokens-pricing.md
+        official:
+          cursor: https://cursor.com/learn/tokens-pricing
+      - id: core-04
+        slug: context
+        title_th: คอนเท็กซ์
+        content: content/core/04-context.md
+        lab: content/labs/04-trim-context.md
+        script: content/scripts/th/04-context.md
+        official:
+          cursor: https://cursor.com/learn/context
+      - id: core-05
+        slug: tool-calling
+        title_th: การเรียกเครื่องมือ
+        content: content/core/05-tool-calling.md
+        lab: content/labs/05-search-not-guess.md
+        script: content/scripts/th/05-tool-calling.md
+        official:
+          cursor: https://cursor.com/learn/tool-calling
+      - id: core-06
+        slug: agents
+        title_th: เอเจนต์
+        content: content/core/06-agents.md
+        lab: content/labs/06-delegate-one-task.md
+        script: content/scripts/th/06-agents.md
+        official:
+          cursor: https://cursor.com/learn/agents
+
+  - id: track-b
+    name: เอเจนต์เขียนโค้ด
+    phase: 2
+    status: outline-only
+    capstone: labs/capstone-discount-code
+    lessons:
+      - id: lab-01
+        title_th: ทำงานกับเอเจนต์
+        focus: ฮาร์เนส = คำสั่ง + เครื่องมือ + โมเดล
+      - id: lab-02
+        title_th: เข้าใจโค้ดเบส
+        focus: สำรวจก่อนแก้
+      - id: lab-03
+        title_th: สร้างฟีเจอร์
+        focus: แผนก่อนลงมือ
+      - id: lab-04
+        title_th: หาและแก้บั๊ก
+        focus: สมมติฐานแล้วพิสูจน์
+      - id: lab-05
+        title_th: รีวิวและทดสอบ
+        focus: คนตรวจ เอเจนต์ไม่แทน
+      - id: lab-06
+        title_th: ปรับแต่งเอเจนต์
+        focus: ทำให้ทำซ้ำได้
+      - id: lab-07
+        title_th: รวมทุกอย่าง
+        focus: โปรเจกต์จบชิ้นเดียว

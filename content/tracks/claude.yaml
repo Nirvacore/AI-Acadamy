@@ -1,0 +1,100 @@
+id: claude
+name: Claude
+vendor: Anthropic
+status: skeleton
+official_learn: https://academy.claude.com
+official_docs: https://docs.claude.com
+notes: >
+  โครงแมปสำหรับเฟส 2 ใช้เทียบกับ Cursor โดยไม่ต้องเขียนคอร์ส Core ใหม่
+  เติม labDelta ให้ครบเมื่อลงมือทำแทร็ก Claude
+
+harness:
+  instructions:
+    - CLAUDE.md
+    - .claude/rules
+  tools:
+    - bash
+    - read
+    - glob
+    - grep
+    - mcp
+  model_picker: Claude model / Claude Code session
+
+concepts:
+  - conceptId: core-01
+    uiLabel: ตัวเลือกโมเดลใน claude.ai หรือ Claude Code
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/about-claude/models
+    labDelta: ส่งโจทย์เดิมด้วยโมเดลเร็วและโมเดลฉลาด แล้วเทียบความระมัดระวังของคำตอบ
+
+  - conceptId: core-02
+    uiLabel: Citations / ไฟล์ที่อ่านใน Claude Code
+    shortcut: null
+    docsUrl: https://www.anthropic.com/learn
+    labDelta: สั่งให้อ้างพาธไฟล์ แล้วตรวจว่าไฟล์นั้นมีจริงในโปรเจกต์
+
+  - conceptId: core-03
+    uiLabel: Usage และขนาดคอนเท็กซ์ของโมเดล
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/about-claude/pricing
+    labDelta: เทียบแชทสั้นกับแชทที่วางไฟล์ยาว แล้วดูปริมาณที่ถูกใช้
+
+  - conceptId: core-04
+    uiLabel: ไฟล์ที่แนบ / ที่ Claude Code อ่านเข้าเซสชัน
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: อย่าวางทั้งรีโป ให้ชี้เฉพาะไฟล์ที่เกี่ยวกับงาน
+
+  - conceptId: core-05
+    uiLabel: Tool use, MCP
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/agents-and-tools/mcp
+    labDelta: สั่งให้อ่านไฟล์หรือรันคำสั่งค้นหา ห้ามตอบจากความจำอย่างเดียว
+
+  - conceptId: core-06
+    uiLabel: Claude Code agent loop
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: มอบหมายงานเล็กหนึ่งชิ้น แล้วตรวจดิฟก่อนยอมรับ
+
+  - conceptId: lab-01
+    uiLabel: Claude Code
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: null
+
+  - conceptId: lab-02
+    uiLabel: Explore ใน Claude Code
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: null
+
+  - conceptId: lab-03
+    uiLabel: Plan ใน Claude Code
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: null
+
+  - conceptId: lab-04
+    uiLabel: ดีบักด้วยล็อกและเทสในเซสชัน
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: null
+
+  - conceptId: lab-05
+    uiLabel: รีวิว PR ด้วย Claude
+    shortcut: null
+    docsUrl: https://www.anthropic.com/learn
+    labDelta: null
+
+  - conceptId: lab-06
+    uiLabel: CLAUDE.md
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: null
+
+  - conceptId: lab-07
+    uiLabel: โปรเจกต์จบบน Claude Code
+    shortcut: null
+    docsUrl: https://academy.claude.com
+    labDelta: null

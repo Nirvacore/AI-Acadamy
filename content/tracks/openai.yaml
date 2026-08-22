@@ -1,0 +1,99 @@
+id: openai
+name: OpenAI
+vendor: OpenAI
+status: skeleton
+official_learn: https://academy.openai.com
+official_docs: https://platform.openai.com/docs
+notes: >
+  โครงแมปสำหรับเฟส 2 เน้น ChatGPT และเอเจนต์ในงานทั่วไป
+  แล็บเขียนโค้ดใช้เมื่อมีสภาพแวดล้อมที่รันคำสั่งได้จริง
+
+harness:
+  instructions:
+    - Custom instructions
+    - GPT / Agent instructions
+  tools:
+    - web_search
+    - code_interpreter
+    - canvas
+    - connectors
+  model_picker: ChatGPT model switcher
+
+concepts:
+  - conceptId: core-01
+    uiLabel: ตัวเลือกโมเดลใน ChatGPT
+    shortcut: null
+    docsUrl: https://help.openai.com/en/articles/8238121
+    labDelta: ส่งโจทย์เดิมด้วยโมเดลเร็วและโมเดลฉลาด แล้วเทียบคุณภาพกับเวลา
+
+  - conceptId: core-02
+    uiLabel: คำตอบและแหล่งที่อ้างใน ChatGPT
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: สั่งให้อ้างไฟล์หรือแหล่ง แล้วตรวจว่าเปิดตามได้จริง
+
+  - conceptId: core-03
+    uiLabel: Usage และขีดจำกัดข้อความ
+    shortcut: null
+    docsUrl: https://platform.openai.com/docs/pricing
+    labDelta: เทียบพรอมต์สั้นกับพรอมต์ที่วางเอกสารยาว
+
+  - conceptId: core-04
+    uiLabel: ไฟล์ที่อัปโหลด / บริบทในเธรด
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: ส่งเฉพาะหน้าที่เกี่ยวกับงาน ไม่วางทั้งเอกสารถ้าไม่จำเป็น
+
+  - conceptId: core-05
+    uiLabel: Tools, GPTs, Agents
+    shortcut: null
+    docsUrl: https://platform.openai.com/docs/guides/tools
+    labDelta: ให้ค้นหรือรันโค้ดแทนการเดาตัวเลขหรือพาธไฟล์
+
+  - conceptId: core-06
+    uiLabel: ChatGPT agent / งานหลายขั้นตอน
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: มอบหมายงานเล็กหนึ่งชิ้น กำหนดผลลัพธ์ที่ตรวจได้ แล้วตรวจเอง
+
+  - conceptId: lab-01
+    uiLabel: ChatGPT หรือ Codex / Agent
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: null
+
+  - conceptId: lab-02
+    uiLabel: อัปโหลดโค้ดเบสหรือชี้ไฟล์ในเธรด
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: null
+
+  - conceptId: lab-03
+    uiLabel: วางแผนก่อนให้ลงมือแก้
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: null
+
+  - conceptId: lab-04
+    uiLabel: ดีบักด้วยล็อกที่วางในแชท
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: null
+
+  - conceptId: lab-05
+    uiLabel: ให้ช่วยรีวิว แต่คนเป็นคนรวม
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: null
+
+  - conceptId: lab-06
+    uiLabel: Custom instructions / Agent instructions
+    shortcut: null
+    docsUrl: https://help.openai.com/en/articles/8096356
+    labDelta: null
+
+  - conceptId: lab-07
+    uiLabel: โปรเจกต์จบบนแทร็ก OpenAI
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: null
