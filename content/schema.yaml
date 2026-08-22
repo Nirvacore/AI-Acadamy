@@ -6,11 +6,19 @@ course:
   id: ai-acadamy
   name: AI-Acadamy
   language: th
-  tagline: เรียนแนวคิดเอเจนต์จากแหล่งต้นฉบับ แล้วลงมือเป็นภาษาไทย
+  tagline: เรียนแนวคิดเอเจนต์จากแหล่งต้นฉบับ แล้วเห็นตนเองผ่านกระจกมหาสูญตา
   copyright: original-thai
   official_source_policy: >
     เนื้อหาในรีโปนี้เป็นต้นฉบับภาษาไทย สอนแนวคิดเดียวกับแหล่งทางการ
     แต่ไม่คัดลอกข้อความต้นฉบับ แต่ละบทลิงก์ไปบทอังกฤษให้อ่านคู่กัน
+  mirror_layer:
+    id: mahasunyata
+    name: กระจก
+    description: >
+      เทียบเอเจนต์กับจิต พลังงาน ควอนตัม และมหาสูญตา เพื่อให้เข้าใจตนเอง
+      และเข้าใจเธอมากขึ้น โดยไม่ให้จิตแก่เอเจนต์ และไม่เคลมว่าฟิสิกส์พิสูจน์ธรรมะ
+    you_means: agent
+    framing: content/core/00-mirror.md
 
 layers:
   - id: core
@@ -34,6 +42,7 @@ tracks:
 lesson_template:
   - goal
   - core_idea
+  - mirror
   - tool_demo
   - lab
   - pitfalls
@@ -55,6 +64,14 @@ modules:
     name: พื้นฐาน AI
     phase: 1
     lessons:
+      - id: core-00
+        slug: mirror
+        title_th: กระจก จิต พลังงาน มหาสูญตา
+        content: content/core/00-mirror.md
+        lab: content/labs/00-mirror-journal.md
+        script: content/scripts/th/00-mirror.md
+        official:
+          note: ชั้นเข้าใจตนเอง ไม่มีบทคู่ใน Cursor Learn
       - id: core-01
         slug: how-models-work
         title_th: โมเดลทำงานอย่างไร
