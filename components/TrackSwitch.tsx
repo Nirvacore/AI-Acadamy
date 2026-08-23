@@ -6,6 +6,22 @@ import { useEffect, useState } from "react";
 
 export const TRACK_KEY = "ai-acadamy:track";
 export const DONE_KEY = "ai-acadamy:done";
+export const JOURNAL_KEY = "ai-acadamy:journal";
+export const PROGRESS_EVENT = "ai-acadamy-progress";
+
+export function readDone(): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    return JSON.parse(window.localStorage.getItem(DONE_KEY) ?? "[]");
+  } catch {
+    return [];
+  }
+}
+
+export function writeDone(ids: string[]) {
+  window.localStorage.setItem(DONE_KEY, JSON.stringify(ids));
+  window.dispatchEvent(new Event(PROGRESS_EVENT));
+}
 
 const TRACKS = [
   { id: "cursor", name: "Cursor" },
@@ -62,15 +78,15 @@ export function ProgressMark({ id }: { id: string }) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const ids: string[] = JSON.parse(window.localStorage.getItem(DONE_KEY) ?? "[]");
-    setDone(ids.includes(id));
+    const sync = () => setDone(readDone().includes(id));
+    sync();
+    window.addEventListener(PROGRESS_EVENT, sync);
+    return () => window.removeEventListener(PROGRESS_EVENT, sync);
   }, [id]);
 
   function toggle() {
-    const ids: string[] = JSON.parse(window.localStorage.getItem(DONE_KEY) ?? "[]");
-    const next = ids.includes(id) ? ids.filter((item) => item !== id) : [...ids, id];
-    window.localStorage.setItem(DONE_KEY, JSON.stringify(next));
-    setDone(next.includes(id));
+    const ids = readDone();
+    writeDone(ids.includes(id) ? ids.filter((item) => item !== id) : [...ids, id]);
   }
 
   return (
@@ -83,8 +99,10 @@ export function ProgressMark({ id }: { id: string }) {
 export function DoneDot({ id }: { id: string }) {
   const [done, setDone] = useState(false);
   useEffect(() => {
-    const ids: string[] = JSON.parse(window.localStorage.getItem(DONE_KEY) ?? "[]");
-    setDone(ids.includes(id));
+    const sync = () => setDone(readDone().includes(id));
+    sync();
+    window.addEventListener(PROGRESS_EVENT, sync);
+    return () => window.removeEventListener(PROGRESS_EVENT, sync);
   }, [id]);
   return done ? <span className="done-dot" title="เรียนแล้ว" /> : null;
 }

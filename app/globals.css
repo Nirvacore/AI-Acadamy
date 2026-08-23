@@ -378,6 +378,82 @@ kbd {
   max-width: 68ch;
 }
 
+.continue-card,
+.journal,
+.shop-tests {
+  max-width: 68ch;
+  margin: 8px 0 28px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+}
+
+.continue-card h2,
+.journal h2,
+.shop-tests h2 {
+  font-family: "Cormorant Garamond", serif;
+  margin: 6px 0 10px;
+}
+
+.journal label,
+.trial label {
+  display: block;
+  margin: 12px 0;
+}
+
+.journal textarea,
+.trial input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #14110d;
+  color: var(--paper);
+  font: inherit;
+}
+
+.journal textarea {
+  resize: vertical;
+}
+
+.save-hint {
+  color: var(--mist);
+  font-size: 0.85rem;
+}
+
+.shop-tests table,
+.compare table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.shop-tests th,
+.shop-tests td,
+.compare th,
+.compare td {
+  border-bottom: 1px solid var(--line);
+  padding: 8px 8px 8px 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare {
+  overflow: auto;
+}
+
+.trial {
+  margin-top: 22px;
+}
+
+.journal-index {
+  display: grid;
+  gap: 16px;
+}
+
 @media (max-width: 980px) {
   .frame {
     grid-template-columns: 1fr;

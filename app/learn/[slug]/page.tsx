@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { Journal } from "@/components/Journal";
 import { AdapterPanel } from "@/components/Shell";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { ProgressMark, TrackedLink } from "@/components/TrackSwitch";
@@ -47,6 +48,10 @@ export default async function LessonPage({
             {lesson.focus ? <p className="lede">{lesson.focus}</p> : null}
           </header>
           <MarkdownBody markdown={lessonMarkdown(lesson)} track={trackId} />
+          <Journal
+            id={lesson.id}
+            prompts={["วันนี้จิตฉันเร็วหรือนิ่ง", "ขอบของเธอที่ฉันเห็นชัดขึ้น"]}
+          />
           <ProgressMark id={lesson.id} />
           <nav className="pager">
             {prev ? (

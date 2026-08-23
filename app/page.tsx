@@ -1,28 +1,28 @@
 import { Suspense } from "react";
+import { ContinueCard } from "@/components/ContinueCard";
 import { TrackedLink } from "@/components/TrackSwitch";
-import { loadSchema } from "@/lib/curriculum";
+import { allLessons, loadSchema } from "@/lib/curriculum";
 
 export default function HomePage() {
   const schema = loadSchema();
+  const lessons = allLessons().map((lesson) => ({
+    id: lesson.id,
+    slug: lesson.slug,
+    title_th: lesson.title_th,
+  }));
 
   return (
     <Suspense fallback={null}>
       <div className="hero">
-        <p className="eyebrow">พร้อมลองใช้</p>
+        <p className="eyebrow">พร้อมเรียนต่อ</p>
         <h1>{schema.course.tagline}</h1>
         <p>
-          เลือกแทร็กบริษัทด้านซ้าย แล้วเริ่มที่กระจก บทเทคนิคยังอิง Cursor Learn
-          แต่เขียนใหม่เป็นไทย ของจริงสำหรับลงมืออยู่ที่ร้านค้าตัวอย่าง
+          เลือกแทร็กบริษัทด้านซ้าย แล้วเดินจากกระจกสู่ร้านค้าตัวอย่าง บทเทคนิคอิง Cursor Learn
+          แต่เขียนใหม่เป็นไทย ความคืบหน้าและสมุดสะท้อนอยู่แค่ในเบราว์เซอร์นี้
         </p>
-        <div className="actions">
-          <TrackedLink className="btn primary" href="/learn/mirror">
-            เริ่มที่กระจก
-          </TrackedLink>
-          <TrackedLink className="btn ghost" href="/shop">
-            เปิดร้านค้าตัวอย่าง
-          </TrackedLink>
-        </div>
       </div>
+
+      <ContinueCard lessons={lessons} />
 
       <div className="modules">
         {schema.modules.map((module) => (
@@ -40,15 +40,16 @@ export default function HomePage() {
         ))}
         <article className="card">
           <p className="eyebrow">ของจริง</p>
-          <h2>วิธีลองในเครื่อง</h2>
-          <p className="lede">
-            เปิดเว็บนี้แล้วเรียนไปตามบท จากรากโปรเจกต์รันเทสร้านค้าได้เลย เทสแดงตอนแรกเป็นจุดตั้งต้น
-          </p>
-          <pre>
-            <code>{`npm install
-npm run dev
-npm run test:shop`}</code>
-          </pre>
+          <h2>เทียบแทร็กและร้านค้า</h2>
+          <p className="lede">ดูปุ่มของแต่ละบริษัทในหน้าเดียว แล้วรันเทสจากไฟล์ราคาจริง</p>
+          <div className="actions">
+            <TrackedLink className="btn primary" href="/tracks">
+              เทียบแทร็กบริษัท
+            </TrackedLink>
+            <TrackedLink className="btn ghost" href="/shop">
+              เปิดร้านค้าตัวอย่าง
+            </TrackedLink>
+          </div>
         </article>
       </div>
     </Suspense>

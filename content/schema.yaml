@@ -134,6 +134,7 @@ modules:
         focus: ฮาร์เนส = คำสั่ง + เครื่องมือ + โมเดล
         content: content/core/lab-01-working-with-agents.md
         lab: content/labs/lab-01-harness.md
+        script: content/scripts/th/lab-01-working-with-agents.md
         official:
           cursor: https://cursor.com/learn/working-with-agents
       - id: lab-02
@@ -142,6 +143,7 @@ modules:
         focus: สำรวจก่อนแก้
         content: content/core/lab-02-understand-codebase.md
         lab: content/labs/lab-02-explore-shop.md
+        script: content/scripts/th/lab-02-understand-codebase.md
         official:
           cursor: https://cursor.com/learn/understanding-your-codebase
       - id: lab-03
@@ -150,6 +152,7 @@ modules:
         focus: แผนก่อนลงมือ
         content: content/core/lab-03-create-features.md
         lab: content/labs/lab-03-plan-discount.md
+        script: content/scripts/th/lab-03-create-features.md
         official:
           cursor: https://cursor.com/learn/creating-features
       - id: lab-04
@@ -158,6 +161,7 @@ modules:
         focus: สมมติฐานแล้วพิสูจน์
         content: content/core/lab-04-debug.md
         lab: content/labs/lab-04-debug-price.md
+        script: content/scripts/th/lab-04-debug.md
         official:
           cursor: https://cursor.com/learn/finding-fixing-bugs
       - id: lab-05
@@ -166,6 +170,7 @@ modules:
         focus: คนตรวจ เอเจนต์ไม่แทน
         content: content/core/lab-05-review.md
         lab: content/labs/lab-05-review.md
+        script: content/scripts/th/lab-05-review.md
         official:
           cursor: https://cursor.com/learn/reviewing-testing
       - id: lab-06
@@ -174,6 +179,7 @@ modules:
         focus: ทำให้ทำซ้ำได้
         content: content/core/lab-06-customize.md
         lab: content/labs/lab-06-rules.md
+        script: content/scripts/th/lab-06-customize.md
         official:
           cursor: https://cursor.com/learn/customizing-agents
       - id: lab-07
@@ -182,5 +188,6 @@ modules:
         focus: โปรเจกต์จบชิ้นเดียว
         content: content/core/lab-07-capstone.md
         lab: content/labs/capstone-discount-code.md
+        script: content/scripts/th/lab-07-capstone.md
         official:
           cursor: https://cursor.com/learn/putting-it-together

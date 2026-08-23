@@ -36,10 +36,16 @@ export function SideNav({
         <h2>อื่นๆ</h2>
         <ul className="plain">
           <li>
-            <TrackedLink href="/glossary">อภิธานศัพท์</TrackedLink>
+            <TrackedLink href="/tracks">เทียบแทร็ก</TrackedLink>
           </li>
           <li>
             <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink>
+          </li>
+          <li>
+            <TrackedLink href="/journal">สมุดสะท้อน</TrackedLink>
+          </li>
+          <li>
+            <TrackedLink href="/glossary">อภิธานศัพท์</TrackedLink>
           </li>
         </ul>
       </section>

@@ -1,4 +1,5 @@
 import { MarkdownBody } from "@/components/MarkdownBody";
+import { ShopTests } from "@/components/ShopTests";
 import { shopReadme, shopSource } from "@/lib/curriculum";
 
 export default async function ShopPage({
@@ -15,6 +16,7 @@ export default async function ShopPage({
         <h1>ร้านค้าตัวอย่าง</h1>
       </header>
       <MarkdownBody markdown={shopReadme()} track={track} />
+      <ShopTests />
       <h2 className="prose" style={{ color: "var(--gold)" }}>
         price.js ตอนนี้
       </h2>
