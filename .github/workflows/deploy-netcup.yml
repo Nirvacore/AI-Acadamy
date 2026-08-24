@@ -7,10 +7,19 @@ on:
 
 jobs:
   deploy:
-    if: ${{ secrets.NETCUP_HOST != '' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Check Netcup secrets
+        id: check
+        env:
+          HOST: ${{ secrets.NETCUP_HOST }}
+        run: |
+          if [ -z "$HOST" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "NETCUP_HOST is not set; skip VPS deploy"
+          fi
       - name: Pull and rebuild on Netcup
+        if: steps.check.outputs.skip != 'true'
         uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.NETCUP_HOST }}
