@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 3000",
     "build": "next build",
-    "start": "next start --hostname 0.0.0.0 --port 3000",
+    "start": "serve out -n -l tcp://0.0.0.0:3000",
     "test:shop": "node --test shop/price.test.js"
   },
   "dependencies": {
@@ -13,7 +13,8 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "serve": "^14.2.4"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",

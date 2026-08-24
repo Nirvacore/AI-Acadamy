@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
+import type { LessonStem } from "@/lib/links";
+import { rewriteContentHref as rewriteHref } from "@/lib/links";
 
 const root = process.cwd();
 
@@ -87,6 +89,13 @@ export function allLessons(): LessonRef[] {
   return loadSchema().modules.flatMap((module) => module.lessons);
 }
 
+export function lessonStems(): LessonStem[] {
+  return allLessons().map((lesson) => ({
+    stem: path.basename(lesson.content, ".md"),
+    slug: lesson.slug,
+  }));
+}
+
 export function getLesson(slug: string): LessonRef | undefined {
   return allLessons().find((lesson) => lesson.slug === slug);
 }
@@ -162,31 +171,5 @@ export function labSlugFromPath(rel?: string) {
 }
 
 export function rewriteContentHref(href: string | undefined): string {
-  if (!href) return "";
-  if (/^https?:\/\//.test(href)) return href;
-  if (href.startsWith("#")) return href;
-
-  const cleaned = href.split("#")[0].replace(/\\/g, "/");
-  const hash = href.includes("#") ? `#${href.split("#")[1]}` : "";
-
-  if (cleaned.includes("glossary")) return `/glossary${hash}`;
-  if (cleaned.includes("shop/")) return `/shop${hash}`;
-  if (cleaned.includes("scripts/th/")) {
-    const slug = path.basename(cleaned, ".md");
-    return `/script/${slug}${hash}`;
-  }
-  if (cleaned.includes("/labs/") || cleaned.startsWith("labs/")) {
-    const slug = path.basename(cleaned, ".md");
-    return `/lab/${slug}${hash}`;
-  }
-  if (cleaned.includes("/tracks/")) return `/${hash}`;
-
-  const stem = path.basename(cleaned, ".md");
-  const lesson = allLessons().find((item) => {
-    return path.basename(item.content, ".md") === stem;
-  });
-  if (lesson) return `/learn/${lesson.slug}${hash}`;
-  if (stem === "00-mirror") return `/learn/mirror${hash}`;
-
-  return href;
+  return rewriteHref(href, lessonStems());
 }

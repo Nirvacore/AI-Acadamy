@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
 
+const basePath = process.env.BASE_PATH || "";
+
 const nextConfig: NextConfig = {
-  output: "standalone",
-  outputFileTracingIncludes: {
-    "/**": ["./content/**/*", "./shop/**/*"],
-  },
+  output: "export",
+  images: { unoptimized: true },
+  trailingSlash: true,
+  basePath: basePath || undefined,
+  assetPrefix: basePath || undefined,
 };
 
 export default nextConfig;

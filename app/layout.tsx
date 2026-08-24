@@ -6,8 +6,12 @@ import { TrackSwitch } from "@/components/TrackSwitch";
 import { loadSchema } from "@/lib/curriculum";
 import "./globals.css";
 
+const site = process.env.BASE_PATH
+  ? `https://nirvacore.github.io${process.env.BASE_PATH}`
+  : "https://study.nirva.one";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://study.nirva.one"),
+  metadataBase: new URL(site),
   title: "AI-Acadamy",
   description: "เรียนเอเจนต์เป็นไทย แล้วเห็นตนเองผ่านกระจกมหาสูญตา",
   alternates: { canonical: "/" },

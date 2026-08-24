@@ -1,16 +1,32 @@
-# ขึ้น study.nirva.one บน Netcup
+# ขึ้น study.nirva.one
 
-โดเมนเรียนคือ **https://study.nirva.one** ต้นทางรันบน VPS Netcup หลัง Nginx/Caddy DNS ของโซน `nirva.one` อยู่ที่ Cloudflare อยู่แล้ว
+เว็บเรียนเป็นไฟล์สแตติก เปิดอ่านได้โดยไม่ต้องมี Node
 
-## สิ่งที่ต้องมี
+## ใช้ได้ก่อนโดเมนชี้มา
 
-- Netcup VPS (Ubuntu 24.04) เปิดพอร์ต 80 และ 443
-- เข้า SSH ได้
-- ใน Cloudflare เพิ่มเรคอร์ด `study`
+เปิด [https://nirvacore.github.io/AI-Acadamy/](https://nirvacore.github.io/AI-Acadamy/)
 
-## 1. DNS ที่ Cloudflare
+ถ้ายัง 404 ให้ตั้งครั้งเดียว: GitHub repo **Settings → Pages → Build and deployment → Source = GitHub Actions**
 
-Proxy เริ่มต้นเป็น **DNS only** (เมฆเทา) จนกว่าใบรับรองจะออก
+## โดเมน study.nirva.one
+
+โซน `nirva.one` อยู่ที่ Cloudflare อยู่แล้ว เลือกอย่างใดอย่างหนึ่ง
+
+### ทาง A — ชี้โดเมนมาที่ GitHub Pages
+
+ใน Cloudflare เพิ่ม CNAME แล้วปิด Proxy (เมฆเทา) จนกว่าใบรับรองจะออก
+
+| Type | Name | Content | Proxy |
+| --- | --- | --- | --- |
+| CNAME | `study` | `nirvacore.github.io` | DNS only |
+
+จากนั้นที่ GitHub **Settings → Pages → Custom domain** ใส่ `study.nirva.one`
+
+ถ้าใช้ custom domain ต้องบิลด์โดย**ไม่มี** `BASE_PATH=/AI-Acadamy` เพราะ GitHub จะเสิร์ฟที่รากของโดเมน ไม่ใช่ `/AI-Acadamy/` — ตั้ง `BASE_PATH` ว่างใน workflow แล้วค่อยชี้โดเมน
+
+ระหว่างที่ยังใช้ path `/AI-Acadamy/` อยู่ ให้เรียนที่ GitHub Pages URL ด้านบน
+
+### ทาง B — VPS Netcup
 
 | Type | Name | Content | Proxy |
 | --- | --- | --- | --- |
@@ -27,7 +43,7 @@ dig +short study.nirva.one A
 
 พอ HTTPS ติดแล้ว จะเปิด Proxy (เมฆส้ม) ก็ได้ โหมด SSL ตั้งเป็น **Full (strict)**
 
-## 2. บน VPS Netcup
+บน VPS:
 
 ```bash
 sudo apt update
@@ -45,18 +61,19 @@ chmod +x deploy/netcup/deploy.sh
 ./deploy/netcup/deploy.sh
 ```
 
-Caddy จะขอใบรับรอง Let's Encrypt ให้ `study.nirva.one` เอง
+Caddy เสิร์ฟโฟลเดอร์ `out/` และขอใบรับรอง Let's Encrypt ให้ `study.nirva.one` ถ้า DNS ชี้มาที่เครื่องนี้แล้ว
 
-## 3. ตรวจ
+ตรวจ:
 
 ```bash
+curl -I http://127.0.0.1/
 curl -I https://study.nirva.one
-curl -I https://study.nirva.one/learn/hallucinations
+curl -I https://study.nirva.one/learn/hallucinations/
 ```
 
 ต้องได้ `200`
 
-## อัปเดตครั้งถัดไป
+อัปเดตครั้งถัดไป:
 
 ```bash
 cd /opt/ai-acadamy

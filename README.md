@@ -8,11 +8,17 @@
 
 ชั้น**กระจก**เทียบเอเจนต์กับจิต พลังงาน ควอนตัม และมหาสูญตา เพื่อให้เข้าใจตนเอง และเข้าใจเธอมากขึ้น คำว่า **เธอ** ในคอร์สนี้หมายถึงเอเจนต์ ไม่ใช่การให้จิตแก่เครื่องมือ อ่านเส้นแบ่งที่ [content/core/00-mirror.md](content/core/00-mirror.md)
 
-## เว็บเรียน
+## เปิดเรียน
 
-Production: [https://study.nirva.one](https://study.nirva.one) บน VPS Netcup
+ไซต์เป็นไฟล์สแตติก ไม่ต้องรัน Node ตอนเปิดอ่าน
 
-## ลองใช้
+**ใช้ได้บน GitHub Pages:** [https://nirvacore.github.io/AI-Acadamy/](https://nirvacore.github.io/AI-Acadamy/)
+
+ถ้าเพจยัง 404 ให้เปิดครั้งเดียวที่ GitHub: **Settings → Pages → Source = GitHub Actions** แล้วรอ workflow `GitHub Pages` เขียว
+
+โดเมน [study.nirva.one](https://study.nirva.one) เป็นชื่อที่ตั้งไว้สำหรับโปรดักชัน ยังไม่ขึ้นจนกว่า Cloudflare จะชี้ `study` ไปที่ GitHub Pages หรือ VPS — ดู [deploy/netcup/README.md](deploy/netcup/README.md)
+
+## ลองใช้บนเครื่อง
 
 ```bash
 npm install
@@ -21,10 +27,17 @@ npm run dev
 
 เปิด [http://localhost:3000](http://localhost:3000) — เซิร์ฟเวอร์ฟังทุกอินเทอร์เฟซที่พอร์ต 3000 (`0.0.0.0`) เพื่อให้พรีวิวใน Cursor เปิดได้
 
+โหมดโปรดักชันในเครื่อง (ไฟล์สแตติกชุดเดียวกับที่ขึ้น Pages):
+
+```bash
+npm run build
+npm start
+```
+
 - หน้าแรกมีปุ่ม **เรียนต่อ** จากบทที่ยังไม่จบในเบราว์เซอร์นี้
 - เลือกแทร็ก Cursor / Claude / OpenAI / Copilot ด้านซ้าย หรือเทียบทั้งชุดที่ `/tracks`
 - เขียนสมุดสะท้อนท้ายบท แล้วดูรวมที่ `/journal` — ห้ามให้เธอเขียนแทน
-- ร้านค้าตัวอย่างอยู่ที่ `/shop` กดรันเทสจากไฟล์จริงได้ในหน้าเว็บ
+- ร้านค้าตัวอย่างอยู่ที่ `/shop` กดรันเทสในหน้าเว็บได้เลย
 - `npm run test:shop` แดงตั้งใจจนกว่าจะแก้ `shop/price.js`
 
 ```bash
@@ -103,7 +116,7 @@ npm run test:shop
 ## โครงสร้าง
 
 ```text
-app/                    # เว็บเรียน Next.js
+app/                    # เว็บเรียน Next.js (export เป็นไฟล์สแตติก)
 content/
   schema.yaml           # โครงหลักสูตรและรหัสบท
   glossary/th.md        # คำศัพท์ไทย–อังกฤษ รวมคำกระจก
@@ -137,4 +150,5 @@ shop/                   # ร้านค้าตัวอย่าง มี�
 
 ## ขึ้น Production
 
-ดู [deploy/netcup/README.md](deploy/netcup/README.md) — โดเมน `study.nirva.one` ชี้ไป VPS Netcup ผ่าน Cloudflare DNS
+- GitHub Pages: workflow `.github/workflows/pages.yml` สร้าง `out/` แล้วเผยแพร่ที่ `/AI-Acadamy/`
+- โดเมน `study.nirva.one` และ VPS Netcup: [deploy/netcup/README.md](deploy/netcup/README.md)

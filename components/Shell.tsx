@@ -1,15 +1,16 @@
 "use client";
 
+import { Suspense } from "react";
 import { usePathname } from "next/navigation";
-import type { CourseModule, LessonRef, Track, TrackConcept } from "@/lib/curriculum";
-import { DoneDot, TrackedLink } from "@/components/TrackSwitch";
+import type { CourseModule, LessonRef, Track } from "@/lib/curriculum";
+import { DoneDot, TrackedLink, useTrackId } from "@/components/TrackSwitch";
 
 export function SideNav({
   modules,
 }: {
   modules: CourseModule[];
 }) {
-  const current = usePathname().split("/").pop();
+  const current = usePathname().replace(/\/$/, "").split("/").pop();
 
   return (
     <nav className="side-nav" aria-label="บทเรียน">
@@ -53,15 +54,11 @@ export function SideNav({
   );
 }
 
-export function AdapterPanel({
-  track,
-  concept,
-  lesson,
-}: {
-  track: Track;
-  concept?: TrackConcept;
-  lesson: LessonRef;
-}) {
+function AdapterInner({ tracks, lesson }: { tracks: Track[]; lesson: LessonRef }) {
+  const trackId = useTrackId();
+  const track = tracks.find((item) => item.id === trackId) ?? tracks[0];
+  const concept = track.concepts.find((item) => item.conceptId === lesson.id);
+
   if (!concept) {
     return (
       <aside className="adapter">
@@ -107,5 +104,13 @@ export function AdapterPanel({
         </p>
       ) : null}
     </aside>
+  );
+}
+
+export function AdapterPanel({ tracks, lesson }: { tracks: Track[]; lesson: LessonRef }) {
+  return (
+    <Suspense fallback={null}>
+      <AdapterInner tracks={tracks} lesson={lesson} />
+    </Suspense>
   );
 }

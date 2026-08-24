@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { expectedPrice, shopCases, type PriceInput } from "@/lib/shop-cases";
+import { netPrice } from "@/shop/price.js";
 
 type CaseResult = {
   name: string;
@@ -15,40 +17,38 @@ type Report = {
   cases: CaseResult[];
 };
 
+function runCases(): Report {
+  const cases = shopCases.map((item) => {
+    const actual = netPrice(item.input);
+    const want = expectedPrice(item.input);
+    return { name: item.name, actual, expected: want, pass: actual === want };
+  });
+  return {
+    passing: cases.filter((item) => item.pass).length,
+    total: cases.length,
+    cases,
+  };
+}
+
 export function ShopTests() {
   const [report, setReport] = useState<Report | null>(null);
-  const [error, setError] = useState("");
   const [unitPrice, setUnitPrice] = useState(100);
   const [qty, setQty] = useState(3);
   const [couponPercent, setCouponPercent] = useState(0);
   const [trial, setTrial] = useState<{ actual: number; expected: number } | null>(null);
 
-  async function load() {
-    setError("");
-    const response = await fetch("/api/shop-test");
-    if (!response.ok) {
-      setError("เรียกเทสไม่สำเร็จ");
-      return;
-    }
-    setReport(await response.json());
+  function load() {
+    setReport(runCases());
   }
 
   useEffect(() => {
-    void load();
+    load();
   }, []);
 
-  async function tryOne(event: React.FormEvent) {
+  function tryOne(event: React.FormEvent) {
     event.preventDefault();
-    const response = await fetch("/api/shop-test", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ unitPrice, qty, couponPercent }),
-    });
-    if (!response.ok) {
-      setError("ทดลองคิดราคาไม่สำเร็จ");
-      return;
-    }
-    setTrial(await response.json());
+    const input: PriceInput = { unitPrice, qty, couponPercent };
+    setTrial({ actual: netPrice(input), expected: expectedPrice(input) });
   }
 
   return (
@@ -56,9 +56,9 @@ export function ShopTests() {
       <p className="eyebrow">เทสในเบราว์เซอร์</p>
       <h2>สถานะ shop/price.js ตอนนี้</h2>
       <p className="lede">
-        แดงตั้งใจจนกว่าจะแก้ไฟล์ในเครื่อง แล้วรีเฟรชหน้านี้ กฎที่ถูกคิดฝั่งเซิร์ฟเวอร์จากไฟล์จริง
+        แดงตั้งใจจนกว่าจะแก้ไฟล์ในเครื่อง รัน <code>npm run dev</code> แล้วรีเฟรช
+        หน้านี้ใช้ฟังก์ชันเดียวกับไฟล์แล็บ ไม่ต้องมีเซิร์ฟเวอร์ API
       </p>
-      {error ? <p className="lede">{error}</p> : null}
       {report ? (
         <>
           <p>
@@ -84,13 +84,13 @@ export function ShopTests() {
               ))}
             </tbody>
           </table>
-          <button type="button" className="progress-mark" onClick={() => void load()}>
+          <button type="button" className="progress-mark" onClick={load}>
             รันเทสอีกครั้ง
           </button>
         </>
       ) : null}
 
-      <form className="trial" onSubmit={(event) => void tryOne(event)}>
+      <form className="trial" onSubmit={tryOne}>
         <h3>ลองตัวเลข</h3>
         <label>
           ราคาต่อชิ้น

@@ -1,37 +1,28 @@
-import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { Journal } from "@/components/Journal";
+import { ContentMarkdown } from "@/components/ContentMarkdown";
 import { AdapterPanel } from "@/components/Shell";
-import { MarkdownBody } from "@/components/MarkdownBody";
-import { ProgressMark, TrackedLink } from "@/components/TrackSwitch";
+import { ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
 import {
   allLessons,
-  getConcept,
   getLesson,
   labSlugFromPath,
   lessonMarkdown,
-  loadTrack,
+  loadTracks,
   neighbors,
 } from "@/lib/curriculum";
+import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return allLessons().map((lesson) => ({ slug: lesson.slug }));
 }
 
-export default async function LessonPage({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<{ track?: string }>;
-}) {
+export default async function LessonPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const { track: trackId = "cursor" } = await searchParams;
   const lesson = getLesson(slug);
   if (!lesson) notFound();
 
-  const track = loadTrack(trackId);
-  const concept = getConcept(track, lesson.id);
+  const tracks = loadTracks();
   const { prev, next } = neighbors(slug);
   const labSlug = labSlugFromPath(lesson.lab);
   const scriptSlug = labSlugFromPath(lesson.script);
@@ -42,12 +33,12 @@ export default async function LessonPage({
         <article>
           <header className="lesson-head">
             <p className="kicker">
-              {lesson.id} · {track.name}
+              {lesson.id} · <TrackLabel tracks={tracks} />
             </p>
             <h1>{lesson.title_th}</h1>
             {lesson.focus ? <p className="lede">{lesson.focus}</p> : null}
           </header>
-          <MarkdownBody markdown={lessonMarkdown(lesson)} track={trackId} />
+          <ContentMarkdown markdown={lessonMarkdown(lesson)} />
           <Journal
             id={lesson.id}
             prompts={["วันนี้จิตฉันเร็วหรือนิ่ง", "ขอบของเธอที่ฉันเห็นชัดขึ้น"]}
@@ -79,7 +70,7 @@ export default async function LessonPage({
             </p>
           ) : null}
         </article>
-        <AdapterPanel track={track} concept={concept} lesson={lesson} />
+        <AdapterPanel tracks={tracks} lesson={lesson} />
       </div>
     </Suspense>
   );

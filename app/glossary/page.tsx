@@ -1,19 +1,14 @@
-import { MarkdownBody } from "@/components/MarkdownBody";
+import { ContentMarkdown } from "@/components/ContentMarkdown";
 import { glossaryMarkdown } from "@/lib/curriculum";
 
-export default async function GlossaryPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ track?: string }>;
-}) {
-  const { track = "cursor" } = await searchParams;
+export default function GlossaryPage() {
   return (
     <>
       <header className="lesson-head">
         <p className="kicker">คำคงที่</p>
         <h1>อภิธานศัพท์</h1>
       </header>
-      <MarkdownBody markdown={glossaryMarkdown()} track={track} />
+      <ContentMarkdown markdown={glossaryMarkdown()} />
     </>
   );
 }

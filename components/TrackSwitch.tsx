@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export const TRACK_KEY = "ai-acadamy:track";
 export const DONE_KEY = "ai-acadamy:done";
@@ -29,6 +29,32 @@ const TRACKS = [
   { id: "openai", name: "OpenAI" },
   { id: "copilot", name: "Copilot" },
 ];
+
+export function useTrackId() {
+  const searchParams = useSearchParams();
+  const fromUrl = searchParams.get("track");
+  const [track, setTrack] = useState(fromUrl ?? "cursor");
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem(TRACK_KEY);
+    setTrack(fromUrl ?? saved ?? "cursor");
+  }, [fromUrl]);
+
+  return track;
+}
+
+export function TrackLabel({ tracks }: { tracks: { id: string; name: string }[] }) {
+  return (
+    <Suspense fallback={null}>
+      <TrackLabelInner tracks={tracks} />
+    </Suspense>
+  );
+}
+
+function TrackLabelInner({ tracks }: { tracks: { id: string; name: string }[] }) {
+  const id = useTrackId();
+  return <>{tracks.find((item) => item.id === id)?.name ?? id}</>;
+}
 
 export function TrackSwitch() {
   const router = useRouter();
@@ -115,6 +141,24 @@ export function withTrack(href: string, track: string) {
 }
 
 export function TrackedLink({
+  href,
+  children,
+  className,
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <Suspense fallback={<Link className={className} href={href}>{children}</Link>}>
+      <TrackedLinkInner href={href} className={className}>
+        {children}
+      </TrackedLinkInner>
+    </Suspense>
+  );
+}
+
+function TrackedLinkInner({
   href,
   children,
   className,
