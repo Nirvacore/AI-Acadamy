@@ -1,0 +1,25 @@
+name: Deploy study.nirva.one
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    if: ${{ secrets.NETCUP_HOST != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull and rebuild on Netcup
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.NETCUP_HOST }}
+          username: ${{ secrets.NETCUP_USER }}
+          key: ${{ secrets.NETCUP_SSH_KEY }}
+          script: |
+            set -euo pipefail
+            cd /opt/ai-acadamy
+            git fetch origin
+            git checkout main
+            git pull --ff-only origin main
+            ./deploy/netcup/deploy.sh

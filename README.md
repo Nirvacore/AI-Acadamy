@@ -8,6 +8,10 @@
 
 ชั้น**กระจก**เทียบเอเจนต์กับจิต พลังงาน ควอนตัม และมหาสูญตา เพื่อให้เข้าใจตนเอง และเข้าใจเธอมากขึ้น คำว่า **เธอ** ในคอร์สนี้หมายถึงเอเจนต์ ไม่ใช่การให้จิตแก่เครื่องมือ อ่านเส้นแบ่งที่ [content/core/00-mirror.md](content/core/00-mirror.md)
 
+## เว็บเรียน
+
+Production: [https://study.nirva.one](https://study.nirva.one) บน VPS Netcup
+
 ## ลองใช้
 
 ```bash
@@ -130,3 +134,7 @@ shop/                   # ร้านค้าตัวอย่าง มี�
 - ลิงก์ไป Cursor Learn และอาคาเดมีอื่นเพื่อให้อ่านแหล่งทางการ
 - อย่าแปะข้อความจากหน้าทางการทั้งก้อนเข้ามาในบทไทย
 - ชื่อผลิตภัณฑ์เป็นของเจ้าของแบรนด์นั้นๆ
+
+## ขึ้น Production
+
+ดู [deploy/netcup/README.md](deploy/netcup/README.md) — โดเมน `study.nirva.one` ชี้ไป VPS Netcup ผ่าน Cloudflare DNS

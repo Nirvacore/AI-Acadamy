@@ -7,8 +7,10 @@ import { loadSchema } from "@/lib/curriculum";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://study.nirva.one"),
   title: "AI-Acadamy",
   description: "เรียนเอเจนต์เป็นไทย แล้วเห็นตนเองผ่านกระจกมหาสูญตา",
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
