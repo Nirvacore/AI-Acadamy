@@ -6,7 +6,7 @@
 
 เปิด [https://nirvacore.github.io/AI-Acadamy/](https://nirvacore.github.io/AI-Acadamy/)
 
-ถ้ายัง 404 ให้ตั้งครั้งเดียว: GitHub repo **Settings → Pages → Build and deployment → Source = GitHub Actions**
+สาขา `gh-pages` มีไฟล์แล้ว ถ้ายัง 404 ให้ตั้งครั้งเดียว: GitHub repo **Settings → Pages → Deploy from a branch → `gh-pages` / `/ (root)`**
 
 ## โดเมน study.nirva.one
 

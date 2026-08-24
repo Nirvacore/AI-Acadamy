@@ -14,7 +14,9 @@
 
 **ใช้ได้บน GitHub Pages:** [https://nirvacore.github.io/AI-Acadamy/](https://nirvacore.github.io/AI-Acadamy/)
 
-ถ้าเพจยัง 404 ให้เปิดครั้งเดียวที่ GitHub: **Settings → Pages → Source = GitHub Actions** แล้วรอ workflow `GitHub Pages` เขียว
+สาขา `gh-pages` มีไฟล์เว็บแล้ว ถ้าลิงก์ยัง 404 ให้เปิดครั้งเดียวที่ GitHub:
+
+**Settings → Pages → Build and deployment → Source = Deploy from a branch → Branch `gh-pages` / `/ (root)` → Save**
 
 โดเมน [study.nirva.one](https://study.nirva.one) เป็นชื่อที่ตั้งไว้สำหรับโปรดักชัน ยังไม่ขึ้นจนกว่า Cloudflare จะชี้ `study` ไปที่ GitHub Pages หรือ VPS — ดู [deploy/netcup/README.md](deploy/netcup/README.md)
 
