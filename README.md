@@ -15,7 +15,7 @@ npm install
 npm run dev
 ```
 
-เปิด [http://localhost:3000](http://localhost:3000)
+เปิด [http://localhost:3000](http://localhost:3000) — เซิร์ฟเวอร์ฟังทุกอินเทอร์เฟซที่พอร์ต 3000 (`0.0.0.0`) เพื่อให้พรีวิวใน Cursor เปิดได้
 
 - หน้าแรกมีปุ่ม **เรียนต่อ** จากบทที่ยังไม่จบในเบราว์เซอร์นี้
 - เลือกแทร็ก Cursor / Claude / OpenAI / Copilot ด้านซ้าย หรือเทียบทั้งชุดที่ `/tracks`

@@ -1,0 +1,17 @@
+{
+  "name": "AI-Acadamy",
+  "install": "npm install",
+  "terminals": [
+    {
+      "name": "academy",
+      "command": "npm run dev",
+      "description": "Thai academy site. Open http://localhost:3000"
+    }
+  ],
+  "ports": [
+    {
+      "name": "academy",
+      "port": 3000
+    }
+  ]
+}
