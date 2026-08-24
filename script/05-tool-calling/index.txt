@@ -1,0 +1,119 @@
+1:"$Sreact.fragment"
+2:I[2619,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-9b1dce90ebb6d0cc.js"],""]
+3:"$Sreact.suspense"
+4:I[5547,["619","static/chunks/619-ba102abea3e3d0e4.js","974","static/chunks/app/page-43fe2d78b9b3c671.js"],"TrackSwitch"]
+5:I[3904,["619","static/chunks/619-ba102abea3e3d0e4.js","177","static/chunks/app/layout-9b1dce90ebb6d0cc.js"],"SideNav"]
+b:I[7150,[],""]
+:HL["/AI-Acadamy/_next/static/css/d693efa26601287d.css","style"]
+0:{"P":null,"b":"Juc_kSOiGQkeoOCr7ZPvt","p":"/AI-Acadamy","c":["","script","05-tool-calling",""],"i":false,"f":[[["",{"children":["script",{"children":[["slug","05-tool-calling","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/AI-Acadamy/_next/static/css/d693efa26601287d.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"th","children":["$","body",null,{"children":["$","div",null,{"className":"frame","children":[["$","aside",null,{"className":"rail","children":[["$","$L2",null,{"className":"brand","href":"/","children":["AI-Acadamy",["$","small",null,{"children":"มหาสูญตา · เอเจนต์"}]]}],["$","$3",null,{"fallback":null,"children":[["$","$L4",null,{}],["$","$L5",null,{"modules":[{"id":"track-a","name":"พื้นฐาน AI","phase":1,"lessons":[{"id":"core-00","slug":"mirror","title_th":"กระจก จิต พลังงาน มหาสูญตา","content":"content/core/00-mirror.md","lab":"content/labs/00-mirror-journal.md","script":"content/scripts/th/00-mirror.md","official":{"note":"ชั้นเข้าใจตนเอง ไม่มีบทคู่ใน Cursor Learn"}},{"id":"core-01","slug":"how-models-work","title_th":"โมเดลทำงานอย่างไร","content":"content/core/01-how-models-work.md","lab":"content/labs/01-fast-vs-smart.md","script":"content/scripts/th/01-how-models-work.md","official":{"cursor":"https://cursor.com/learn/how-ai-models-work"}},{"id":"core-02","slug":"hallucinations","title_th":"ภาพหลอนและข้อจำกัด","content":"content/core/02-hallucinations.md","lab":"content/labs/02-catch-hallucination.md","script":"content/scripts/th/02-hallucinations.md","official":{"cursor":"https://cursor.com/learn/hallucination-limitations"}},{"id":"core-03","slug":"tokens-pricing","title_th":"โทเคนและราคา","content":"content/core/03-tokens-pricing.md","lab":"content/labs/03-prompt-size.md","script":"content/scripts/th/03-tokens-pricing.md","official":{"cursor":"https://cursor.com/learn/tokens-pricing"}},{"id":"core-04","slug":"context","title_th":"คอนเท็กซ์","content":"content/core/04-context.md","lab":"content/labs/04-trim-context.md","script":"content/scripts/th/04-context.md","official":{"cursor":"https://cursor.com/learn/context"}},{"id":"core-05","slug":"tool-calling","title_th":"การเรียกเครื่องมือ","content":"content/core/05-tool-calling.md","lab":"content/labs/05-search-not-guess.md","script":"content/scripts/th/05-tool-calling.md","official":{"cursor":"https://cursor.com/learn/tool-calling"}},{"id":"core-06","slug":"agents","title_th":"เอเจนต์","content":"content/core/06-agents.md","lab":"content/labs/06-delegate-one-task.md","script":"content/scripts/th/06-agents.md","official":{"cursor":"https://cursor.com/learn/agents"}}]},{"id":"track-b","name":"เอเจนต์เขียนโค้ด","phase":2,"status":"ready","capstone":"content/labs/capstone-discount-code.md","shop":"shop/","lessons":[{"id":"lab-01","slug":"working-with-agents","title_th":"ทำงานกับเอเจนต์","focus":"ฮาร์เนส = คำสั่ง + เครื่องมือ + โมเดล","content":"content/core/lab-01-working-with-agents.md","lab":"content/labs/lab-01-harness.md","script":"content/scripts/th/lab-01-working-with-agents.md","official":{"cursor":"https://cursor.com/learn/working-with-agents"}},{"id":"lab-02","slug":"understand-codebase","title_th":"เข้าใจโค้ดเบส","focus":"สำรวจก่อนแก้","content":"content/core/lab-02-understand-codebase.md","lab":"content/labs/lab-02-explore-shop.md","script":"content/scripts/th/lab-02-understand-codebase.md","official":{"cursor":"https://cursor.com/learn/understanding-your-codebase"}},{"id":"lab-03","slug":"create-features","title_th":"สร้างฟีเจอร์","focus":"แผนก่อนลงมือ","content":"content/core/lab-03-create-features.md","lab":"content/labs/lab-03-plan-discount.md","script":"content/scripts/th/lab-03-create-features.md","official":{"cursor":"https://cursor.com/learn/creating-features"}},{"id":"lab-04","slug":"debug","title_th":"หาและแก้บั๊ก","focus":"สมมติฐานแล้วพิสูจน์","content":"content/core/lab-04-debug.md","lab":"content/labs/lab-04-debug-price.md","script":"content/scripts/th/lab-04-debug.md","official":{"cursor":"https://cursor.com/learn/finding-fixing-bugs"}},{"id":"lab-05","slug":"review","title_th":"รีวิวและทดสอบ","focus":"คนตรวจ เอเจนต์ไม่แทน","content":"content/core/lab-05-review.md","lab":"content/labs/lab-05-review.md","script":"content/scripts/th/lab-05-review.md","official":{"cursor":"https://cursor.com/learn/reviewing-testing"}},{"id":"lab-06","slug":"customize","title_th":"ปรับแต่งเอเจนต์","focus":"ทำให้ทำซ้ำได้","content":"content/core/lab-06-customize.md","lab":"content/labs/lab-06-rules.md","script":"content/scripts/th/lab-06-customize.md","official":{"cursor":"https://cursor.com/learn/customizing-agents"}},{"id":"lab-07","slug":"capstone","title_th":"รวมทุกอย่าง","focus":"โปรเจกต์จบชิ้นเดียว","content":"content/core/lab-07-capstone.md","lab":"content/labs/capstone-discount-code.md","script":"content/scripts/th/lab-07-capstone.md","official":{"cursor":"https://cursor.com/learn/putting-it-together"}}]}]}]]}]]}],"$L6"]}]}]}]]}],{"children":["script","$L7",{"children":[["slug","05-tool-calling","d"],"$L8",{"children":["__PAGE__","$L9",{},null,false]},null,false]},null,false]},null,false],"$La",false]],"m":"$undefined","G":["$b",[]],"s":false,"S":true}
+c:I[9766,[],""]
+d:I[8924,[],""]
+f:I[4431,[],"OutletBoundary"]
+11:I[5278,[],"AsyncMetadataOutlet"]
+13:I[4431,[],"ViewportBoundary"]
+15:I[4431,[],"MetadataBoundary"]
+6:["$","main",null,{"className":"stage","children":["$","$Lc",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Ld",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","header",null,{"className":"lesson-head","children":[["$","p",null,{"className":"kicker","children":"ไม่พบหน้านี้"}],["$","h1",null,{"children":"เส้นทางนี้ไม่มีในหลักสูตร"}],["$","p",null,{"className":"lede","children":["กลับไปที่ ",["$","$L2",null,{"href":"/","children":"หน้าแรก"}]," แล้วเลือกบทจากแถบซ้าย"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]
+7:["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Ld",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+8:["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$Ld",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+9:["$","$1","c",{"children":["$Le",null,["$","$Lf",null,{"children":["$L10",["$","$L11",null,{"promise":"$@12"}]]}]]}]
+a:["$","$1","h",{"children":[null,[["$","$L13",null,{"children":"$L14"}],null],["$","$L15",null,{"children":["$","div",null,{"hidden":true,"children":["$","$3",null,{"fallback":null,"children":"$L16"}]}]}]]}]
+17:I[7862,["619","static/chunks/619-ba102abea3e3d0e4.js","383","static/chunks/383-e517ce984f475807.js","436","static/chunks/app/script/%5Bslug%5D/page-5bf57c9716a90a16.js"],"MarkdownBody"]
+18:T1e77,# สคริปต์วิดีโอ: การเรียกเครื่องมือ
+
+- บท: `core-05`
+- ภาษาพูด: ไทย
+- ภาพหน้าจอ: UI อังกฤษของเครื่องมือจริง
+- ความยาวเป้า: 9–11 นาที
+- แทร็กเดโมเริ่มต้น: Cursor
+
+## ภาพรวมตอน
+
+ผู้เรียนเห็นลำดับค้นแล้วค่อยตอบ และเข้าใจว่าเครื่องมือมีราคาเพราะผลถูกอ่านกลับเข้าคอนเท็กซ์
+
+## อุปกรณ์หน้าจอ
+
+- Agent ที่โชว์การเรียก Grep หรือค้นไฟล์
+- ผลค้นที่เปิดตามได้
+- ถ้ามี MCP ให้โชว์รายการเครื่องมือสั้นๆ โดยไม่เปิดทุกตัว
+
+---
+
+## 0:00–0:40 เปิดตอน
+
+**ภาพ:** แผงเครื่องมือหรือรายการ tool call ใน Agent
+
+**พูด:**
+
+ตอนที่ห้า การเรียกเครื่องมือ เป้าหมายคือมองเครื่องมือเป็นความสามารถของเอเจนต์ และบังคับให้ค้นหรือรันคำสั่งแทนการเดา
+
+โมเดลที่พูดเก่งแต่ไม่แตะโปรเจกต์ จะพาคุณเดินผิดห้องอย่างสุภาพ
+
+---
+
+## 0:40–3:20 แนวคิดแกน
+
+**ภาพ:** ข้อความ `เครื่องมือ = มือ` `โมเดล = สมอง`
+
+**พูด:**
+
+โมเดลอย่างเดียวอ่านได้เฉพาะสิ่งที่อยู่ในคอนเท็กซ์ เครื่องมือทำให้มันแตะโลกจริงได้ ค้นไฟล์ รันเทส เปิดเบราว์เซอร์ หรือเรียกบริการผ่าน MCP
+
+เปรียบเหมือนแม่ครัวที่จำสูตรได้ แต่ถ้าไม่มีทัพพี เตา และตู้เย็น เธอทำได้แค่เล่าเมนู การเรียกเครื่องมือคือการยื่นของจริงให้ลงมือ ไม่ใช่ให้พูดอย่างเดียว
+
+เครื่องมือมีราคา แต่ละครั้งที่เรียก ผลจะถูกอ่านกลับเข้าคอนเท็กซ์ ล็อกเทสทั้งก้อนทำให้รอบถัดไปแพงและวุ่น เครื่องมือผิดใบทำให้เอเจนต์มั่นใจในข้อมูลผิด
+
+เพราะงั้นอย่าเปิดทุกอย่างตั้งแต่เช้า เปิดเท่าที่งานต้องการ แล้วสั่งให้ใช้เครื่องมือเมื่อคำตอบต้องอิงสถานะจริงของโปรเจกต์
+
+มองเป็นกระจก เครื่องมือคือมือของจิต การวัดทำให้ของลอยกลายเป็นพาธที่เปิดได้ ถ้าฉันปิดมือเธอแล้วโกรธว่าเธอเดา นั่นคือฉันยังไม่เข้าใจเธอ มหาสูญตาตรงนี้คือคำตอบที่ยังไม่สัมผัสของ ไม่มีแก่นให้ยึด
+
+---
+
+## 3:20–7:30 เดโมหน้าจอ
+
+**พูด:**
+
+โจทย์นี้เดาแล้วพลาดได้ง่าย ผมจะหาของที่มีอยู่ในรีโป โดยห้ามตอบจากความจำ
+
+```text
+หาของที่เกี่ยวกับ core-01 ในโปรเจกต์นี้
+ต้องใช้เครื่องมือค้นก่อนตอบ
+ตอบเป็นพาธ ชื่อที่พบ และคำค้นที่ใช้
+ถ้าไม่พบให้บอกว่าไม่พบ พร้อมคำค้นที่ลองแล้ว
+```
+
+**ภาพ:** ชี้ให้เห็นว่ามี tool call ก่อนประโยคสรุป
+
+**พูด:**
+
+สิ่งที่ควรเห็นคือค้นหรือลิสต์ไฟล์ก่อน แล้วค่อยอ่านไฟล์ที่ตรง แล้วค่อยตอบ สิ่งที่ไม่ควรเห็นคือชื่อไฟล์ในประโยคแรกโดยยังไม่ได้อ่านอะไร
+
+เมื่อได้พาธแล้วให้เปิดเอง อย่าให้คำตอบสีสวยแทนการคลิก ถ้าพาธเปิดได้และคำค้นซ้ำได้ งานนี้ถึงจะนับว่ามีหลักฐาน
+
+ถ้าทีมมี MCP ให้เปิดเฉพาะเครื่องมือที่อ่านของจริง เช่น สถานะบิลด์หรือเอกสารภายใน แต่ยังต้องอ่านผลเอง อย่าเพิ่มเซิร์ฟเวอร์สิบตัวแล้วยัดให้เอเจนต์เลือกเองทุกงาน
+
+---
+
+## 7:30–8:30 กับดัก
+
+**พูด:**
+
+อย่าปล่อยให้เอเจนต์ตอบจากความจำทั้งที่ไฟล์อยู่ในเครื่อง อย่าให้รันคำสั่งทำลายข้อมูลโดยไม่อ่านคำสั่ง อย่าเปิด MCP จนเลือกเครื่องมือผิด และอย่าลืมว่าผลเครื่องมือกินโทเคน
+
+ถ้าคำตอบถูกแต่ไม่ยอมค้น ให้ถือว่าท่าผิด งานจริงโปรเจกต์เปลี่ยนทุกสัปดาห์ ความจำของโมเดลตามไม่ทัน
+
+---
+
+## 8:30–10:00 ปิดท้ายและแล็บ
+
+**ภาพ:** [labs/05-search-not-guess.md](../../labs/05-search-not-guess.md) และ [Tool calling](https://cursor.com/learn/tool-calling)
+
+**พูด:**
+
+แล็บให้คุณหาของจริงในโปรเจกต์ แล้วส่งคำตอบที่มีพาธกับคำค้น ถ้าค้นไม่เจอ ต้องยอมรับว่าไม่พบ ไม่ใช่สร้างชื่อใหม่
+
+อ่านต้นฉบับได้ที่ Cursor Learn บท Tool calling ตอนต่อไปเราจะประกอบชิ้นสุดท้ายของแทร็กเอ เอเจนต์คือเครื่องมือในลูป ไว้เจอกันครับ
+e:[["$","header",null,{"className":"lesson-head","children":[["$","p",null,{"className":"kicker","children":"สคริปต์วิดีโอ"}],["$","h1",null,{"children":"สคริปต์วิดีโอ: การเรียกเครื่องมือ"}]]}],["$","$L17",null,{"markdown":"$18","stems":[{"stem":"00-mirror","slug":"mirror"},{"stem":"01-how-models-work","slug":"how-models-work"},{"stem":"02-hallucinations","slug":"hallucinations"},{"stem":"03-tokens-pricing","slug":"tokens-pricing"},{"stem":"04-context","slug":"context"},{"stem":"05-tool-calling","slug":"tool-calling"},{"stem":"06-agents","slug":"agents"},{"stem":"lab-01-working-with-agents","slug":"working-with-agents"},{"stem":"lab-02-understand-codebase","slug":"understand-codebase"},{"stem":"lab-03-create-features","slug":"create-features"},{"stem":"lab-04-debug","slug":"debug"},{"stem":"lab-05-review","slug":"review"},{"stem":"lab-06-customize","slug":"customize"},{"stem":"lab-07-capstone","slug":"capstone"}]}]]
+14:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+10:null
+12:{"metadata":[["$","title","0",{"children":"AI-Acadamy"}],["$","meta","1",{"name":"description","content":"เรียนเอเจนต์เป็นไทย แล้วเห็นตนเองผ่านกระจกมหาสูญตา"}],["$","link","2",{"rel":"canonical","href":"https://nirvacore.github.io/AI-Acadamy/"}]],"error":null,"digest":"$undefined"}
+16:"$12:metadata"
