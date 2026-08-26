@@ -2,11 +2,14 @@ import { Suspense } from "react";
 import { Journal } from "@/components/Journal";
 import { ContentMarkdown } from "@/components/ContentMarkdown";
 import { AdapterPanel } from "@/components/Shell";
+import { CheckQuiz } from "@/components/CheckQuiz";
+import { LessonBeacon } from "@/components/LessonBeacon";
 import { ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
+import { lessonMeta } from "@/lib/catalog";
+import { checksFor } from "@/lib/checks";
 import {
   allLessons,
   getLesson,
-  labSlugFromPath,
   lessonMarkdown,
   loadTracks,
   neighbors,
@@ -20,12 +23,12 @@ export function generateStaticParams() {
 export default async function LessonPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const lesson = getLesson(slug);
-  if (!lesson) notFound();
+  const meta = lessonMeta(slug);
+  if (!lesson || !meta) notFound();
 
   const tracks = loadTracks();
   const { prev, next } = neighbors(slug);
-  const labSlug = labSlugFromPath(lesson.lab);
-  const scriptSlug = labSlugFromPath(lesson.script);
+  const items = checksFor(lesson.id);
 
   return (
     <Suspense fallback={null}>
@@ -37,8 +40,10 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
             </p>
             <h1>{lesson.title_th}</h1>
             {lesson.focus ? <p className="lede">{lesson.focus}</p> : null}
+            <LessonBeacon meta={meta} />
           </header>
           <ContentMarkdown markdown={lessonMarkdown(lesson)} />
+          <CheckQuiz lessonId={lesson.id} items={items} />
           <Journal
             id={lesson.id}
             prompts={["วันนี้จิตฉันเร็วหรือนิ่ง", "ขอบของเธอที่ฉันเห็นชัดขึ้น"]}
@@ -52,23 +57,12 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
             )}
             {next ? (
               <TrackedLink href={`/learn/${next.slug}`}>{next.title_th} →</TrackedLink>
-            ) : labSlug ? (
-              <TrackedLink href={`/lab/${labSlug}`}>ไปแล็บ →</TrackedLink>
+            ) : meta.labSlug ? (
+              <TrackedLink href={`/lab/${meta.labSlug}`}>ไปแล็บ →</TrackedLink>
             ) : (
               <span />
             )}
           </nav>
-          {scriptSlug ? (
-            <p className="note">
-              สคริปต์วิดีโอ: <TrackedLink href={`/script/${scriptSlug}`}>เปิดบทพูดไทย</TrackedLink>
-              {labSlug ? (
-                <>
-                  {" · "}
-                  <TrackedLink href={`/lab/${labSlug}`}>เปิดแล็บ</TrackedLink>
-                </>
-              ) : null}
-            </p>
-          ) : null}
         </article>
         <AdapterPanel tracks={tracks} lesson={lesson} />
       </div>

@@ -1,28 +1,35 @@
 import { Suspense } from "react";
-import { ContinueCard } from "@/components/ContinueCard";
+import { Dashboard } from "@/components/Dashboard";
 import { TrackedLink } from "@/components/TrackSwitch";
-import { allLessons, loadSchema } from "@/lib/curriculum";
+import { courseHours, portalLessons } from "@/lib/catalog";
+import { loadSchema } from "@/lib/curriculum";
 
 export default function HomePage() {
   const schema = loadSchema();
-  const lessons = allLessons().map((lesson) => ({
-    id: lesson.id,
-    slug: lesson.slug,
-    title_th: lesson.title_th,
-  }));
+  const lessons = portalLessons();
+  const hours = courseHours();
 
   return (
     <Suspense fallback={null}>
       <div className="hero">
-        <p className="eyebrow">พร้อมเรียนต่อ</p>
+        <p className="eyebrow">พอร์ทัลเรียน · เท่าทันมหาวิทยาลัยทั่วโลก</p>
         <h1>{schema.course.tagline}</h1>
         <p>
-          เลือกแทร็กบริษัทด้านซ้าย แล้วเดินจากกระจกสู่ร้านค้าตัวอย่าง บทเทคนิคอิง Cursor Learn
-          แต่เขียนใหม่เป็นไทย ความคืบหน้าและสมุดสะท้อนอยู่แค่ในเบราว์เซอร์นี้
+          ระบบนี้อะแดปต์จาก LMS แบบ Canvas, แผนเรียนแบบ Coursera/edX, การทบทวนแบบ Anki,
+          และช่องค้นหาแบบ Cursor กด <kbd>⌘K</kbd> เพื่อกระโดดไปบท แล็บ หรือศัพท์
+          ความคืบหน้าอยู่ที่เบราว์เซอร์นี้ ไม่ส่งให้เธอ
         </p>
+        <div className="actions">
+          <TrackedLink className="btn ghost" href="/syllabus">
+            อ่านหลักสูตร
+          </TrackedLink>
+          <TrackedLink className="btn ghost" href="/glossary">
+            บัตรคำ
+          </TrackedLink>
+        </div>
       </div>
 
-      <ContinueCard lessons={lessons} />
+      <Dashboard lessons={lessons} hours={hours} />
 
       <div className="modules">
         {schema.modules.map((module) => (
@@ -40,14 +47,14 @@ export default function HomePage() {
         ))}
         <article className="card">
           <p className="eyebrow">ของจริง</p>
-          <h2>เทียบแทร็กและร้านค้า</h2>
-          <p className="lede">ดูปุ่มของแต่ละบริษัทในหน้าเดียว แล้วรันเทสจากไฟล์ราคาจริง</p>
+          <h2>สตูดิโอและหลักฐาน</h2>
+          <p className="lede">เทียบปุ่มแต่ละบริษัท รันเทสร้านค้า แล้วถือข้อมูลเรียนไปเครื่องอื่นได้</p>
           <div className="actions">
             <TrackedLink className="btn primary" href="/tracks">
               เทียบแทร็กบริษัท
             </TrackedLink>
             <TrackedLink className="btn ghost" href="/shop">
-              เปิดร้านค้าตัวอย่าง
+              ร้านค้าตัวอย่าง
             </TrackedLink>
           </div>
         </article>

@@ -37,6 +37,9 @@ export function SideNav({
         <h2>อื่นๆ</h2>
         <ul className="plain">
           <li>
+            <TrackedLink href="/syllabus">หลักสูตร</TrackedLink>
+          </li>
+          <li>
             <TrackedLink href="/tracks">เทียบแทร็ก</TrackedLink>
           </li>
           <li>
@@ -46,7 +49,10 @@ export function SideNav({
             <TrackedLink href="/journal">สมุดสะท้อน</TrackedLink>
           </li>
           <li>
-            <TrackedLink href="/glossary">อภิธานศัพท์</TrackedLink>
+            <TrackedLink href="/glossary">อภิธาน / บัตรคำ</TrackedLink>
+          </li>
+          <li>
+            <TrackedLink href="/certificate">เกียรติบัตร</TrackedLink>
           </li>
         </ul>
       </section>

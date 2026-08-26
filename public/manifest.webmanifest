@@ -1,0 +1,12 @@
+{
+  "name": "AI-Acadamy",
+  "short_name": "Acadamy",
+  "description": "เรียนเอเจนต์เป็นไทย แล้วเห็นตนเองผ่านกระจกมหาสูญตา",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0a08",
+  "theme_color": "#c4a15a",
+  "lang": "th",
+  "dir": "ltr"
+}

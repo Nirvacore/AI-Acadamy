@@ -1,4 +1,5 @@
 import { JournalIndex } from "@/components/Journal";
+import { ProgressSync } from "@/components/ProgressSync";
 
 export default function JournalPage() {
   return (
@@ -11,6 +12,7 @@ export default function JournalPage() {
         </p>
       </header>
       <JournalIndex />
+      <ProgressSync />
     </>
   );
 }

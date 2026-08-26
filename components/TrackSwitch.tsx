@@ -3,25 +3,16 @@
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
+import { TRACK_KEY, PROGRESS_EVENT, readDone, writeDone } from "@/lib/progress";
 
-export const TRACK_KEY = "ai-acadamy:track";
-export const DONE_KEY = "ai-acadamy:done";
-export const JOURNAL_KEY = "ai-acadamy:journal";
-export const PROGRESS_EVENT = "ai-acadamy-progress";
-
-export function readDone(): string[] {
-  if (typeof window === "undefined") return [];
-  try {
-    return JSON.parse(window.localStorage.getItem(DONE_KEY) ?? "[]");
-  } catch {
-    return [];
-  }
-}
-
-export function writeDone(ids: string[]) {
-  window.localStorage.setItem(DONE_KEY, JSON.stringify(ids));
-  window.dispatchEvent(new Event(PROGRESS_EVENT));
-}
+export {
+  TRACK_KEY,
+  DONE_KEY,
+  JOURNAL_KEY,
+  PROGRESS_EVENT,
+  readDone,
+  writeDone,
+} from "@/lib/progress";
 
 const TRACKS = [
   { id: "cursor", name: "Cursor" },
