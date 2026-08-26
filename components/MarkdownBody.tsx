@@ -1,11 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { Suspense } from "react";
+import { Children, Suspense, type ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { rewriteContentHref, type LessonStem } from "@/lib/links";
+import { headingId } from "@/lib/outline";
 import { useTrackId } from "@/components/TrackSwitch";
+
+function flatten(children: ReactNode) {
+  return Children.toArray(children)
+    .map((child) => (typeof child === "string" || typeof child === "number" ? String(child) : ""))
+    .join("");
+}
 
 function MarkdownLinks({ markdown, stems }: { markdown: string; stems: LessonStem[] }) {
   const track = useTrackId();
@@ -15,6 +22,10 @@ function MarkdownLinks({ markdown, stems }: { markdown: string; stems: LessonSte
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
+          h2({ children }) {
+            const title = flatten(children);
+            return <h2 id={headingId(title)}>{children}</h2>;
+          },
           a({ href, children }) {
             const next = rewriteContentHref(href, stems);
             const external = next.startsWith("http");

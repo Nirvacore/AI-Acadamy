@@ -4,9 +4,12 @@ import { ContentMarkdown } from "@/components/ContentMarkdown";
 import { AdapterPanel } from "@/components/Shell";
 import { CheckQuiz } from "@/components/CheckQuiz";
 import { LessonBeacon } from "@/components/LessonBeacon";
+import { LessonKeys } from "@/components/LessonKeys";
+import { LessonOutline } from "@/components/LessonOutline";
 import { ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
 import { lessonMeta } from "@/lib/catalog";
 import { checksFor } from "@/lib/checks";
+import { extractOutline } from "@/lib/outline";
 import {
   allLessons,
   getLesson,
@@ -29,9 +32,15 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
   const tracks = loadTracks();
   const { prev, next } = neighbors(slug);
   const items = checksFor(lesson.id);
+  const markdown = lessonMarkdown(lesson);
+  const outline = extractOutline(markdown);
 
   return (
     <Suspense fallback={null}>
+      <LessonKeys
+        prev={prev ? `/learn/${prev.slug}` : undefined}
+        next={next ? `/learn/${next.slug}` : meta.labSlug ? `/lab/${meta.labSlug}` : undefined}
+      />
       <div className="lesson-layout">
         <article>
           <header className="lesson-head">
@@ -42,7 +51,8 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
             {lesson.focus ? <p className="lede">{lesson.focus}</p> : null}
             <LessonBeacon meta={meta} />
           </header>
-          <ContentMarkdown markdown={lessonMarkdown(lesson)} />
+          <LessonOutline items={outline} />
+          <ContentMarkdown markdown={markdown} />
           <CheckQuiz lessonId={lesson.id} items={items} />
           <Journal
             id={lesson.id}

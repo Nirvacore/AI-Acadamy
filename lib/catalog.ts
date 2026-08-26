@@ -89,6 +89,7 @@ export function buildCatalog(): CatalogItem[] {
     { id: "shop", kind: "page", title: "ร้านค้าตัวอย่าง", href: "/shop", hint: "แล็บราคาและการทดสอบ" },
     { id: "journal", kind: "page", title: "สมุดสะท้อน", href: "/journal", hint: "เขียนเอง ห้ามให้เธอแต่ง" },
     { id: "glossary", kind: "page", title: "อภิธานศัพท์", href: "/glossary", hint: "คำคงที่และบัตรคำ" },
+    { id: "progress", kind: "page", title: "ผลการเรียน", href: "/progress", hint: "เกรดบุ๊คประเมินตนเอง" },
     { id: "certificate", kind: "page", title: "เกียรติบัตร", href: "/certificate", hint: "เมื่อเรียนครบในเครื่องนี้" },
   ];
 

@@ -1,5 +1,7 @@
 import { Suspense } from "react";
 import { Dashboard } from "@/components/Dashboard";
+import { Onboarding } from "@/components/Onboarding";
+import { WeekPlan } from "@/components/WeekPlan";
 import { TrackedLink } from "@/components/TrackSwitch";
 import { courseHours, portalLessons } from "@/lib/catalog";
 import { loadSchema } from "@/lib/curriculum";
@@ -23,13 +25,15 @@ export default function HomePage() {
           <TrackedLink className="btn ghost" href="/syllabus">
             อ่านหลักสูตร
           </TrackedLink>
-          <TrackedLink className="btn ghost" href="/glossary">
-            บัตรคำ
+          <TrackedLink className="btn ghost" href="/progress">
+            ผลการเรียน
           </TrackedLink>
         </div>
       </div>
 
+      <Onboarding />
       <Dashboard lessons={lessons} hours={hours} />
+      <WeekPlan lessons={lessons} />
 
       <div className="modules">
         {schema.modules.map((module) => (

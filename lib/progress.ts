@@ -5,6 +5,11 @@ export const CHECKS_KEY = "ai-acadamy:checks";
 export const PLAN_KEY = "ai-acadamy:plan";
 export const NAME_KEY = "ai-acadamy:name";
 export const LEITNER_KEY = "ai-acadamy:leitner";
+export const LAST_KEY = "ai-acadamy:last";
+export const SECONDS_KEY = "ai-acadamy:seconds";
+export const RUBRIC_KEY = "ai-acadamy:rubric";
+export const TOUR_KEY = "ai-acadamy:tour";
+export const FOCUS_KEY = "ai-acadamy:focus";
 export const PROGRESS_EVENT = "ai-acadamy-progress";
 
 export type PlanId = "intensive" | "evening";
@@ -89,6 +94,9 @@ export type ProgressDump = {
   plan: PlanId;
   name: string;
   leitner: Record<string, number>;
+  last?: string;
+  seconds?: number;
+  rubric?: Record<string, string[]>;
 };
 
 export function exportProgress(): ProgressDump {
@@ -102,6 +110,9 @@ export function exportProgress(): ProgressDump {
     plan: readPlan(),
     name: readName(),
     leitner: readLeitner(),
+    last: window.localStorage.getItem(LAST_KEY) ?? "",
+    seconds: readSeconds(),
+    rubric: readJson(RUBRIC_KEY, {}),
   };
 }
 
@@ -114,10 +125,61 @@ export function importProgress(dump: ProgressDump) {
   window.localStorage.setItem(PLAN_KEY, dump.plan === "evening" ? "evening" : "intensive");
   window.localStorage.setItem(NAME_KEY, dump.name ?? "");
   writeJson(LEITNER_KEY, dump.leitner ?? {});
+  if (dump.last) window.localStorage.setItem(LAST_KEY, dump.last);
+  if (typeof dump.seconds === "number") window.localStorage.setItem(SECONDS_KEY, String(dump.seconds));
+  if (dump.rubric) writeJson(RUBRIC_KEY, dump.rubric);
 }
 
 export function journalFilled(id: string): boolean {
   const entry = readJournal()[id];
   if (!entry) return false;
   return Object.values(entry).some((text) => text.trim().length >= 12);
+}
+
+export function readLast(): string {
+  if (typeof window === "undefined") return "";
+  return window.localStorage.getItem(LAST_KEY) ?? "";
+}
+
+export function writeLast(path: string) {
+  if (!path || path === "/") return;
+  window.localStorage.setItem(LAST_KEY, path);
+}
+
+export function readSeconds(): number {
+  if (typeof window === "undefined") return 0;
+  return Number(window.localStorage.getItem(SECONDS_KEY) || 0) || 0;
+}
+
+export function writeSeconds(value: number) {
+  window.localStorage.setItem(SECONDS_KEY, String(Math.max(0, Math.floor(value))));
+}
+
+export function readRubric(id: string): string[] {
+  return readJson<Record<string, string[]>>(RUBRIC_KEY, {})[id] ?? [];
+}
+
+export function writeRubric(id: string, items: string[]) {
+  const all = readJson<Record<string, string[]>>(RUBRIC_KEY, {});
+  all[id] = items;
+  writeJson(RUBRIC_KEY, all);
+}
+
+export function tourSeen(): boolean {
+  if (typeof window === "undefined") return true;
+  return window.localStorage.getItem(TOUR_KEY) === "1";
+}
+
+export function markTourSeen() {
+  window.localStorage.setItem(TOUR_KEY, "1");
+}
+
+export function readFocus(): boolean {
+  if (typeof window === "undefined") return false;
+  return window.localStorage.getItem(FOCUS_KEY) === "1";
+}
+
+export function writeFocus(on: boolean) {
+  window.localStorage.setItem(FOCUS_KEY, on ? "1" : "0");
+  document.body.classList.toggle("is-focus", on);
 }

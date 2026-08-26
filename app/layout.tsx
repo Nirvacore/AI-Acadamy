@@ -5,6 +5,7 @@ import { SideNav } from "@/components/Shell";
 import { TrackSwitch } from "@/components/TrackSwitch";
 import { CommandPalette } from "@/components/CommandPalette";
 import { RailProgress } from "@/components/RailProgress";
+import { StudioBar } from "@/components/StudioBar";
 import { SWRegister } from "@/components/SWRegister";
 import { allLessons, loadSchema } from "@/lib/curriculum";
 import { buildCatalog } from "@/lib/catalog";
@@ -64,6 +65,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
         </div>
+        <Suspense fallback={null}>
+          <StudioBar />
+        </Suspense>
         <SWRegister />
       </body>
     </html>

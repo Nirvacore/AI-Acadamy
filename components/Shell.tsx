@@ -52,6 +52,9 @@ export function SideNav({
             <TrackedLink href="/glossary">อภิธาน / บัตรคำ</TrackedLink>
           </li>
           <li>
+            <TrackedLink href="/progress">ผลการเรียน</TrackedLink>
+          </li>
+          <li>
             <TrackedLink href="/certificate">เกียรติบัตร</TrackedLink>
           </li>
         </ul>
