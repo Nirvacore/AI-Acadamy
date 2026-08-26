@@ -23,10 +23,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Build static site
+      - name: Build static site for study.nirva.one
         run: npm run build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}
+      - name: Pin custom domain
+        run: printf 'study.nirva.one\n' > out/CNAME
       - name: Publish gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:

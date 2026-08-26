@@ -11,9 +11,7 @@ import { allLessons, loadSchema } from "@/lib/curriculum";
 import { buildCatalog } from "@/lib/catalog";
 import "./globals.css";
 
-const site = process.env.BASE_PATH
-  ? `https://nirvacore.github.io${process.env.BASE_PATH}`
-  : "https://study.nirva.one";
+const site = "https://study.nirva.one";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site),

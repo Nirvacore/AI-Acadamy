@@ -1,4 +1,4 @@
-const CACHE = "ai-acadamy-v1";
+const CACHE = "ai-acadamy-v2";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());

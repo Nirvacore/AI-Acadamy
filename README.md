@@ -12,15 +12,18 @@
 
 ไซต์เป็นไฟล์สแตติก ไม่ต้องรัน Node ตอนเปิดอ่าน
 
-**เริ่มที่นี่:** เปิดเว็บ แล้วกด **เริ่มเรียนบทแรก** หรือไป `/start` นั่งสิบห้านาที ล็อกว่า **เธอ** คือเอเจนต์ จากนั้นเข้าบทกระจก ทุกบทมีกล่อง **ตอนนี้ทำ** ให้ติ๊กเอง
+**โดเมนเรียน:** [https://study.nirva.one](https://study.nirva.one)
 
-**ใช้ได้บน GitHub Pages:** [https://nirvacore.github.io/AI-Acadamy/](https://nirvacore.github.io/AI-Acadamy/)
+กด **เริ่มเรียนบทแรก** หรือไป `/start` นั่งสิบห้านาที ล็อกว่า **เธอ** คือเอเจนต์ จากนั้นเข้าบทกระจก ทุกบทมีกล่อง **ตอนนี้ทำ** ให้ติ๊กเอง
 
-สาขา `gh-pages` มีไฟล์เว็บแล้ว ถ้าลิงก์ยัง 404 ให้เปิดครั้งเดียวที่ GitHub:
+บิลด์เสิร์ฟที่รากของโดเมนนี้ ไม่ใช้ path `/AI-Acadamy/`
 
-**Settings → Pages → Build and deployment → Source = Deploy from a branch → Branch `gh-pages` / `/ (root)` → Save**
+ถ้าโดเมนยังไม่ตอบ ให้ตั้งสองอย่างนี้ครั้งเดียว:
 
-โดเมน [study.nirva.one](https://study.nirva.one) เป็นชื่อที่ตั้งไว้สำหรับโปรดักชัน ยังไม่ขึ้นจนกว่า Cloudflare จะชี้ `study` ไปที่ GitHub Pages หรือ VPS — ดู [deploy/netcup/README.md](deploy/netcup/README.md)
+1. Cloudflare DNS ของ `nirva.one`: CNAME ชื่อ `study` ชี้ `nirvacore.github.io` ปิด Proxy (เมฆเทา) จนกว่า HTTPS จะติด
+2. GitHub รีโปนี้: **Settings → Pages → Deploy from a branch → `gh-pages` / `/ (root)`** แล้ว Custom domain = `study.nirva.one`
+
+รายละเอียด: [deploy/netcup/README.md](deploy/netcup/README.md)
 
 ## ลองใช้บนเครื่อง
 
@@ -160,5 +163,6 @@ shop/                   # ร้านค้าตัวอย่าง มี�
 
 ## ขึ้น Production
 
-- GitHub Pages: workflow `.github/workflows/pages.yml` สร้าง `out/` แล้วเผยแพร่ที่ `/AI-Acadamy/`
-- โดเมน `study.nirva.one` และ VPS Netcup: [deploy/netcup/README.md](deploy/netcup/README.md)
+- โดเมนเรียนคือ `https://study.nirva.one`
+- Workflow `.github/workflows/pages.yml` บิลด์ที่รากโดเมน แล้วเขียนไฟล์ `CNAME` เป็น `study.nirva.one` ลงสาขา `gh-pages`
+- VPS Netcup เป็นทางเลือกสำรอง: [deploy/netcup/README.md](deploy/netcup/README.md)
