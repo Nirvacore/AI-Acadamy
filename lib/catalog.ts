@@ -83,7 +83,8 @@ export function parseGlossary(): GlossaryCard[] {
 
 export function buildCatalog(): CatalogItem[] {
   const pages: CatalogItem[] = [
-    { id: "home", kind: "page", title: "หน้าแรก · พอร์ทัลเรียน", href: "/", hint: "ความคืบหน้าและบทถัดไป" },
+    { id: "home", kind: "page", title: "หน้าแรก · เริ่มเรียน", href: "/", hint: "ปุ่มเริ่มและลำดับบท" },
+    { id: "start", kind: "page", title: "ชั่วโมงแรก", href: "/start", hint: "นั่งสิบห้านาที ล็อกว่าเธอคือเอเจนต์" },
     { id: "syllabus", kind: "page", title: "หลักสูตร", href: "/syllabus", hint: "ผลลัพธ์ ชั่วโมง เกณฑ์ประเมิน" },
     { id: "tracks", kind: "page", title: "เทียบแทร็กบริษัท", href: "/tracks", hint: "Cursor Claude OpenAI Copilot" },
     { id: "shop", kind: "page", title: "ร้านค้าตัวอย่าง", href: "/shop", hint: "แล็บราคาและการทดสอบ" },

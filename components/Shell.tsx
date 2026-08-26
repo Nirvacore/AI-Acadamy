@@ -14,6 +14,16 @@ export function SideNav({
 
   return (
     <nav className="side-nav" aria-label="บทเรียน">
+      <section>
+        <h2>เริ่มที่นี่</h2>
+        <ul className="plain">
+          <li>
+            <TrackedLink className={current === "start" ? "is-on" : ""} href="/start">
+              ชั่วโมงแรก
+            </TrackedLink>
+          </li>
+        </ul>
+      </section>
       {modules.map((module) => (
         <section key={module.id}>
           <h2>{module.name}</h2>

@@ -94,7 +94,7 @@ export function Dashboard({
       </div>
 
       <div className="continue-card">
-        <p className="eyebrow">แผนเรียนแบบมหาวิทยาลัย</p>
+        <p className="eyebrow">จังหวะเรียนในเครื่องนี้</p>
         <div className="plan-switch" role="tablist" aria-label="แผนเรียน">
           {PLANS.map((item) => (
             <button

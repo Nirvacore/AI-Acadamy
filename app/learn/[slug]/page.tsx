@@ -6,8 +6,10 @@ import { CheckQuiz } from "@/components/CheckQuiz";
 import { LessonBeacon } from "@/components/LessonBeacon";
 import { LessonKeys } from "@/components/LessonKeys";
 import { LessonOutline } from "@/components/LessonOutline";
+import { NowDo } from "@/components/NowDo";
 import { ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
 import { lessonMeta } from "@/lib/catalog";
+import { sheetForLesson } from "@/lib/nowdo";
 import { checksFor } from "@/lib/checks";
 import { extractOutline } from "@/lib/outline";
 import {
@@ -51,6 +53,7 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
             {lesson.focus ? <p className="lede">{lesson.focus}</p> : null}
             <LessonBeacon meta={meta} />
           </header>
+          <NowDo id={lesson.id} sheet={sheetForLesson(lesson.id)} />
           <LessonOutline items={outline} />
           <ContentMarkdown markdown={markdown} />
           <CheckQuiz lessonId={lesson.id} items={items} />

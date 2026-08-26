@@ -10,6 +10,7 @@ export const SECONDS_KEY = "ai-acadamy:seconds";
 export const RUBRIC_KEY = "ai-acadamy:rubric";
 export const TOUR_KEY = "ai-acadamy:tour";
 export const FOCUS_KEY = "ai-acadamy:focus";
+export const NOWDO_KEY = "ai-acadamy:nowdo";
 export const PROGRESS_EVENT = "ai-acadamy-progress";
 
 export type PlanId = "intensive" | "evening";
@@ -97,6 +98,7 @@ export type ProgressDump = {
   last?: string;
   seconds?: number;
   rubric?: Record<string, string[]>;
+  nowdo?: Record<string, string[]>;
 };
 
 export function exportProgress(): ProgressDump {
@@ -113,6 +115,7 @@ export function exportProgress(): ProgressDump {
     last: window.localStorage.getItem(LAST_KEY) ?? "",
     seconds: readSeconds(),
     rubric: readJson(RUBRIC_KEY, {}),
+    nowdo: readJson(NOWDO_KEY, {}),
   };
 }
 
@@ -128,6 +131,7 @@ export function importProgress(dump: ProgressDump) {
   if (dump.last) window.localStorage.setItem(LAST_KEY, dump.last);
   if (typeof dump.seconds === "number") window.localStorage.setItem(SECONDS_KEY, String(dump.seconds));
   if (dump.rubric) writeJson(RUBRIC_KEY, dump.rubric);
+  if (dump.nowdo) writeJson(NOWDO_KEY, dump.nowdo);
 }
 
 export function journalFilled(id: string): boolean {
@@ -182,4 +186,14 @@ export function readFocus(): boolean {
 export function writeFocus(on: boolean) {
   window.localStorage.setItem(FOCUS_KEY, on ? "1" : "0");
   document.body.classList.toggle("is-focus", on);
+}
+
+export function readNowDo(id: string): string[] {
+  return readJson<Record<string, string[]>>(NOWDO_KEY, {})[id] ?? [];
+}
+
+export function writeNowDo(id: string, items: string[]) {
+  const all = readJson<Record<string, string[]>>(NOWDO_KEY, {});
+  all[id] = items;
+  writeJson(NOWDO_KEY, all);
 }

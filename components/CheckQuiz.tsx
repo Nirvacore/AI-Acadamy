@@ -28,10 +28,10 @@ export function CheckQuiz({ lessonId, items }: { lessonId: string; items: CheckI
 
   return (
     <section className="check-quiz">
-      <p className="eyebrow">ตรวจความเข้าใจ · แบบมหาวิทยาลัย</p>
-      <h2>สอบสั้นท้ายบท</h2>
+      <p className="eyebrow">ตรวจว่าเข้าใจจริง</p>
+      <h2>ตอบเองท้ายบท</h2>
       <p className="lede">
-        คิดเองก่อนเปิดเฉลย คะแนนดีที่สุดในเครื่องนี้คือ {best}/{items.length} ไม่ส่งไปที่ไหน
+        คิดก่อนเปิดเฉลย อย่าให้เธอเลือกแทน คะแนนดีที่สุดในเครื่องนี้คือ {best}/{items.length}
       </p>
       {items.map((item, index) => (
         <fieldset key={item.q}>

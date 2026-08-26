@@ -37,7 +37,7 @@ export function LessonBeacon({ meta }: { meta: LessonMetaView }) {
       ) : null}
       {!ready && meta.prereq ? (
         <p className="gate">
-          มหาวิทยาลัยแนะนำไม่ข้ามบทก่อนหน้า:{" "}
+          อ่านบทก่อนหน้าให้จบก่อน ไม่งั้นบทนี้จะไม่รู้เรื่อง:{" "}
           <TrackedLink href={`/learn/${meta.prereq.slug}`}>{meta.prereq.title_th}</TrackedLink>
         </p>
       ) : null}

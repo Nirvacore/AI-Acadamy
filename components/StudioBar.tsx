@@ -112,6 +112,7 @@ export function StudioBar() {
             <li>
               <kbd>?</kbd> เปิด-ปิดแผ่นนี้
             </li>
+            <li>ชั่วโมงแรกอยู่ที่ /start · บทแรกคือกระจก</li>
           </ul>
           <button type="button" className="btn ghost" onClick={() => setHelp(false)}>
             ปิด

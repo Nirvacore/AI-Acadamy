@@ -108,7 +108,7 @@ export function ProgressMark({ id }: { id: string }) {
 
   return (
     <button type="button" className={done ? "progress-mark is-on" : "progress-mark"} onClick={toggle}>
-      {done ? "เรียนแล้ว" : "ทำเครื่องหมายว่าเรียนแล้ว"}
+      {done ? "เข้าใจบทนี้แล้ว" : "ฉันเข้าใจบทนี้แล้ว"}
     </button>
   );
 }

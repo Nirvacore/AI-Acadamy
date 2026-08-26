@@ -4,8 +4,10 @@ import { Journal } from "@/components/Journal";
 import { ContentMarkdown } from "@/components/ContentMarkdown";
 import { LabRubric } from "@/components/LabRubric";
 import { LessonKeys } from "@/components/LessonKeys";
+import { NowDo } from "@/components/NowDo";
 import { ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
 import { getLab, listLabs, loadTracks } from "@/lib/curriculum";
+import { sheetForLab } from "@/lib/nowdo";
 import { extractRubric } from "@/lib/outline";
 
 export function generateStaticParams() {
@@ -28,6 +30,7 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
         </p>
         <h1>{lab.title}</h1>
       </header>
+      <NowDo id={`lab:${slug}`} sheet={sheetForLab(slug)} />
       <ContentMarkdown markdown={lab.markdown} />
       <LabRubric id={`lab:${slug}`} items={rubric} />
       <Journal
