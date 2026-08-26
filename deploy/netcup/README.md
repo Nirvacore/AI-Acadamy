@@ -8,6 +8,8 @@
 
 โซน `nirva.one` อยู่ที่ Cloudflare แล้ว (NS: `thaddeus` / `katelyn`) แต่ชื่อ `study` ยังไม่มีเรคคอร์ด เลย resolve ไม่ได้
 
+GitHub Pages เปิดแล้ว (`gh-pages` / root, custom domain = `study.nirva.one`) และ `nirvacore.github.io/AI-Acadamy` ตอบ 301 ไปที่โดเมนนี้แล้ว เหลือแค่ DNS
+
 ### 1. Cloudflare DNS
 
 | Type | Name | Content | Proxy |
@@ -15,6 +17,13 @@
 | CNAME | `study` | `nirvacore.github.io` | DNS only (เมฆเทา) |
 
 ตรวจด้วย `dig +short study.nirva.one CNAME` ต้องได้ `nirvacore.github.io.`
+
+หรือให้ตัวแทนยิง API (Zone DNS Edit บน `nirva.one`):
+
+```bash
+export CLOUDFLARE_API_TOKEN=...   # อย่าแปะลงแชต
+./deploy/cloudflare-study-cname.sh
+```
 
 พอ GitHub ออกใบรับรองแล้ว จะเปิด Proxy (เมฆส้ม) ก็ได้ โหมด SSL ตั้ง **Full (strict)**
 

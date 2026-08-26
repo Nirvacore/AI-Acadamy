@@ -1,0 +1,27 @@
+name: Point study.nirva.one DNS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cname:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Cloudflare token
+        id: check
+        env:
+          TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "CLOUDFLARE_API_TOKEN is not set; skip DNS upsert"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.skip != 'true'
+      - name: Upsert CNAME study -> nirvacore.github.io
+        if: steps.check.outputs.skip != 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          chmod +x deploy/cloudflare-study-cname.sh
+          ./deploy/cloudflare-study-cname.sh
