@@ -5,6 +5,15 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { CatalogItem } from "@/lib/types";
 import { TRACK_KEY, withTrack } from "@/components/TrackSwitch";
 
+function fold(value: string) {
+  return value.normalize("NFC").toLowerCase();
+}
+
+function matches(item: CatalogItem, query: string) {
+  const hay = fold(`${item.title} ${item.hint} ${item.id} ${item.href}`);
+  return query.split(/\s+/).filter(Boolean).every((part) => hay.includes(fold(part)));
+}
+
 function kindLabel(kind: CatalogItem["kind"]) {
   switch (kind) {
     case "lesson":
@@ -28,13 +37,10 @@ export function CommandPalette({ catalog }: { catalog: CatalogItem[] }) {
   const input = useRef<HTMLInputElement>(null);
 
   const results = useMemo(() => {
-    const q = query.trim().toLowerCase();
+    const q = query.trim();
     const list = !q
       ? catalog.filter((item) => item.kind !== "term").slice(0, 12)
-      : catalog.filter((item) => {
-          const hay = `${item.title} ${item.hint} ${item.id}`.toLowerCase();
-          return hay.includes(q);
-        });
+      : catalog.filter((item) => matches(item, q));
     return list.slice(0, 16);
   }, [catalog, query]);
 
@@ -116,7 +122,7 @@ export function CommandPalette({ catalog }: { catalog: CatalogItem[] }) {
                 </li>
               ))}
             </ul>
-            <p className="cmd-foot">ค้นแบบ Canvas และ Cursor · ลูกศรเลือก · Enter เปิด · Esc ปิด</p>
+            <p className="cmd-foot">ค้นชื่อบท ศัพท์ อังกฤษ หรือสลักเช่น hallucinations · ลูกศรเลือก · Enter เปิด</p>
           </div>
         </div>
       ) : null}
