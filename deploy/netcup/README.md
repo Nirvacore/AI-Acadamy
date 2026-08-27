@@ -2,13 +2,13 @@
 
 เว็บเรียนเป็นไฟล์สแตติก เปิดอ่านที่ **https://study.nirva.one** โดยไม่ต้องมี Node
 
-บิลด์เสิร์ฟที่รากโดเมน ไม่มี prefix `/AI-Acadamy/`
+บิลด์เสิร์ฟที่รากโดเมน ไม่มี prefix `/nirva-academy/`
 
 ## สองอย่างที่ทำให้โดเมนขึ้น
 
 โซน `nirva.one` อยู่ที่ Cloudflare แล้ว (NS: `thaddeus` / `katelyn`) แต่ชื่อ `study` ยังไม่มีเรคคอร์ด เลย resolve ไม่ได้
 
-GitHub Pages เปิดแล้ว (`gh-pages` / root, custom domain = `study.nirva.one`) และ `nirvacore.github.io/AI-Acadamy` ตอบ 301 ไปที่โดเมนนี้แล้ว เหลือแค่ DNS
+GitHub Pages เปิดแล้ว (`gh-pages` / root, custom domain = `study.nirva.one`) และ `nirvacore.github.io/nirva-academy` ตอบ 301 ไปที่โดเมนนี้แล้ว เหลือแค่ DNS
 
 ### 1. Cloudflare DNS
 
@@ -64,10 +64,10 @@ sudo apt update
 sudo apt install -y git docker.io docker-compose-v2
 sudo usermod -aG docker "$USER"
 
-sudo mkdir -p /opt/ai-acadamy
-sudo chown "$USER":"$USER" /opt/ai-acadamy
-git clone https://github.com/Nirvacore/AI-Acadamy.git /opt/ai-acadamy
-cd /opt/ai-acadamy
+sudo mkdir -p /opt/nirva-academy
+sudo chown "$USER":"$USER" /opt/nirva-academy
+git clone https://github.com/Nirvacore/nirva-academy.git /opt/nirva-academy
+cd /opt/nirva-academy
 git checkout main
 
 chmod +x deploy/netcup/deploy.sh
@@ -79,7 +79,7 @@ Caddy เสิร์ฟโฟลเดอร์ `out/` และขอใบร
 อัปเดตครั้งถัดไป:
 
 ```bash
-cd /opt/ai-acadamy
+cd /opt/nirva-academy
 git pull
 ./deploy/netcup/deploy.sh
 ```
