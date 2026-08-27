@@ -1,0 +1,17 @@
+{
+	email {$ACME_EMAIL}
+}
+
+:80 {
+	root * /srv
+	encode gzip
+	try_files {path} {path}/ {path}/index.html /404.html
+	file_server
+}
+
+study.nirva.one {
+	root * /srv
+	encode gzip
+	try_files {path} {path}/ {path}/index.html /404.html
+	file_server
+}

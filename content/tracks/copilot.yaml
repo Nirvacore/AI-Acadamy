@@ -1,0 +1,98 @@
+id: copilot
+name: GitHub Copilot
+vendor: GitHub / Microsoft
+status: usable
+official_learn: https://learn.microsoft.com/training/paths/copilot
+official_docs: https://docs.github.com/copilot
+notes: >
+  โครงแมปสำหรับเฟส 2 ใช้เมื่อเรียนคู่ขนานกับ Cursor ใน IDE อื่น
+  เติมรายละเอียดโหมดตามเวอร์ชัน Copilot ที่ทีมใช้จริง
+
+harness:
+  instructions:
+    - .github/copilot-instructions.md
+  tools:
+    - copilot_chat
+    - copilot_edits
+    - copilot_cli
+    - coding_agent
+  model_picker: Copilot model picker ใน Chat
+
+concepts:
+  - conceptId: core-01
+    uiLabel: Model picker ใน Copilot Chat
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot/using-github-copilot/ai-models
+    labDelta: ส่งโจทย์เดิมด้วยโมเดลต่างกัน แล้วเทียบคำตอบ
+
+  - conceptId: core-02
+    uiLabel: คำตอบใน Copilot Chat และไฟล์ที่อ้าง
+    shortcut: null
+    docsUrl: https://learn.microsoft.com/training/paths/copilot
+    labDelta: สั่งให้อ้างพาธไฟล์ แล้วเปิดตามในเวิร์กสเปซ
+
+  - conceptId: core-03
+    uiLabel: ปริมาณบริบทที่ส่งเข้าแชท
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot
+    labDelta: เทียบคำถามสั้นกับคำถามที่แนบไฟล์ยาว
+
+  - conceptId: core-04
+    uiLabel: "#file / อ้างไฟล์ใน Copilot Chat"
+    shortcut: "#"
+    docsUrl: https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide
+    labDelta: อ้างเฉพาะไฟล์ที่เกี่ยวกับงาน ไม่โยนทั้งโฟลเดอร์
+
+  - conceptId: core-05
+    uiLabel: Copilot Chat tools และ workspace
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot
+    labDelta: ให้ค้นในเวิร์กสเปซแทนการเดาชื่อฟังก์ชัน
+
+  - conceptId: core-06
+    uiLabel: Copilot Chat / Copilot coding agent
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot/using-github-copilot/using-copilot-coding-agent
+    labDelta: มอบหมายงานเล็กหนึ่งชิ้น แล้วตรวจพูลรีเควสหรือดิฟ
+
+  - conceptId: lab-01
+    uiLabel: Copilot Chat
+    shortcut: null
+    docsUrl: https://learn.microsoft.com/training/paths/copilot
+    labDelta: เปิดแชทที่โฟลเดอร์ shop/ สั่งให้อ่านอย่างเดียว ห้าม Apply ในรอบแรก
+
+  - conceptId: lab-02
+    uiLabel: "Workspace / #file"
+    shortcut: "#"
+    docsUrl: https://docs.github.com/en/copilot
+    labDelta: "อ้าง #file shop/price.js แล้วให้ชี้เงื่อนไขจำนวนชิ้นจากไฟล์ที่อ้าง"
+
+  - conceptId: lab-03
+    uiLabel: Copilot coding agent
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot/using-github-copilot/using-copilot-coding-agent
+    labDelta: ขอแผนในแชทก่อน ถ้ายอมรับแล้วค่อยให้ลงมือแก้ price.js
+
+  - conceptId: lab-04
+    uiLabel: ดีบักด้วยแชทและเทสใน IDE
+    shortcut: null
+    docsUrl: https://learn.microsoft.com/training/paths/copilot
+    labDelta: รัน npm run test:shop ในเทอร์มินัล แล้ววางผลให้ตั้งสมมติฐานก่อน Apply
+
+  - conceptId: lab-05
+    uiLabel: Copilot code review
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot/using-github-copilot/code-review
+    labDelta: ใช้รีวิวเป็นตัวช่วยหลังอ่านดิฟเอง แล้วคนเป็นคนรวม
+
+  - conceptId: lab-06
+    uiLabel: copilot-instructions.md
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot/customizing-copilot
+    labDelta: เขียนกฎส่วนลดใน .github/copilot-instructions.md แล้วเริ่มแชทใหม่
+
+  - conceptId: lab-07
+    uiLabel: โปรเจกต์จบบนแทร็ก Copilot
+    shortcut: null
+    docsUrl: https://learn.microsoft.com/training/paths/copilot
+    labDelta: ทำวงจรทั้งหกขั้นบน shop/ จน npm run test:shop ผ่าน

@@ -1,0 +1,100 @@
+id: cursor
+name: Cursor
+vendor: Anysphere
+status: complete
+official_learn: https://cursor.com/learn
+official_docs: https://cursor.com/docs
+default_for_phase: 1
+
+harness:
+  instructions:
+    - .cursor/rules/
+    - SKILL.md
+    - AGENTS.md
+  tools:
+    - terminal
+    - grep
+    - codebase_search
+    - browser
+    - mcp
+    - explore_subagent
+  model_picker: in-product model selector
+
+concepts:
+  - conceptId: core-01
+    uiLabel: Model picker ใน Agent / Chat
+    shortcut: null
+    docsUrl: https://cursor.com/docs/models
+    labDelta: เลือกโมเดลเร็วกับโมเดลฉลาดในช่องเดียวกัน แล้วส่งพรอมต์เดิมซ้ำ
+
+  - conceptId: core-02
+    uiLabel: Agent output + Citations / file links
+    shortcut: null
+    docsUrl: https://cursor.com/learn/hallucination-limitations
+    labDelta: สั่งให้อ้างพาธไฟล์ แล้วคลิกตามลิงก์ในคำตอบ ถ้าไฟล์ไม่มีให้จับภาพหลอน
+
+  - conceptId: core-03
+    uiLabel: Usage / token display ในแชท
+    shortcut: null
+    docsUrl: https://cursor.com/docs/account/usage
+    labDelta: เทียบแชทสั้นกับแชทที่แนบไฟล์ยาว แล้วดูปริมาณโทเคนที่ใช้
+
+  - conceptId: core-04
+    uiLabel: "@ mentions, ไฟล์ที่เปิดอยู่, Chat context"
+    shortcut: "@"
+    docsUrl: https://cursor.com/learn/context
+    labDelta: 'เริ่มจากเปิดหลายไฟล์ แล้วเหลือแค่ "@" ไฟล์ที่เกี่ยวกับงาน'
+
+  - conceptId: core-05
+    uiLabel: Tool calling ใน Agent, MCP
+    shortcut: null
+    docsUrl: https://cursor.com/learn/tool-calling
+    labDelta: สั่งให้ค้นด้วย Grep หรืออ่านไฟล์ ห้ามให้เดาจากความจำ
+
+  - conceptId: core-06
+    uiLabel: Agent pane
+    shortcut: "Cmd+I / Ctrl+I"
+    docsUrl: https://cursor.com/learn/agents
+    labDelta: มอบหมายงานเล็กหนึ่งชิ้นใน Agent แล้วตรวจดิฟก่อนยอมรับ
+
+  - conceptId: lab-01
+    uiLabel: Agent
+    shortcut: "Cmd+I / Ctrl+I"
+    docsUrl: https://cursor.com/learn/working-with-agents
+    labDelta: เขียนคำสั่งชัด กำหนดขอบเขตไฟล์ และเลือกโมเดลก่อนลงมือ
+
+  - conceptId: lab-02
+    uiLabel: Grep, Instant Grep, Explore subagent
+    shortcut: null
+    docsUrl: https://cursor.com/learn/understanding-your-codebase
+    labDelta: ให้ Explore สำรวจก่อน แล้วค่อยสั่งแก้
+
+  - conceptId: lab-03
+    uiLabel: Plan Mode
+    shortcut: "Shift+Tab"
+    docsUrl: https://cursor.com/learn/creating-features
+    labDelta: สลับ Plan Mode ตรวจแผน แล้วค่อยกด Build
+
+  - conceptId: lab-04
+    uiLabel: Debug Mode
+    shortcut: null
+    docsUrl: https://cursor.com/learn/finding-fixing-bugs
+    labDelta: ให้เขียนสมมติฐานและใส่เครื่องมือวัดก่อนแก้โค้ด
+
+  - conceptId: lab-05
+    uiLabel: Agent Review, Bugbot
+    shortcut: null
+    docsUrl: https://cursor.com/learn/reviewing-testing
+    labDelta: ใช้ Review หาปัญหา แล้วยังคงอ่านดิฟด้วยตาตัวเอง
+
+  - conceptId: lab-06
+    uiLabel: Rules, Skills, MCP
+    shortcut: "/"
+    docsUrl: https://cursor.com/learn/customizing-agents
+    labDelta: เขียน rule สั้นหนึ่งข้อใน .cursor/rules แล้วลองงานเดิมซ้ำ
+
+  - conceptId: lab-07
+    uiLabel: Agent + Plan + Debug + Review + Rules
+    shortcut: null
+    docsUrl: https://cursor.com/learn/putting-it-together
+    labDelta: ทำโปรเจกต์ส่วนลดตามลำดับสำรวจ วางแผน สร้าง ดีบัก รีวิว เขียนกฎ
