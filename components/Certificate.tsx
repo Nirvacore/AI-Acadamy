@@ -63,7 +63,7 @@ export function Certificate({
         </p>
       ) : null}
       <article className={complete ? "certificate is-ready" : "certificate"}>
-        <p className="eyebrow">AI-Acadamy · มหาสูญตา</p>
+        <p className="eyebrow">Nirva Academy · มหาสูญตา</p>
         <h1>เกียรติบัตรผู้ประกอบ</h1>
         <p className="cert-who">{name.trim() || "ผู้เรียนในเบราว์เซอร์นี้"}</p>
         <p>
