@@ -1,10 +1,10 @@
-# AI-Acadamy curriculum schema
+# Nirva Academy curriculum schema
 # Core concepts stay vendor-neutral. Tracks only remap UI, shortcuts, and lab steps.
 
 version: 1
 course:
-  id: ai-acadamy
-  name: AI-Acadamy
+  id: nirva-academy
+  name: Nirva Academy
   language: th
   tagline: เรียนแนวคิดเอเจนต์จากแหล่งต้นฉบับ แล้วเห็นตนเองผ่านกระจกมหาสูญตา
   copyright: original-thai
