@@ -5,7 +5,7 @@ import { courseHours, portalLessons } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "หลักสูตร",
-  description: "ผลลัพธ์ ชั่วโมง เกณฑ์ประเมิน และจรรยาบรรณของ AI-Acadamy",
+  description: "ผลลัพธ์ ชั่วโมง เกณฑ์ประเมิน และจรรยาบรรณของ Nirva Academy",
 };
 
 export default function SyllabusPage() {
@@ -16,7 +16,7 @@ export default function SyllabusPage() {
     <>
       <header className="lesson-head">
         <p className="kicker">Syllabus · อะแดปต์จากมหาวิทยาลัยที่ใช้เทคโนโลยีการเรียนร่วมสมัย</p>
-        <h1>หลักสูตร AI-Acadamy</h1>
+        <h1>หลักสูตร Nirva Academy</h1>
         <p className="lede">
           หนึ่งหน่วยกิตแนะนำ · ประมาณ {hours} ชั่วโมง รวมอ่าน แล็บ สอบสั้น และสมุดสะท้อน
           เนื้อหาต้นฉบับไทย อิงโครง Cursor Learn โดยไม่คัดลอกบทอังกฤษ
