@@ -1,8 +1,6 @@
 name: GitHub Pages
 
 on:
-  push:
-    branches: [main, cursor/thai-ai-academy-e292]
   workflow_dispatch:
 
 permissions:
