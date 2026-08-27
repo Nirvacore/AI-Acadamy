@@ -27,7 +27,7 @@ jobs:
           key: ${{ secrets.NETCUP_SSH_KEY }}
           script: |
             set -euo pipefail
-            cd /opt/nirva-academy
+            cd /opt/ai-acadamy
             git fetch origin
             git checkout main
             git pull --ff-only origin main
