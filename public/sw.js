@@ -1,4 +1,4 @@
-const CACHE = "ai-acadamy-v2";
+const CACHE = "nirva-academy-v2";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());
