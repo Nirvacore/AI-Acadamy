@@ -12,7 +12,7 @@ export function ProgressSync() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "ai-acadamy-progress.json";
+    link.download = "nirva-academy-progress.json";
     link.click();
     URL.revokeObjectURL(url);
     setMessage("ส่งออกแล้ว ย้ายเครื่องได้โดยไม่ต้องพึ่งเซิร์ฟเวอร์");
@@ -26,7 +26,7 @@ export function ProgressSync() {
       importProgress(dump);
       setMessage("นำเข้าแล้ว รีเฟรชหน้าถ้าตัวเลขยังไม่ขยับ");
     } catch {
-      setMessage("ไฟล์นี้ไม่ใช่ความคืบหน้าของ AI-Acadamy");
+      setMessage("ไฟล์นี้ไม่ใช่ความคืบหน้าของ Nirva Academy");
     }
   }
 
