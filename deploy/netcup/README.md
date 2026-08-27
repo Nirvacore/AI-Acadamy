@@ -64,10 +64,10 @@ sudo apt update
 sudo apt install -y git docker.io docker-compose-v2
 sudo usermod -aG docker "$USER"
 
-sudo mkdir -p /opt/nirva-academy
-sudo chown "$USER":"$USER" /opt/nirva-academy
-git clone https://github.com/Nirvacore/nirva-academy.git /opt/nirva-academy
-cd /opt/nirva-academy
+sudo mkdir -p /opt/ai-acadamy
+sudo chown "$USER":"$USER" /opt/ai-acadamy
+git clone https://github.com/Nirvacore/nirva-academy.git /opt/ai-acadamy
+cd /opt/ai-acadamy
 git checkout main
 
 chmod +x deploy/netcup/deploy.sh
@@ -79,7 +79,7 @@ Caddy เสิร์ฟโฟลเดอร์ `out/` และขอใบร
 อัปเดตครั้งถัดไป:
 
 ```bash
-cd /opt/nirva-academy
+cd /opt/ai-acadamy
 git pull
 ./deploy/netcup/deploy.sh
 ```
