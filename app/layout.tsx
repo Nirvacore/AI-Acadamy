@@ -16,12 +16,12 @@ const site = "https://study.nirva.one";
 export const metadata: Metadata = {
   metadataBase: new URL(site),
   title: {
-    default: "AI-Acadamy",
-    template: "%s · AI-Acadamy",
+    default: "Nirva Academy",
+    template: "%s · Nirva Academy",
   },
   description: "เรียนเอเจนต์เป็นไทย แล้วเห็นตนเองผ่านกระจกมหาสูญตา",
   alternates: { canonical: "/" },
-  applicationName: "AI-Acadamy",
+  applicationName: "Nirva Academy",
   manifest: "/manifest.webmanifest",
   formatDetection: { telephone: false },
 };
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="frame">
           <aside className="rail">
             <Link className="brand" href="/">
-              AI-Acadamy
+              Nirva Academy
               <small>มหาสูญตา · เอเจนต์</small>
             </Link>
             <details className="rail-fold" open>
