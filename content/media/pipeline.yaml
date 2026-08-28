@@ -106,3 +106,28 @@ academy_rules:
   - เลือกเครื่องมือด้วยตัวสลับ Cursor / Claude / OpenAI / Copilot ชุดเดิม
   - แล็บสแตติกใช้ localStorage อย่างเดียว ไม่ยิง Studio จริง ไม่เก็บซีเคร็ต
   - เธอห้ามเผยแพร่อัตโนมัติ แม้ STATUS_FLOW ของต้นทางจะอนุญาต approved → published
+
+academy_lessons:
+  - id: media-brief-evidence
+    maps: [brief, research]
+    title_th: Brief และกระดานหลักฐาน
+  - id: media-script-storyboard
+    maps: [script, assets]
+    title_th: สคริปต์และสตอรี่บอร์ด
+  - id: media-review-publish
+    maps: [review, publish_qa]
+    title_th: คนตรวจและคิวถูกบล็อก
+
+academy_authored:
+  - id: evidence-board
+    note: กระดานแยก fact/assumption เป็นแบบฝึกของ Academy ไม่พบโมดูลนี้ใน Studio runtime
+  - id: storyboard-worksheet
+    note: >
+      แบบฝึกสตอรี่บอร์ดสามจังหวะของ Academy
+      ของจริงใน NirvaMedia มีเพียงคำ teaser storyboards ใน mock-data ไม่ใช่ฟีเจอร์ที่รันได้
+  - id: publish-simulation
+    note: คิว blocked_auth ในแล็บนี้จำลองกฎจาก publish-jobs ไม่ยิง OAuth
+  - id: synthetic-campaign
+    file: content/media/campaign-lan-nangsue.yaml
+    note: แคมเปญสมมติ ห้ามใช้เป็นข้อมูลลูกค้าจริง
+

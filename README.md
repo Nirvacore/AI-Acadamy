@@ -49,7 +49,7 @@ npm start
 - ส่งออก JSON จากสมุดสะท้อนหรือหน้าหลักสูตร เพื่อย้ายเครื่อง
 - ติดตั้งเป็นแอปจากเบราว์เซอร์ได้ (PWA)
 - เลือกแทร็ก Cursor / Claude / OpenAI / Copilot ด้านซ้าย หรือเทียบทั้งชุดที่ `/tracks`
-- แล็บประยุกต์ Nirva Media อยู่ที่ `/media` — ทำชิ้นงานสื่อในเครื่องนี้ เธอห้ามเผยแพร่แทน
+- แล็บประยุกต์ Nirva Media อยู่ที่ `/media` — สามตอนในบริบทงานสื่อ เธอห้ามเผยแพร่แทน
 - เขียนสมุดสะท้อนท้ายบท แล้วดูรวมที่ `/journal` — ห้ามให้เธอเขียนแทน
 - ร้านค้าตัวอย่างอยู่ที่ `/shop` กดรันเทสในหน้าเว็บได้เลย
 - `npm run test:shop` แดงตั้งใจจนกว่าจะแก้ `shop/price.js`
@@ -132,9 +132,19 @@ npm run test:shop
 
 ไม่ใช่แทร็กบริษัทตัวที่ห้า แทร็กยังเป็น Cursor / Claude / OpenAI / Copilot
 
-เปิด [/media](/media) แล้วพาชิ้นงานหนึ่งชิ้น: brief → หลักฐาน → สคริปต์ → ร่างในเครื่องนี้ → คนตรวจ → ขอคิวที่ต้องได้ `blocked_auth` เธอห้ามเผยแพร่แทนคน
+เปิด [/media](/media) แล้วเรียนสามตอนต่อกัน ความคืบหน้าอยู่ที่เบราว์เซอร์นี้เท่านั้น
 
-แผนที่ไฟล์ที่ reuse จาก [NirvaMedia](https://github.com/Nirvacore/NirvaMedia) อยู่ที่ [content/media/pipeline.yaml](content/media/pipeline.yaml) บทเรียนอยู่ที่ [content/core/media-lab.md](content/core/media-lab.md)
+| ตอน | บท | แล็บ |
+| --- | --- | --- |
+| ๑ Brief และกระดานหลักฐาน | [media-brief-evidence](content/core/media-brief-evidence.md) | [แล็บ](content/labs/media-brief-evidence.md) |
+| ๒ สคริปต์และสตอรี่บอร์ด | [media-script-storyboard](content/core/media-script-storyboard.md) | [แล็บ](content/labs/media-script-storyboard.md) |
+| ๓ คนตรวจและคิวถูกบล็อก | [media-review-publish](content/core/media-review-publish.md) | [แล็บ](content/labs/media-review-publish.md) |
+
+สตอรี่บอร์ดเป็นแบบฝึกของ Academy ไม่ใช่ฟีเจอร์ runtime ที่พบใน NirvaMedia (มีเพียงคำใน mock-data)
+
+แคมเปญตัวอย่างสังเคราะห์: [content/media/campaign-lan-nangsue.yaml](content/media/campaign-lan-nangsue.yaml) — ห้ามใช้เป็นข้อมูลลูกค้าจริง
+
+แผนที่ไฟล์ที่ reuse จาก [NirvaMedia](https://github.com/Nirvacore/NirvaMedia) อยู่ที่ [content/media/pipeline.yaml](content/media/pipeline.yaml)
 
 ```bash
 npm run test:media-lab
@@ -151,7 +161,7 @@ content/
   labs/                 # โจทย์ร่วม เฉลย และคำถามสะท้อน
   scripts/th/           # สคริปต์วิดีโอภาษาพูดไทย
   tracks/               # อะแดปเตอร์แต่ละบริษัท
-  media/                # แผนที่ไพป์ไลน์ Nirva Media Lab (ไม่ใช่แทร็กบริษัท)
+  media/                # แผนที่ไพป์ไลน์ แบบฝึก Academy และแคมเปญสังเคราะห์
 shop/                   # ร้านค้าตัวอย่าง มีบั๊กตั้งใจ
 ```
 

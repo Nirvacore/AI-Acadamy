@@ -27,7 +27,7 @@ export function extractGoal(markdown: string) {
 
 export function lessonMinutes(phase: number, id: string) {
   if (id === "core-00") return 35;
-  if (id === "media-lab") return 55;
+  if (id.startsWith("media-")) return 50;
   return phase === 1 ? 40 : 50;
 }
 
@@ -94,7 +94,7 @@ export function buildCatalog(): CatalogItem[] {
     { id: "start", kind: "page", title: "ชั่วโมงแรก", href: "/start", hint: "นั่งสิบห้านาที ล็อกว่าเธอคือเอเจนต์" },
     { id: "syllabus", kind: "page", title: "หลักสูตร", href: "/syllabus", hint: "ผลลัพธ์ ชั่วโมง เกณฑ์ประเมิน" },
     { id: "tracks", kind: "page", title: "เทียบแทร็กบริษัท", href: "/tracks", hint: "Cursor Claude OpenAI Copilot" },
-    { id: "media", kind: "page", title: "Nirva Media Lab", href: "/media", hint: "แล็บประยุกต์ชิ้นงานสื่อ ไม่ใช่แทร็กบริษัทตัวที่ห้า" },
+    { id: "media", kind: "page", title: "Nirva Media Lab", href: "/media", hint: "เส้นทางสามตอนในบริบทงานสื่อ ไม่ใช่แทร็กบริษัทตัวที่ห้า" },
     { id: "shop", kind: "page", title: "ร้านค้าตัวอย่าง", href: "/shop", hint: "แล็บราคาและการทดสอบ" },
     { id: "journal", kind: "page", title: "สมุดสะท้อน", href: "/journal", hint: "เขียนเอง ห้ามให้เธอแต่ง" },
     { id: "glossary", kind: "page", title: "อภิธานศัพท์", href: "/glossary", hint: "คำคงที่และบัตรคำ" },

@@ -1338,8 +1338,78 @@ kbd {
   color: var(--paper-2);
 }
 
+.media-local {
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  border-left: 2px solid var(--gold);
+  color: var(--paper-2);
+}
+
+.media-progress {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.media-progress li {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+}
+
+.media-progress h2 {
+  font-family: "Cormorant Garamond", serif;
+  margin: 4px 0 8px;
+  font-size: 1.4rem;
+}
+
+.media-progress li[aria-current="step"] {
+  border-color: var(--gold);
+}
+
+.media-board {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.media-board li {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.media-lab .btn:focus-visible,
+.media-lab a:focus-visible,
+.media-lab textarea:focus-visible,
+.media-lab input:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
 @media (max-width: 980px) {
-  .media-flow {
+  .media-flow,
+  .media-progress {
+    grid-template-columns: 1fr;
+  }
+
+  .media-lab .actions {
+    display: flex;
     flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-lab,
+  .media-lab * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
   }
 }

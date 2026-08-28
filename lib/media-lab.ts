@@ -2,18 +2,26 @@ import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
 import {
-  CHECKLIST,
+  CHECKLISTS,
+  LESSON_IDS,
+  RUBRIC,
   STATUS_FLOW,
   TOOL_TRACKS,
+  applySyntheticCampaign,
   attemptAutoPublish,
-  buildLocalDrafts,
+  briefStageOk,
   canApprove,
   canEnterReview,
+  canOpenLesson,
   canTransition,
   emptyPiece,
-  evidenceOk,
+  evidenceBoardOk,
+  migratePiece,
   moveStatus,
+  nextLessonId,
   requestPublish,
+  scriptStageOk,
+  stageComplete,
 } from "@/lib/media-lab-gates";
 
 export type MediaStage = {
@@ -21,6 +29,12 @@ export type MediaStage = {
   title_th: string;
   academy_action: string;
   files: string[];
+};
+
+export type MediaLessonMap = {
+  id: string;
+  maps: string[];
+  title_th: string;
 };
 
 export type MediaPipeline = {
@@ -32,21 +46,67 @@ export type MediaPipeline = {
   missing_sources: { id: string; asked: string; note: string }[];
   reuse: MediaStage[];
   academy_rules: string[];
+  academy_lessons: MediaLessonMap[];
+  academy_authored: { id: string; note: string; file?: string }[];
+};
+
+export type MediaCampaign = {
+  id: string;
+  kind: "synthetic";
+  not_real_data: boolean;
+  title_th: string;
+  warning: string;
+  goal: string;
+  audience: string;
+  brief: string;
+  evidence: string;
+  facts: { claim: string; source: string }[];
+  assumptions: { claim: string; why: string }[];
+  scripts: { line: string; instagram: string; youtube: string };
+  storyboard: {
+    source: string;
+    note: string;
+    beats: { beat: string; visual: string; audio: string; note: string }[];
+  };
+  postmortem: string;
+};
+
+export const MEDIA_JOURNAL: Record<string, string[]> = {
+  "media-brief-evidence": [
+    "ฉันยึดคำเดาของผู้ชมจากเธอเร็วเกินไปหรือไม่",
+    "ข้อไหนบนกระดานที่ฉันอยากให้เป็นความจริง ทั้งที่ยังไม่มีแหล่ง",
+  ],
+  "media-script-storyboard": [
+    "ฉันยัดสมมติฐานลงแคปชันโดยไม่ติดป้ายหรือไม่",
+    "ฉันอยากได้ภาพจากเธอแทนการเขียนจังหวะเองหรือไม่",
+  ],
+  "media-review-publish": [
+    "ตอนไหนที่ฉันอยากให้เธอกดโพสต์แทน เพราะเหนื่อย",
+    "ฉันจะอธิบายได้อย่างไรว่าคิวถูกบล็อกไม่ใช่บั๊กของแล็บ",
+  ],
 };
 
 export {
-  CHECKLIST,
+  CHECKLISTS,
+  LESSON_IDS,
+  RUBRIC,
   STATUS_FLOW,
   TOOL_TRACKS,
+  applySyntheticCampaign,
   attemptAutoPublish,
-  buildLocalDrafts,
+  briefStageOk,
   canApprove,
   canEnterReview,
+  canOpenLesson,
   canTransition,
   emptyPiece,
-  evidenceOk,
+  evidenceBoardOk,
+  migratePiece,
   moveStatus,
+  nextLessonId,
   requestPublish,
+  scriptStageOk,
+  stageComplete,
 };
 
 export function loadMediaPipeline(): MediaPipeline {
@@ -54,6 +114,19 @@ export function loadMediaPipeline(): MediaPipeline {
   return yaml.load(raw) as MediaPipeline;
 }
 
+export function loadMediaCampaign(): MediaCampaign {
+  const raw = fs.readFileSync(path.join(process.cwd(), "content/media/campaign-lan-nangsue.yaml"), "utf8");
+  return yaml.load(raw) as MediaCampaign;
+}
+
+export function mediaHubMarkdown(): string {
+  return fs.readFileSync(path.join(process.cwd(), "content/media/hub.md"), "utf8");
+}
+
 export function stageById(pipeline: MediaPipeline, id: string) {
   return pipeline.reuse.find((stage) => stage.id === id);
+}
+
+export function isMediaLesson(id: string) {
+  return LESSON_IDS.includes(id);
 }

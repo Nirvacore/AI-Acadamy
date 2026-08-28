@@ -29,7 +29,7 @@ export function LessonBeacon({ meta }: { meta: LessonMetaView }) {
         </span>
         {meta.labSlug ? <TrackedLink href={`/lab/${meta.labSlug}`}>แล็บ</TrackedLink> : null}
         {meta.scriptSlug ? <TrackedLink href={`/script/${meta.scriptSlug}`}>สคริปต์</TrackedLink> : null}
-        {meta.labSlug === "media-lab" ? <TrackedLink href="/media">สตูดิโอจำลอง</TrackedLink> : null}
+        {meta.labSlug?.startsWith("media-") ? <TrackedLink href="/media">ฮับ Media Lab</TrackedLink> : null}
       </p>
       {meta.outcome ? (
         <p className="outcome">

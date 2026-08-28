@@ -99,8 +99,20 @@ concepts:
     docsUrl: https://academy.claude.com
     labDelta: ทำวงจรสำรวจ แผน สร้าง ดีบัก รีวิว กฎ บน shop/ จนเทสผ่าน
 
-  - conceptId: media-lab
+  - conceptId: media-brief-evidence
     uiLabel: Claude Code
     shortcut: null
     docsUrl: https://docs.claude.com/en/docs/claude-code
-    labDelta: วาง brief ในเซสชันแล้วสั่งให้อ่านพาธที่คุณเปิดแล้วเท่านั้น ห้ามเดา STATUS_FLOW จากความจำ และห้ามให้เธอเขียนข้อความอนุมัติแทนคน
+    labDelta: ให้ค้น brief ในไฟล์ที่เปิดแล้วเท่านั้น ห้ามให้เธอแต่งกลุ่มเป้าหมายถ้ายังไม่มีแหล่ง
+
+  - conceptId: media-script-storyboard
+    uiLabel: Plan ใน Claude Code
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: ขอโครงสคริปต์สามช่องทางในโหมดแผน แล้วคุณวางลงแบบฝึกสตอรี่บอร์ดเอง ห้ามให้สร้างไฟล์ภาพจริง
+
+  - conceptId: media-review-publish
+    uiLabel: รีวิวด้วย Claude
+    shortcut: null
+    docsUrl: https://www.anthropic.com/learn
+    labDelta: ให้สรุปความเสี่ยงตามรูบริก แต่คนเป็นคนติ๊กอนุมัติ และห้ามให้เขียนคำสั่งเผยแพร่

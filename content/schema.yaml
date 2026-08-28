@@ -202,12 +202,30 @@ modules:
     phase: 3
     status: ready
     lessons:
-      - id: media-lab
-        slug: media-lab
-        title_th: Nirva Media Lab
-        focus: บริบทงานสื่อ ใช้ได้กับทุกแทร็กเครื่องมือ ไม่ใช่บริษัทตัวที่ห้า
-        content: content/core/media-lab.md
-        lab: content/labs/media-lab.md
-        script: content/scripts/th/media-lab.md
+      - id: media-brief-evidence
+        slug: media-brief-evidence
+        title_th: Brief และกระดานหลักฐาน
+        focus: รับ brief ตั้งเป้าผู้ชม แยกข้อเท็จจริงจากสมมติฐาน
+        content: content/core/media-brief-evidence.md
+        lab: content/labs/media-brief-evidence.md
+        script: content/scripts/th/media-brief-evidence.md
         official:
           note: แล็บประยุกต์อิง NirvaMedia สาขา codex/nirvamedia-web ไม่มีบทคู่ใน Cursor Learn
+      - id: media-script-storyboard
+        slug: media-script-storyboard
+        title_th: สคริปต์และสตอรี่บอร์ด
+        focus: สคริปต์หลายช่องทาง และแบบฝึกสตอรี่บอร์ดของ Academy
+        content: content/core/media-script-storyboard.md
+        lab: content/labs/media-script-storyboard.md
+        script: content/scripts/th/media-script-storyboard.md
+        official:
+          note: สตอรี่บอร์ดเป็นแบบฝึก Academy ไม่ใช่ฟีเจอร์ runtime ที่พบใน NirvaMedia
+      - id: media-review-publish
+        slug: media-review-publish
+        title_th: คนตรวจและคิวถูกบล็อก
+        focus: รูบริก คนอนุมัติ คิว blocked_auth และ postmortem
+        content: content/core/media-review-publish.md
+        lab: content/labs/media-review-publish.md
+        script: content/scripts/th/media-review-publish.md
+        official:
+          note: แล็บนี้ไม่เผยแพร่จริง เธอห้ามกดโพสต์แทนคน
