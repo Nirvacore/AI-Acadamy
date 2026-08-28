@@ -13,6 +13,7 @@ import {
   buildLocalDrafts,
   canEnterReview,
   canOpenLesson,
+  completedLessonIds,
   evidenceBoardOk,
   migratePiece,
   moveStatus,
@@ -131,8 +132,9 @@ export function MediaHub({
     return () => window.removeEventListener(PROGRESS_EVENT, sync);
   }, []);
 
-  const resumeId = nextLessonId(done.filter((id) => LESSON_IDS.includes(id)));
   const mediaDone = LESSON_IDS.filter((id) => done.includes(id));
+  const completed = completedLessonIds(mediaDone, piece);
+  const resumeId = nextLessonId(mediaDone, piece);
 
   return (
     <div className="media-lab">
@@ -142,16 +144,17 @@ export function MediaHub({
 
       <TrackCoach tracks={tracks} lessonId={resumeId} />
 
-      <nav aria-label="ลำดับตอน Nirva Media Lab">
+      <nav aria-labelledby="media-path-title">
+        <h2 id="media-path-title">เส้นทางสามตอน</h2>
         <ol className="media-progress">
           {LESSON_IDS.map((id, index) => {
             const complete = done.includes(id) || stageComplete(piece, id);
-            const locked = !canOpenLesson(id, mediaDone) && !complete;
+            const locked = !canOpenLesson(id, mediaDone, piece) && !complete;
             const current = resumeId === id;
             return (
               <li key={id} aria-current={current ? "step" : undefined}>
                 <p className="eyebrow">ตอนที่ {index + 1}</p>
-                <h2>{LESSON_TITLE[id]}</h2>
+                <h3>{LESSON_TITLE[id]}</h3>
                 <p className="lede">
                   {complete ? "ผ่านในเครื่องนี้" : locked ? "ยังไม่ถึงตอนนี้" : "พร้อมลงมือ"}
                 </p>
@@ -170,17 +173,20 @@ export function MediaHub({
 
       <p className="actions">
         <TrackedLink className="btn huge" href={LESSON_HREF[resumeId]}>
-          {mediaDone.length === 0 ? "เริ่มตอนที่ ๑" : mediaDone.length === 3 ? "ทบทวนเส้นทาง" : `เรียนต่อ · ${LESSON_TITLE[resumeId]}`}
+          {completed.length === 0 ? "เริ่มตอนที่ ๑" : completed.length === 3 ? "ทบทวนเส้นทาง" : `เรียนต่อ · ${LESSON_TITLE[resumeId]}`}
         </TrackedLink>
       </p>
 
       <section className="media-panel" aria-labelledby="campaign-title">
         <p className="eyebrow">ตัวอย่างสังเคราะห์</p>
         <h2 id="campaign-title">{campaign.title_th}</h2>
-        <p className="lede">{campaign.warning}</p>
+        <p id="campaign-warn" className="lede">
+          {campaign.warning}
+        </p>
         <button
           type="button"
           className="btn ghost"
+          aria-describedby="campaign-warn"
           onClick={() => update(applySyntheticCampaign(campaign))}
         >
           เติมตัวอย่างลงแผ่นงานในเครื่องนี้
@@ -195,6 +201,13 @@ export function MediaHub({
             <li key={stage.id}>
               <strong>{stage.title_th}</strong>
               <span> {stage.academy_action}</span>
+              <ul>
+                {stage.files.map((file) => (
+                  <li key={file}>
+                    <code>{file}</code>
+                  </li>
+                ))}
+              </ul>
             </li>
           ))}
         </ul>
@@ -224,33 +237,40 @@ function FieldList<T extends Record<string, string>>({
   rows,
   keys,
   labels,
+  name,
   onChange,
 }: {
   rows: T[];
   keys: (keyof T)[];
   labels: string[];
+  name: string;
   onChange: (rows: T[]) => void;
 }) {
   return (
     <ul className="media-board">
       {rows.map((row, index) => (
-        <li key={`${String(keys[0])}-${index}`}>
+        <li key={`${name}-${index}`}>
           {"beat" in row && row.beat ? <p className="eyebrow">{String(row.beat)}</p> : null}
-          {keys.map((key, keyIndex) => (
-            <label key={String(key)}>
-              {labels[keyIndex]} {index + 1}
-              <textarea
-                rows={2}
-                value={row[key] ?? ""}
-                onChange={(event) => {
-                  const next = rows.map((item, itemIndex) =>
-                    itemIndex === index ? { ...item, [key]: event.target.value } : item,
-                  );
-                  onChange(next);
-                }}
-              />
-            </label>
-          ))}
+          {keys.map((key, keyIndex) => {
+            const fieldId = `${name}-${String(key)}-${index}`;
+            const beat = "beat" in row && row.beat ? String(row.beat) : String(index + 1);
+            return (
+              <label key={String(key)} htmlFor={fieldId}>
+                {labels[keyIndex]} · {beat}
+                <textarea
+                  id={fieldId}
+                  rows={2}
+                  value={row[key] ?? ""}
+                  onChange={(event) => {
+                    const next = rows.map((item, itemIndex) =>
+                      itemIndex === index ? { ...item, [key]: event.target.value } : item,
+                    );
+                    onChange(next);
+                  }}
+                />
+              </label>
+            );
+          })}
         </li>
       ))}
     </ul>
@@ -278,7 +298,7 @@ export function MediaStage({
   }, []);
 
   const mediaDone = done.filter((id) => LESSON_IDS.includes(id));
-  const locked = !canOpenLesson(lessonId, mediaDone);
+  const locked = !canOpenLesson(lessonId, mediaDone, piece);
   const items = CHECKLISTS[lessonId] ?? [];
 
   const evidencePass = evidenceBoardOk(piece);
@@ -344,6 +364,7 @@ export function MediaStage({
             </p>
             <h3>ข้อเท็จจริง</h3>
             <FieldList
+              name="facts"
               rows={piece.facts}
               keys={["claim", "source"]}
               labels={["คำอ้าง", "แหล่ง"]}
@@ -351,6 +372,7 @@ export function MediaStage({
             />
             <h3>สมมติฐาน</h3>
             <FieldList
+              name="assumptions"
               rows={piece.assumptions}
               keys={["claim", "why"]}
               labels={["คำเดา", "ทำไมยังไม่วัด"]}
@@ -376,6 +398,7 @@ export function MediaStage({
             <h2 id="board-title">สตอรี่บอร์ด · แบบฝึกของ Academy</h2>
             <p className="lede">ไม่ใช่ฟีเจอร์ runtime ที่พบใน NirvaMedia มีเพียงคำใน mock-data</p>
             <FieldList
+              name="storyboard"
               rows={piece.storyboard}
               keys={["visual", "audio", "note"]}
               labels={["ภาพ", "เสียง", "หมายเหตุ"]}

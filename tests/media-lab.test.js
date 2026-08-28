@@ -66,9 +66,25 @@ test("ลำดับบท phase 3 ต่อกันสามตอน", () =>
   assert.equal(gates.canOpenLesson("media-script-storyboard", ["media-brief-evidence"]), true);
   assert.equal(gates.canOpenLesson("media-review-publish", ["media-brief-evidence"]), false);
   assert.equal(
+    gates.canOpenLesson("media-review-publish", ["media-brief-evidence", "media-script-storyboard"]),
+    true,
+  );
+  assert.equal(gates.canOpenLesson("media-lab", []), false);
+  assert.equal(
     gates.nextLessonId(["media-brief-evidence"]),
     "media-script-storyboard",
   );
+  const briefReady = {
+    ...samplePiece(),
+    checklists: {
+      ...gates.emptyPiece().checklists,
+      "media-brief-evidence": gates.CHECKLISTS["media-brief-evidence"].map((item) => item.id),
+    },
+  };
+  assert.equal(gates.stageComplete(briefReady, "media-brief-evidence"), true);
+  assert.equal(gates.canOpenLesson("media-script-storyboard", [], briefReady), true);
+  assert.equal(gates.canOpenLesson("media-review-publish", [], briefReady), false);
+  assert.equal(gates.nextLessonId([], briefReady), "media-script-storyboard");
 });
 
 test("ทุกแทร็กเครื่องมือมี labDelta ของสามตอน Media", () => {
@@ -89,6 +105,12 @@ test("ทุกแทร็กเครื่องมือมี labDelta ข�
 test("ไฟล์บท แล็บ สคริปต์ ฮับ แคมเปญ และ route คงที่", () => {
   const schema = loadYaml("content/schema.yaml");
   const module = schema.modules.find((item) => item.id === "track-media");
+  const slugs = schema.modules.flatMap((item) => item.lessons.map((lesson) => lesson.slug));
+  assert.equal(slugs.includes("media-lab"), false);
+  assert.deepEqual(
+    module.lessons.map((lesson) => lesson.slug),
+    gates.LESSON_IDS,
+  );
   for (const lesson of module.lessons) {
     for (const rel of [lesson.content, lesson.lab, lesson.script]) {
       assert.equal(fs.existsSync(path.join(root, rel)), true, rel);
@@ -105,9 +127,31 @@ test("ไฟล์บท แล็บ สคริปต์ ฮับ แคม�
   ]) {
     assert.equal(fs.existsSync(path.join(root, rel)), true, rel);
   }
+  assert.equal(fs.existsSync(path.join(root, "content/labs/media-lab.md")), false);
+  assert.equal(fs.existsSync(path.join(root, "content/scripts/th/media-lab.md")), false);
+  const labs = fs.readdirSync(path.join(root, "content/labs")).filter((name) => name.endsWith(".md"));
+  const scripts = fs.readdirSync(path.join(root, "content/scripts/th")).filter((name) => name.endsWith(".md"));
+  assert.equal(labs.includes("media-lab.md"), false);
+  assert.equal(scripts.includes("media-lab.md"), false);
+  for (const id of gates.LESSON_IDS) {
+    assert.equal(labs.includes(`${id}.md`), true, id);
+    assert.equal(scripts.includes(`${id}.md`), true, id);
+  }
   const campaign = loadYaml("content/media/campaign-lan-nangsue.yaml");
   assert.equal(campaign.kind, "synthetic");
   assert.equal(campaign.not_real_data, true);
+  for (const id of gates.LESSON_IDS) {
+    const lesson = fs.readFileSync(path.join(root, `content/core/${id}.md`), "utf8");
+    for (const heading of ["## เป้าหมาย", "## แนวคิดแกน", "## กระจก", "## เดโมเครื่องมือ", "## แล็บ", "## กับดักที่พบบ่อย"]) {
+      assert.equal(lesson.includes(heading), true, `${id} ${heading}`);
+    }
+    for (const tool of ["**Cursor**", "**Claude**", "**OpenAI**", "**Copilot**"]) {
+      assert.equal(lesson.includes(tool), true, `${id} ${tool}`);
+    }
+    const lab = fs.readFileSync(path.join(root, `content/labs/${id}.md`), "utf8");
+    assert.equal(lab.includes("## สะท้อนเข้าตัว"), true, id);
+    assert.equal(lab.includes("## เกณฑ์ผ่าน"), true, id);
+  }
 });
 
 test("STATUS_FLOW ตรงแผนที่ และห้ามข้ามไป published", () => {
@@ -171,6 +215,7 @@ test("คนต้องรีวิวก่อนอนุมัติ แล�
   assert.equal(auto.ok, false);
   assert.equal(auto.published, false);
   assert.equal(auto.code, "ai_cannot_publish");
+  assert.equal(gates.requestPublish({ ...ready, status: "published" }).published, false);
 });
 
 test("แบบฝึก Academy และของที่ยังไม่พบถูกบันทึกในแผนที่", () => {
@@ -180,10 +225,41 @@ test("แบบฝึก Academy และของที่ยังไม่�
     gates.LESSON_IDS,
   );
   const authored = pipeline.academy_authored.map((item) => item.id);
-  assert.ok(authored.includes("storyboard-worksheet"));
-  assert.ok(authored.includes("evidence-board"));
+  assert.deepEqual(authored, [
+    "evidence-board",
+    "storyboard-worksheet",
+    "publish-simulation",
+    "synthetic-campaign",
+  ]);
   const missing = pipeline.missing_sources.map((item) => item.id);
   assert.ok(missing.includes("nirva-ai-live"));
   assert.ok(missing.includes("storyboard-module"));
   assert.ok(missing.includes("live-oauth-publish"));
+});
+
+test("แคมเปญสังเคราะห์เดินทั้งไพป์ไลน์ แต่ห้ามเผยแพร่", () => {
+  const campaign = loadYaml("content/media/campaign-lan-nangsue.yaml");
+  const piece = gates.applySyntheticCampaign(campaign);
+  assert.equal(campaign.kind, "synthetic");
+  assert.equal(campaign.not_real_data, true);
+  assert.equal(piece.storyboardSource, "academy-worksheet");
+  assert.equal(gates.briefStageOk(piece), true);
+  assert.equal(gates.scriptStageOk(piece), true);
+  assert.equal(gates.canEnterReview(piece), true);
+  const skipped = gates.moveStatus(piece, "published");
+  assert.equal(skipped.ok, false);
+  assert.equal(skipped.error, "ai_cannot_publish");
+  const reviewed = {
+    ...piece,
+    status: "approved",
+    humanReviewed: true,
+    rubric: gates.RUBRIC.map((item) => item.id),
+  };
+  const queued = gates.requestPublish(reviewed);
+  assert.equal(queued.ok, true);
+  assert.equal(queued.published, false);
+  assert.equal(queued.code, "blocked_auth");
+  const auto = gates.attemptAutoPublish(reviewed);
+  assert.equal(auto.published, false);
+  assert.equal(auto.code, "ai_cannot_publish");
 });
