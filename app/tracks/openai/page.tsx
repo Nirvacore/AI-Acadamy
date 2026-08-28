@@ -4,7 +4,7 @@ import { CheckQuiz } from "@/components/CheckQuiz";
 import { ContentMarkdown } from "@/components/ContentMarkdown";
 import { Journal } from "@/components/Journal";
 import { OriginalSources, ProductBoundaryNote } from "@/components/OriginalSources";
-import { TrackedLink } from "@/components/TrackSwitch";
+import { ForceTrack, TrackedLink } from "@/components/TrackSwitch";
 import { checksFor } from "@/lib/checks";
 import { loadTrack } from "@/lib/curriculum";
 import { OPENAI_PATH_HREF } from "@/lib/product-boundary";
@@ -26,6 +26,7 @@ export default function OpenAITrackPage() {
 
   return (
     <Suspense fallback={null}>
+      <ForceTrack id="openai" />
       <header className="lesson-head">
         <p className="kicker">Nirva Academy · แทร็ก OpenAI · เรียนจบในเว็บนี้</p>
         <h1>แทร็ก OpenAI เรียนเป็นไทยใน Nirva Academy</h1>
@@ -36,10 +37,10 @@ export default function OpenAITrackPage() {
       </header>
       <ProductBoundaryNote />
       <p className="actions">
-        <TrackedLink className="btn huge primary" href="/start">
+        <TrackedLink className="btn huge primary" href="/start?track=openai">
           เริ่มเรียนบทแรก
         </TrackedLink>
-        <TrackedLink className="btn ghost" href="/learn/how-models-work">
+        <TrackedLink className="btn ghost" href="/learn/how-models-work?track=openai">
           เปิดบทโมเดล
         </TrackedLink>
       </p>

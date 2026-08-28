@@ -1270,15 +1270,15 @@ kbd {
     padding: 4px 10px;
     font-size: 0.8rem;
   }
+}
 
-  .media-stack {
-    display: flex;
-    flex-direction: column;
-  }
+.media-stack {
+  display: flex;
+  flex-direction: column;
+}
 
-  .media-stack .media-intro {
-    order: 2;
-  }
+.media-stack .media-intro {
+  order: 2;
 }
 
 .media-lab {

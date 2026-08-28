@@ -56,21 +56,21 @@ export function OriginalSources({
         </p>
         {showProduct ? (
           <p>
-            <a href={productUrl} target="_blank" rel="noreferrer">
+            <a href={productUrl} target="_blank" rel="noopener noreferrer">
               คู่มือผลิตภัณฑ์ {track.name} (อังกฤษ)
             </a>
           </p>
         ) : null}
         {showVendor ? (
           <p>
-            <a href={vendorUrl} target="_blank" rel="noreferrer">
+            <a href={vendorUrl} target="_blank" rel="noopener noreferrer">
               หลักสูตรภาษาอังกฤษของบริษัท {track.name} — ไม่ใช่ Nirva Academy
             </a>
           </p>
         ) : null}
         {extraVendor ? (
           <p>
-            <a href={productUrl} target="_blank" rel="noreferrer">
+            <a href={productUrl} target="_blank" rel="noopener noreferrer">
               หลักสูตรภาษาอังกฤษของบริษัท {track.name} — ไม่ใช่ Nirva Academy
             </a>
           </p>

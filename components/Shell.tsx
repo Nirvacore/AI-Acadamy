@@ -28,6 +28,11 @@ export function SideNav({
               กรณีศึกษาสื่อ
             </TrackedLink>
           </li>
+          <li>
+            <TrackedLink className={current === "openai" ? "is-on" : ""} href="/tracks/openai">
+              แทร็ก OpenAI
+            </TrackedLink>
+          </li>
         </ul>
       </section>
       {modules.map((module) => (

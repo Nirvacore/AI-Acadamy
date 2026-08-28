@@ -31,7 +31,7 @@ function MarkdownLinks({ markdown, stems }: { markdown: string; stems: LessonSte
             const external = next.startsWith("http");
             if (external) {
               return (
-                <a href={next} target="_blank" rel="noreferrer">
+                <a href={next} target="_blank" rel="noopener noreferrer">
                   {children}
                 </a>
               );
@@ -59,9 +59,10 @@ export function MarkdownBody({ markdown, stems }: { markdown: string; stems: Les
       <MarkdownLinks markdown={body} stems={stems} />
       {extra ? (
         <details className="source-fold">
-          <summary>ต้นฉบับภาษาอังกฤษ (ไม่จำเป็นต่อการจบบท)</summary>
+          <summary>อ่านเพิ่ม (ไม่จำเป็นต่อการจบบท)</summary>
           <p>
-            ส่วนนี้เป็นหลักสูตรหรือคู่มือของบริษัทอื่น ไม่ใช่เอกสารของ Nirva Academy และไม่ต้องอ่านเพื่อจบบท
+            ส่วนท้ายบทมีทั้งลิงก์ใน Nirva Academy และต้นฉบับอังกฤษของบริษัทอื่น ไม่ต้องอ่านเพื่อจบบท
+            ต้นฉบับอังกฤษเปิดแท็บใหม่
           </p>
           <MarkdownLinks markdown={extra} stems={stems} />
         </details>

@@ -92,8 +92,8 @@ test("เส้นทาง OpenAI ภายในมีแบบฝึก เ�
   const checks = yaml.load(fs.readFileSync(path.join(root, "content/checks.yaml"), "utf8"));
   const hub = fs.readFileSync(path.join(root, "content/media/hub.md"), "utf8");
   const mediaPage = fs.readFileSync(path.join(root, "app/media/page.tsx"), "utf8");
-  assert.equal(page.includes('href="/start"'), true);
-  assert.equal(page.includes('href="/learn/how-models-work"'), true);
+  assert.equal(page.includes('href="/start?track=openai"'), true);
+  assert.equal(page.includes('href="/learn/how-models-work?track=openai"'), true);
   assert.equal(page.includes("CheckQuiz"), true);
   assert.equal(page.includes('lessonId="openai-path"'), true);
   assert.equal(md.includes("academy.openai.com"), true);

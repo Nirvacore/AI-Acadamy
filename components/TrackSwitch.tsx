@@ -156,9 +156,26 @@ export function DoneDot({ id }: { id: string }) {
 
 export function withTrack(href: string, track: string) {
   if (href.startsWith("http") || href.startsWith("#")) return href;
+  if (/[?&]track=/.test(href)) return href;
   const [path, hash] = href.split("#");
   const join = path.includes("?") ? "&" : "?";
   return `${path}${join}track=${track}${hash ? `#${hash}` : ""}`;
+}
+
+export function ForceTrack({ id }: { id: string }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("track") === id) return;
+    window.localStorage.setItem(TRACK_KEY, id);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("track", id);
+    router.replace(`${pathname}?${params.toString()}`);
+  }, [id, pathname, router, searchParams]);
+
+  return null;
 }
 
 export function TrackedLink({
