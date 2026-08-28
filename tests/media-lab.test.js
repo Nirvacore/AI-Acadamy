@@ -312,15 +312,22 @@ test("progression ต้องเป็นคำนำหน้า ห้าม�
 
 test("มือถือยุบเมนู ดึง CTA ขึ้น และซ่อนแผนที่แหล่งหลัง disclosure", () => {
   const layout = fs.readFileSync(path.join(root, "app/layout.tsx"), "utf8");
+  const page = fs.readFileSync(path.join(root, "app/media/page.tsx"), "utf8");
   const css = fs.readFileSync(path.join(root, "app/globals.css"), "utf8");
   const hub = fs.readFileSync(path.join(root, "components/MediaLab.tsx"), "utf8");
   assert.equal(/rail-fold["']?\s+open/.test(layout), false);
   assert.equal(layout.includes('className="rail-fold"'), true);
   assert.equal(layout.includes("rail-body"), true);
+  assert.equal(page.includes('className="media-stack"'), true);
+  assert.equal(page.includes('className="media-intro"'), true);
   assert.equal(css.includes("overflow-x: clip"), true);
+  assert.equal(css.includes("max-width: 100%"), true);
   assert.equal(css.includes(".rail-fold:not([open]) .rail-body"), true);
-  assert.equal(css.includes("safe-area-inset-bottom"), true);
-  assert.equal(css.includes(".media-stack .media-intro"), true);
+  assert.equal(css.includes("display: none !important"), true);
+  assert.equal(css.includes("calc(72px + env(safe-area-inset-bottom"), true);
+  assert.equal(css.includes("grid-template-columns: minmax(0, 1fr)"), true);
+  assert.match(css, /\.media-stack \.media-intro\s*\{[^}]*order:\s*2/);
+  assert.equal(/media-fold["']?\s+open/.test(hub), false);
   assert.equal(hub.includes('className="media-fold"'), true);
   const slice = hub.slice(hub.indexOf("export function MediaHub"));
   const cta = slice.indexOf("เริ่มตอนที่ ๑");
