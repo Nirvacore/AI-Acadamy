@@ -143,6 +143,12 @@ export function MediaHub({
         สถานะนี้อยู่ในเบราว์เซอร์นี้เท่านั้น ไม่ซิงก์ Studio จริง ไม่เก็บซีเคร็ต
       </p>
 
+      <p className="actions">
+        <TrackedLink className="btn huge primary" href={LESSON_HREF[resumeId]}>
+          {completed.length === 0 ? "เริ่มตอนที่ ๑" : completed.length === 3 ? "ทบทวนเส้นทาง" : `เรียนต่อ · ${LESSON_TITLE[resumeId]}`}
+        </TrackedLink>
+      </p>
+
       <TrackCoach tracks={tracks} lessonId={resumeId} />
 
       <nav aria-labelledby="media-path-title">
@@ -172,12 +178,6 @@ export function MediaHub({
         </ol>
       </nav>
 
-      <p className="actions">
-        <TrackedLink className="btn huge" href={LESSON_HREF[resumeId]}>
-          {completed.length === 0 ? "เริ่มตอนที่ ๑" : completed.length === 3 ? "ทบทวนเส้นทาง" : `เรียนต่อ · ${LESSON_TITLE[resumeId]}`}
-        </TrackedLink>
-      </p>
-
       <section className="media-panel" aria-labelledby="campaign-title">
         <p className="eyebrow">ตัวอย่างสังเคราะห์</p>
         <h2 id="campaign-title">{campaign.title_th}</h2>
@@ -195,41 +195,44 @@ export function MediaHub({
         <p className="save-hint">ตัวอย่างนี้ไม่ใช่ลูกค้าจริง แก้ให้เป็นงานตนเองก่อนถือว่าจบ</p>
       </section>
 
-      <section className="media-sources" aria-labelledby="source-title">
-        <h2 id="source-title">แหล่งที่ reuse ได้</h2>
-        <ul>
-          {pipeline.reuse.map((stage) => (
-            <li key={stage.id}>
-              <strong>{stage.title_th}</strong>
-              <span> {stage.academy_action}</span>
-              <ul>
-                {stage.files.map((file) => (
-                  <li key={file}>
-                    <code>{file}</code>
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <details className="media-fold">
+        <summary>แหล่งที่ reuse ได้ และแบบฝึกของ Academy</summary>
+        <section className="media-sources" aria-labelledby="source-title">
+          <h2 id="source-title">แหล่งที่ reuse ได้</h2>
+          <ul>
+            {pipeline.reuse.map((stage) => (
+              <li key={stage.id}>
+                <strong>{stage.title_th}</strong>
+                <span> {stage.academy_action}</span>
+                <ul>
+                  {stage.files.map((file) => (
+                    <li key={file}>
+                      <code>{file}</code>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-      <section className="media-missing" aria-labelledby="authored-title">
-        <h2 id="authored-title">แบบฝึกของ Academy และของที่ยังไม่พบ</h2>
-        <ul>
-          {(pipeline.academy_authored ?? []).map((item) => (
-            <li key={item.id}>
-              <p>{item.note}</p>
-            </li>
-          ))}
-          {pipeline.missing_sources.map((item) => (
-            <li key={item.id}>
-              <strong>{item.asked}</strong>
-              <p>{item.note}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+        <section className="media-missing" aria-labelledby="authored-title">
+          <h2 id="authored-title">แบบฝึกของ Academy และของที่ยังไม่พบ</h2>
+          <ul>
+            {(pipeline.academy_authored ?? []).map((item) => (
+              <li key={item.id}>
+                <p>{item.note}</p>
+              </li>
+            ))}
+            {pipeline.missing_sources.map((item) => (
+              <li key={item.id}>
+                <strong>{item.asked}</strong>
+                <p>{item.note}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </details>
     </div>
   );
 }
