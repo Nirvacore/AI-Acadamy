@@ -320,6 +320,7 @@ test("มือถือยุบเมนู ดึง CTA ขึ้น แล�
   assert.equal(css.includes("overflow-x: clip"), true);
   assert.equal(css.includes(".rail-fold:not([open]) .rail-body"), true);
   assert.equal(css.includes("safe-area-inset-bottom"), true);
+  assert.equal(css.includes(".media-stack .media-intro"), true);
   assert.equal(hub.includes('className="media-fold"'), true);
   const slice = hub.slice(hub.indexOf("export function MediaHub"));
   const cta = slice.indexOf("เริ่มตอนที่ ๑");

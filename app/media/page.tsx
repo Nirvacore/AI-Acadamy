@@ -18,17 +18,21 @@ export default function MediaPage() {
 
   return (
     <Suspense fallback={null}>
-      <header className="lesson-head">
-        <p className="kicker">
-          แล็บประยุกต์ · สามตอน · ไม่ใช่แทร็กบริษัท · <TrackLabel tracks={tracks} />
-        </p>
-        <h1>Nirva Media Lab</h1>
-        <p className="lede">
-          Cursor Claude OpenAI Copilot คือมือ Media คือบริบทงาน ความคืบหน้าอยู่ที่เบราว์เซอร์นี้เท่านั้น
-        </p>
-      </header>
-      <ContentMarkdown markdown={mediaHubMarkdown()} />
-      <MediaHub pipeline={pipeline} campaign={campaign} tracks={tracks} />
+      <div className="media-stack">
+        <header className="lesson-head">
+          <p className="kicker">
+            แล็บประยุกต์ · สามตอน · ไม่ใช่แทร็กบริษัท · <TrackLabel tracks={tracks} />
+          </p>
+          <h1>Nirva Media Lab</h1>
+          <p className="lede">
+            Cursor Claude OpenAI Copilot คือมือ Media คือบริบทงาน ความคืบหน้าอยู่ที่เบราว์เซอร์นี้เท่านั้น
+          </p>
+        </header>
+        <div className="media-intro">
+          <ContentMarkdown markdown={mediaHubMarkdown()} />
+        </div>
+        <MediaHub pipeline={pipeline} campaign={campaign} tracks={tracks} />
+      </div>
     </Suspense>
   );
 }

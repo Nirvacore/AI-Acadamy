@@ -1230,7 +1230,30 @@ kbd {
     display: block;
     min-width: 0;
     max-width: 100%;
-    padding: 12px 14px calc(104px + env(safe-area-inset-bottom, 0px));
+    padding: 8px 14px calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .brand small {
+    display: none;
+  }
+
+  .lesson-head h1 {
+    font-size: 1.85rem;
+    margin: 4px 0 8px;
+  }
+
+  .media-local {
+    margin: 0 0 8px;
+    padding: 6px 10px;
+  }
+
+  .media-lab .actions {
+    margin-top: 8px;
+  }
+
+  .media-lab .btn.huge {
+    padding: 12px 18px;
+    font-size: 1.05rem;
   }
 
   .adapter {
@@ -1239,7 +1262,22 @@ kbd {
   }
 
   .studio-bar {
-    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 0px));
+    gap: 6px;
+  }
+
+  .studio-bar button {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+  }
+
+  .media-stack {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .media-stack .media-intro {
+    order: 2;
   }
 }
 
