@@ -75,7 +75,7 @@ test("นั่ง OpenAI มีหกขั้นลงมือ หลัก�
     true,
   );
   assert.equal(
-    items.some((item) => /เวลา/.test(item.q) && /ความชัด/.test(item.choices[item.answer])),
+    items.some((item) => /เทียบ/.test(item.q) && /เวลา/.test(item.choices[item.answer]) && /ความชัด/.test(item.choices[item.answer])),
     true,
   );
   assert.equal(JSON.stringify(items).includes("Nirva Media"), false);
