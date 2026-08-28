@@ -34,10 +34,12 @@ test("static /tracks/openai: title และ CTA ล็อกแทร็ก ope
   assert.equal(title.includes("แทร็ก OpenAI"), true, title);
   assert.equal(title.includes("Nirva Academy"), true, title);
   assert.equal(page.includes("แทร็ก OpenAI เรียนเป็นไทยใน Nirva Academy"), true);
-  assert.equal(page.includes("/start?track=openai"), true);
-  assert.equal(page.includes("เริ่มเรียนบทแรก"), true);
+  assert.equal(page.includes("#nowdo"), true);
+  assert.equal(page.includes("เริ่มนั่งนี้"), true);
   assert.equal(page.includes("/learn/how-models-work?track=openai"), true);
-  assert.equal(boundary.isInternalRoute("/start?track=openai"), true);
+  assert.equal(page.includes("เปิด ChatGPT"), true);
+  assert.equal(page.includes("UI ไม่แสดง"), true);
+  assert.equal(boundary.isInternalRoute("#nowdo"), true);
   assert.equal(page.includes("เอกสาร OpenAI"), false);
   assert.equal(page.includes("Nirva Academy"), true);
   assert.equal(page.includes("Nirva Media"), true);

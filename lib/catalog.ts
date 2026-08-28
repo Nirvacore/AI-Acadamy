@@ -94,7 +94,7 @@ export function buildCatalog(): CatalogItem[] {
     { id: "start", kind: "page", title: "ชั่วโมงแรก", href: "/start", hint: "นั่งสิบห้านาที ล็อกว่าเธอคือเอเจนต์" },
     { id: "syllabus", kind: "page", title: "หลักสูตร", href: "/syllabus", hint: "ผลลัพธ์ ชั่วโมง เกณฑ์ประเมิน" },
     { id: "tracks", kind: "page", title: "เทียบแทร็กบริษัท", href: "/tracks", hint: "Cursor Claude OpenAI Copilot" },
-    { id: "openai-path", kind: "page", title: "แทร็ก OpenAI ใน Nirva Academy", href: "/tracks/openai", hint: "เรียนจบเป็นไทย ไม่ต้องสมัคร academy.openai.com" },
+    { id: "openai-path", kind: "page", title: "แทร็ก OpenAI ใน Nirva Academy", href: "/tracks/openai", hint: "นั่ง ๑๐–๑๕ นาที เปิด ChatGPT จดหลักฐาน แล้วจบในเว็บนี้" },
     { id: "media", kind: "page", title: "กรณีศึกษาสื่อ", href: "/media", hint: "กรณีศึกษา Nirva Media ไม่ใช่โมดูลผลิตภัณฑ์ใน Academy" },
     { id: "shop", kind: "page", title: "ร้านค้าตัวอย่าง", href: "/shop", hint: "แล็บราคาและการทดสอบ" },
     { id: "journal", kind: "page", title: "สมุดสะท้อน", href: "/journal", hint: "เขียนเอง ห้ามให้เธอแต่ง" },
