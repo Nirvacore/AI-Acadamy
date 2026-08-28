@@ -1205,3 +1205,141 @@ kbd {
     margin-top: 28px;
   }
 }
+
+.media-lab {
+  max-width: 72ch;
+}
+
+.media-track {
+  margin: 0 0 24px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+}
+
+.media-track h2 {
+  font-family: "Cormorant Garamond", serif;
+  margin: 4px 0 8px;
+  font-size: 1.55rem;
+}
+
+.media-track dl {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.media-track dt {
+  color: var(--mist);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.media-track dd {
+  margin: 0;
+}
+
+.media-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+
+.media-flow li {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 0.88rem;
+}
+
+.media-flow .num {
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.media-panel {
+  max-width: 68ch;
+  margin: 0 0 22px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+}
+
+.media-panel label {
+  display: block;
+  margin: 8px 0 6px;
+}
+
+.media-panel textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--paper);
+  background: rgba(11, 10, 8, 0.45);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  resize: vertical;
+}
+
+.media-panel textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.media-check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.media-assets {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.media-assets li {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.media-assets span {
+  display: block;
+  color: var(--mist);
+  font-size: 0.88rem;
+}
+
+.media-sources,
+.media-missing {
+  max-width: 68ch;
+  margin: 28px 0;
+}
+
+.media-sources ul,
+.media-missing ul {
+  padding-left: 1.1rem;
+}
+
+.media-missing p {
+  margin: 4px 0 12px;
+  color: var(--paper-2);
+}
+
+@media (max-width: 980px) {
+  .media-flow {
+    flex-direction: column;
+  }
+}

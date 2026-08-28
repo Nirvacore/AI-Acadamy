@@ -59,7 +59,14 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
           <CheckQuiz lessonId={lesson.id} items={items} />
           <Journal
             id={lesson.id}
-            prompts={["วันนี้จิตฉันเร็วหรือนิ่ง", "ขอบของเธอที่ฉันเห็นชัดขึ้น"]}
+            prompts={
+              lesson.id === "media-lab"
+                ? [
+                    "ตอนไหนที่ฉันอยากให้เธอกดโพสต์แทน เพราะเหนื่อย",
+                    "หลักฐานที่ฉันวางเปิดตามได้จริง หรือยังเป็นความจำของโมเดล",
+                  ]
+                : ["วันนี้จิตฉันเร็วหรือนิ่ง", "ขอบของเธอที่ฉันเห็นชัดขึ้น"]
+            }
           />
           <ProgressMark id={lesson.id} />
           <nav className="pager">

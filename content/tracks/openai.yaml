@@ -97,3 +97,9 @@ concepts:
     shortcut: null
     docsUrl: https://academy.openai.com
     labDelta: ทำวงจรทั้งหกขั้นบน shop/ แล้วรันเทสในเครื่องตนเองจนผ่าน
+
+  - conceptId: media-lab
+    uiLabel: ChatGPT หรือ Codex / Agent
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: วาง brief และหลักฐานที่เปิดเองลงแชท ขอโครงสคริปต์สามจังหวะ แล้วคุณเป็นคนกดส่งตรวจใน /media ห้ามให้เธอโพสต์แทน

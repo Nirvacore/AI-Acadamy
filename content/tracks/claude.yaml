@@ -98,3 +98,9 @@ concepts:
     shortcut: null
     docsUrl: https://academy.claude.com
     labDelta: ทำวงจรสำรวจ แผน สร้าง ดีบัก รีวิว กฎ บน shop/ จนเทสผ่าน
+
+  - conceptId: media-lab
+    uiLabel: Claude Code
+    shortcut: null
+    docsUrl: https://docs.claude.com/en/docs/claude-code
+    labDelta: วาง brief ในเซสชันแล้วสั่งให้อ่านพาธที่คุณเปิดแล้วเท่านั้น ห้ามเดา STATUS_FLOW จากความจำ และห้ามให้เธอเขียนข้อความอนุมัติแทนคน

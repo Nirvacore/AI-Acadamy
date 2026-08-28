@@ -96,3 +96,9 @@ concepts:
     shortcut: null
     docsUrl: https://learn.microsoft.com/training/paths/copilot
     labDelta: ทำวงจรทั้งหกขั้นบน shop/ จน npm run test:shop ผ่าน
+
+  - conceptId: media-lab
+    uiLabel: Copilot Chat
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot
+    labDelta: อ้างไฟล์ brief ที่คุณเขียนเองด้วย #file แล้วขอร่างแคปชัน คนอ่านใน /media ก่อนติ๊กอนุมัติ ห้าม Apply งานเผยแพร่

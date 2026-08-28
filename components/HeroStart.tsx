@@ -66,6 +66,9 @@ export function HeroStart({ lessons }: { lessons: PathLesson[] }) {
             <TrackedLink className="btn huge" href="/shop">
               เปิดร้านค้าตัวอย่าง
             </TrackedLink>
+            <TrackedLink className="btn ghost" href="/media">
+              Nirva Media Lab
+            </TrackedLink>
             <TrackedLink className="btn ghost" href="/certificate">
               เกียรติบัตร
             </TrackedLink>

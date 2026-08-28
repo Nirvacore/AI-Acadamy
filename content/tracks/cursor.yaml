@@ -98,3 +98,9 @@ concepts:
     shortcut: null
     docsUrl: https://cursor.com/learn/putting-it-together
     labDelta: ทำโปรเจกต์ส่วนลดตามลำดับสำรวจ วางแผน สร้าง ดีบัก รีวิว เขียนกฎ
+
+  - conceptId: media-lab
+    uiLabel: Agent pane + Plan Mode
+    shortcut: "Cmd+I / Ctrl+I"
+    docsUrl: https://cursor.com/learn/creating-features
+    labDelta: ให้ Agent ช่วยร่างแคปชันหลังคุณวาง brief และพาธที่เปิดเองแล้ว ใช้ Plan Mode ก่อนสร้างโครงสคริปต์ ห้ามให้กด Accept งานเผยแพร่

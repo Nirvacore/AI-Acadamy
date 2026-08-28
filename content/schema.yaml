@@ -30,6 +30,11 @@ layers:
   - id: lab
     name: แล็บ
     description: โจทย์เดียวกัน เปลี่ยนเฉพาะขั้นตอนตามแทร็กที่เลือก
+  - id: applied
+    name: แล็บประยุกต์
+    description: >
+      บริบทงานจริงที่ใช้ได้กับทุกแทร็กเครื่องมือ Nirva Media ไม่ใช่บริษัทตัวที่ห้า
+      แทร็กยังเป็น Cursor Claude OpenAI Copilot ชุดเดิม
 
 tracks:
   default: cursor
@@ -191,3 +196,18 @@ modules:
         script: content/scripts/th/lab-07-capstone.md
         official:
           cursor: https://cursor.com/learn/putting-it-together
+
+  - id: track-media
+    name: Nirva Media Lab
+    phase: 3
+    status: ready
+    lessons:
+      - id: media-lab
+        slug: media-lab
+        title_th: Nirva Media Lab
+        focus: บริบทงานสื่อ ใช้ได้กับทุกแทร็กเครื่องมือ ไม่ใช่บริษัทตัวที่ห้า
+        content: content/core/media-lab.md
+        lab: content/labs/media-lab.md
+        script: content/scripts/th/media-lab.md
+        official:
+          note: แล็บประยุกต์อิง NirvaMedia สาขา codex/nirvamedia-web ไม่มีบทคู่ใน Cursor Learn
