@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 import { usePathname } from "next/navigation";
-import { labSlugFromPath, type CourseModule, type LessonRef, type Track } from "@/lib/curriculum";
+import type { CourseModule, LessonRef, Track } from "@/lib/curriculum";
 import { OriginalSources } from "@/components/OriginalSources";
 import { DoneDot, TrackedLink, useTrackId } from "@/components/TrackSwitch";
 
@@ -122,7 +122,7 @@ function AdapterInner({ tracks, lesson }: { tracks: Track[]; lesson: LessonRef }
       <OriginalSources
         track={track}
         concept={concept}
-        labHref={lesson.lab ? `/lab/${labSlugFromPath(lesson.lab)}` : undefined}
+        labHref={lesson.lab ? `/lab/${lesson.lab.split("/").pop()?.replace(/\.md$/, "")}` : undefined}
       />
     </aside>
   );

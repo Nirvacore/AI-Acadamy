@@ -1,3 +1,5 @@
+"use client";
+
 import type { Track, TrackConcept } from "@/lib/curriculum";
 import { TrackedLink } from "@/components/TrackSwitch";
 import {
