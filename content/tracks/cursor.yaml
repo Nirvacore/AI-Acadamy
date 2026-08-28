@@ -4,7 +4,10 @@ vendor: Anysphere
 status: complete
 official_learn: https://cursor.com/learn
 official_docs: https://cursor.com/docs
-default_for_phase: 1
+notes: >
+  official_learn คือหลักสูตรอังกฤษของ Cursor ไม่ใช่เอกสารของ Nirva Academy
+  และไม่จำเป็นต่อการจบบทในเว็บนี้
+
 
 harness:
   instructions:
@@ -30,7 +33,7 @@ concepts:
   - conceptId: core-02
     uiLabel: Agent output + Citations / file links
     shortcut: null
-    docsUrl: https://cursor.com/learn/hallucination-limitations
+    docsUrl: https://cursor.com/docs
     labDelta: สั่งให้อ้างพาธไฟล์ แล้วคลิกตามลิงก์ในคำตอบ ถ้าไฟล์ไม่มีให้จับภาพหลอน
 
   - conceptId: core-03
@@ -42,77 +45,77 @@ concepts:
   - conceptId: core-04
     uiLabel: "@ mentions, ไฟล์ที่เปิดอยู่, Chat context"
     shortcut: "@"
-    docsUrl: https://cursor.com/learn/context
+    docsUrl: https://cursor.com/docs
     labDelta: 'เริ่มจากเปิดหลายไฟล์ แล้วเหลือแค่ "@" ไฟล์ที่เกี่ยวกับงาน'
 
   - conceptId: core-05
     uiLabel: Tool calling ใน Agent, MCP
     shortcut: null
-    docsUrl: https://cursor.com/learn/tool-calling
+    docsUrl: https://cursor.com/docs
     labDelta: สั่งให้ค้นด้วย Grep หรืออ่านไฟล์ ห้ามให้เดาจากความจำ
 
   - conceptId: core-06
     uiLabel: Agent pane
     shortcut: "Cmd+I / Ctrl+I"
-    docsUrl: https://cursor.com/learn/agents
+    docsUrl: https://cursor.com/docs
     labDelta: มอบหมายงานเล็กหนึ่งชิ้นใน Agent แล้วตรวจดิฟก่อนยอมรับ
 
   - conceptId: lab-01
     uiLabel: Agent
     shortcut: "Cmd+I / Ctrl+I"
-    docsUrl: https://cursor.com/learn/working-with-agents
+    docsUrl: https://cursor.com/docs
     labDelta: เขียนคำสั่งชัด กำหนดขอบเขตไฟล์ และเลือกโมเดลก่อนลงมือ
 
   - conceptId: lab-02
     uiLabel: Grep, Instant Grep, Explore subagent
     shortcut: null
-    docsUrl: https://cursor.com/learn/understanding-your-codebase
+    docsUrl: https://cursor.com/docs
     labDelta: ให้ Explore สำรวจก่อน แล้วค่อยสั่งแก้
 
   - conceptId: lab-03
     uiLabel: Plan Mode
     shortcut: "Shift+Tab"
-    docsUrl: https://cursor.com/learn/creating-features
+    docsUrl: https://cursor.com/docs
     labDelta: สลับ Plan Mode ตรวจแผน แล้วค่อยกด Build
 
   - conceptId: lab-04
     uiLabel: Debug Mode
     shortcut: null
-    docsUrl: https://cursor.com/learn/finding-fixing-bugs
+    docsUrl: https://cursor.com/docs
     labDelta: ให้เขียนสมมติฐานและใส่เครื่องมือวัดก่อนแก้โค้ด
 
   - conceptId: lab-05
     uiLabel: Agent Review, Bugbot
     shortcut: null
-    docsUrl: https://cursor.com/learn/reviewing-testing
+    docsUrl: https://cursor.com/docs
     labDelta: ใช้ Review หาปัญหา แล้วยังคงอ่านดิฟด้วยตาตัวเอง
 
   - conceptId: lab-06
     uiLabel: Rules, Skills, MCP
     shortcut: "/"
-    docsUrl: https://cursor.com/learn/customizing-agents
+    docsUrl: https://cursor.com/docs
     labDelta: เขียน rule สั้นหนึ่งข้อใน .cursor/rules แล้วลองงานเดิมซ้ำ
 
   - conceptId: lab-07
     uiLabel: Agent + Plan + Debug + Review + Rules
     shortcut: null
-    docsUrl: https://cursor.com/learn/putting-it-together
+    docsUrl: https://cursor.com/docs
     labDelta: ทำโปรเจกต์ส่วนลดตามลำดับสำรวจ วางแผน สร้าง ดีบัก รีวิว เขียนกฎ
 
   - conceptId: media-brief-evidence
     uiLabel: Agent pane + Citations
     shortcut: "Cmd+I / Ctrl+I"
-    docsUrl: https://cursor.com/learn/tool-calling
+    docsUrl: https://cursor.com/docs
     labDelta: ให้ Agent อ่านเฉพาะพาธที่คุณเปิดแล้ว ห้ามให้ตั้งเป้าหรือผู้ชมแทน และห้ามเดา brief
 
   - conceptId: media-script-storyboard
     uiLabel: Plan Mode
     shortcut: "Shift+Tab"
-    docsUrl: https://cursor.com/learn/creating-features
+    docsUrl: https://cursor.com/docs
     labDelta: ใช้ Plan Mode ขอโครงสามจังหวะจาก brief ที่ล็อกแล้ว ตรวจแผนก่อนให้ช่วยเขียนคำ ห้าม Accept งานเผยแพร่
 
   - conceptId: media-review-publish
     uiLabel: Agent Review
     shortcut: null
-    docsUrl: https://cursor.com/learn/reviewing-testing
+    docsUrl: https://cursor.com/docs
     labDelta: ใช้ Review หลังอ่านร่างเอง แล้วคุณเป็นคนอนุมัติในแผ่นงาน ห้ามให้เธอเลื่อนไป published

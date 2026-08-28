@@ -27,7 +27,7 @@ export function HeroStart({ lessons }: { lessons: PathLesson[] }) {
       <p className="eyebrow">พร้อมเรียนทันที</p>
       <h1>นั่งลงแล้วเริ่มได้เลย</h1>
       <p className="lede">
-        คอร์สนี้สอนให้ใช้เอเจนต์เป็นเครื่องมือ แล้วเห็นนิสัยของตนเองชัดขึ้น คำว่า{" "}
+เว็บนี้คือ **Nirva Academy** สอนให้ใช้เอเจนต์เป็นเครื่องมือ แล้วเห็นนิสัยของตนเองชัดขึ้น คำว่า{" "}
         <strong>เธอ</strong> หมายถึงเอเจนต์ที่นั่งข้างๆ ไม่ใช่คน กดปุ่มเดียว
         นั่งแรกจะบอกทุกอย่างที่ต้องทำในสิบห้านาที
       </p>
@@ -67,7 +67,7 @@ export function HeroStart({ lessons }: { lessons: PathLesson[] }) {
               เปิดร้านค้าตัวอย่าง
             </TrackedLink>
             <TrackedLink className="btn ghost" href="/media">
-              Nirva Media Lab
+              กรณีศึกษาสื่อ
             </TrackedLink>
             <TrackedLink className="btn ghost" href="/certificate">
               เกียรติบัตร

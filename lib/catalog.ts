@@ -34,7 +34,7 @@ export function lessonMinutes(phase: number, id: string) {
 export function phaseLabel(phase: number) {
   if (phase === 1) return "แทร็ก A · พื้นฐาน";
   if (phase === 2) return "แทร็ก B · เขียนโค้ด";
-  return "แล็บประยุกต์ · Nirva Media";
+  return "กรณีศึกษาสื่อ";
 }
 
 export function lessonMeta(slug: string): (LessonMetaView & { lesson: LessonRef; moduleId: string; phase: number; checkCount: number }) | undefined {
@@ -94,7 +94,8 @@ export function buildCatalog(): CatalogItem[] {
     { id: "start", kind: "page", title: "ชั่วโมงแรก", href: "/start", hint: "นั่งสิบห้านาที ล็อกว่าเธอคือเอเจนต์" },
     { id: "syllabus", kind: "page", title: "หลักสูตร", href: "/syllabus", hint: "ผลลัพธ์ ชั่วโมง เกณฑ์ประเมิน" },
     { id: "tracks", kind: "page", title: "เทียบแทร็กบริษัท", href: "/tracks", hint: "Cursor Claude OpenAI Copilot" },
-    { id: "media", kind: "page", title: "Nirva Media Lab", href: "/media", hint: "เส้นทางสามตอนในบริบทงานสื่อ ไม่ใช่แทร็กบริษัทตัวที่ห้า" },
+    { id: "openai-path", kind: "page", title: "แทร็ก OpenAI ใน Nirva Academy", href: "/tracks/openai", hint: "เรียนจบเป็นไทย ไม่ต้องสมัคร academy.openai.com" },
+    { id: "media", kind: "page", title: "กรณีศึกษาสื่อ", href: "/media", hint: "กรณีศึกษา Nirva Media ไม่ใช่โมดูลผลิตภัณฑ์ใน Academy" },
     { id: "shop", kind: "page", title: "ร้านค้าตัวอย่าง", href: "/shop", hint: "แล็บราคาและการทดสอบ" },
     { id: "journal", kind: "page", title: "สมุดสะท้อน", href: "/journal", hint: "เขียนเอง ห้ามให้เธอแต่ง" },
     { id: "glossary", kind: "page", title: "อภิธานศัพท์", href: "/glossary", hint: "คำคงที่และบัตรคำ" },

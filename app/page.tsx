@@ -42,7 +42,7 @@ export default function HomePage() {
                 เทียบแทร็กบริษัท
               </TrackedLink>
               <TrackedLink className="btn ghost" href="/media">
-                Nirva Media Lab
+                กรณีศึกษาสื่อ
               </TrackedLink>
               <TrackedLink className="btn ghost" href="/shop">
                 ร้านค้าตัวอย่าง

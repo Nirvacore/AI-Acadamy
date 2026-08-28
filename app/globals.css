@@ -1404,18 +1404,24 @@ kbd {
   margin: 28px 0;
 }
 
-.media-fold {
+.media-fold,
+.source-fold {
   max-width: 68ch;
-  margin: 28px 0;
+  margin: 16px 0 28px;
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 8px 16px 12px;
 }
 
-.media-fold > summary {
+.media-fold > summary,
+.source-fold > summary {
   cursor: pointer;
   font-weight: 600;
   padding: 8px 0;
+}
+
+.original-sources .docs {
+  margin: 8px 0;
 }
 
 .media-sources ul,

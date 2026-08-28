@@ -50,9 +50,22 @@ function MarkdownLinks({ markdown, stems }: { markdown: string; stems: LessonSte
 }
 
 export function MarkdownBody({ markdown, stems }: { markdown: string; stems: LessonStem[] }) {
+  const split = markdown.search(/\n## (อ่านต้นฉบับ|อ่านคู่กัน)\s*\n/);
+  const body = split >= 0 ? markdown.slice(0, split) : markdown;
+  const extra = split >= 0 ? markdown.slice(split).replace(/^## [^\n]+\n/, "").trim() : "";
+
   return (
     <Suspense fallback={<div className="prose" />}>
-      <MarkdownLinks markdown={markdown} stems={stems} />
+      <MarkdownLinks markdown={body} stems={stems} />
+      {extra ? (
+        <details className="source-fold">
+          <summary>ต้นฉบับภาษาอังกฤษ (ไม่จำเป็นต่อการจบบท)</summary>
+          <p>
+            ส่วนนี้เป็นหลักสูตรหรือคู่มือของบริษัทอื่น ไม่ใช่เอกสารของ Nirva Academy และไม่ต้องอ่านเพื่อจบบท
+          </p>
+          <MarkdownLinks markdown={extra} stems={stems} />
+        </details>
+      ) : null}
     </Suspense>
   );
 }

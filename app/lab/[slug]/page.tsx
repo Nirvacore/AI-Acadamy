@@ -40,7 +40,7 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
       <ProgressMark id={`lab:${slug}`} />
       {slug.startsWith("media-") ? (
         <p className="note">
-          เปิดฮับเส้นทางที่ <TrackedLink href="/media">Nirva Media Lab</TrackedLink> · คิวนี้ไม่เผยแพร่จริง ·{" "}
+          เปิดฮับเส้นทางที่ <TrackedLink href="/media">กรณีศึกษาสื่อ</TrackedLink> · คิวนี้ไม่เผยแพร่จริง ·{" "}
           <TrackedLink href="/journal">เปิดสมุดทั้งหมด</TrackedLink>
         </p>
       ) : (

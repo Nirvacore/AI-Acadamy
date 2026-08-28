@@ -509,7 +509,7 @@ const labs: Record<string, NowSheet> = {
       { id: "models", text: "จดขั้นที่ใช้โมเดลเร็วและขั้นที่ใช้โมเดลฉลาด" },
       { id: "own-diff", text: "อ่านดิฟสุดท้ายด้วยตาแล้วรับเฉพาะที่เข้าใจ" },
     ],
-    nextHint: "แล็บประยุกต์ถัดไปคือ Nirva Media Lab ที่ /media ไม่ใช่แทร็กบริษัทใหม่",
+    nextHint: "กรณีศึกษาสื่ออยู่ที่ /media ใช้ผลิตภัณฑ์ Nirva Media เป็นกรณี ไม่ใช่แทร็กบริษัทใหม่",
   },
   "media-brief-evidence": {
     sitting: "นั่งนี้ประมาณ ๒๐ นาที",

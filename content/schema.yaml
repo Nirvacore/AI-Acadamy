@@ -9,8 +9,10 @@ course:
   tagline: เรียนแนวคิดเอเจนต์จากแหล่งต้นฉบับ แล้วเห็นตนเองผ่านกระจกมหาสูญตา
   copyright: original-thai
   official_source_policy: >
-    เนื้อหาในรีโปนี้เป็นต้นฉบับภาษาไทย สอนแนวคิดเดียวกับแหล่งทางการ
-    แต่ไม่คัดลอกข้อความต้นฉบับ แต่ละบทลิงก์ไปบทอังกฤษให้อ่านคู่กัน
+    เนื้อหาในรีโปนี้เป็นต้นฉบับภาษาไทย สอนแนวคิดเดียวกับแหล่งทางการของเครื่องมือ
+    แต่ไม่คัดลอกข้อความต้นฉบับ เรียนจบได้ใน Nirva Academy โดยไม่ต้องสมัครเว็บบริษัทอื่น
+    ต้นฉบับภาษาอังกฤษเป็นส่วนอ่านเพิ่ม ไม่จำเป็นต่อการจบบท
+    ห้ามเรียกหลักสูตร Academy ของบริษัทอื่นว่าเอกสารของคอร์สนี้
   mirror_layer:
     id: mahasunyata
     name: กระจก
@@ -33,8 +35,9 @@ layers:
   - id: applied
     name: แล็บประยุกต์
     description: >
-      บริบทงานจริงที่ใช้ได้กับทุกแทร็กเครื่องมือ Nirva Media ไม่ใช่บริษัทตัวที่ห้า
-      แทร็กยังเป็น Cursor Claude OpenAI Copilot ชุดเดิม
+      บริบทงานจริงที่ใช้ได้กับทุกแทร็กเครื่องมือ ใช้ Nirva Media เป็นกรณีศึกษาของผลิตภัณฑ์อีกตัว
+      ไม่ใช่โมดูลใน Academy และไม่ใช่บริษัทตัวที่ห้า แทร็กยังเป็น Cursor Claude OpenAI Copilot ชุดเดิม
+      Nirva AI เป็นระบบต้นทางอีกตัวที่อ้างจากสแนปช็อต ห้ามจำลองว่าระบบนั้นทำงานในเว็บนี้
 
 tracks:
   default: cursor
@@ -198,7 +201,7 @@ modules:
           cursor: https://cursor.com/learn/putting-it-together
 
   - id: track-media
-    name: Nirva Media Lab
+    name: กรณีศึกษางานสื่อ
     phase: 3
     status: ready
     lessons:
@@ -210,7 +213,7 @@ modules:
         lab: content/labs/media-brief-evidence.md
         script: content/scripts/th/media-brief-evidence.md
         official:
-          note: แล็บประยุกต์อิง NirvaMedia สาขา codex/nirvamedia-web ไม่มีบทคู่ใน Cursor Learn
+          note: กรณีศึกษาอิงผลิตภัณฑ์ Nirva Media สาขา codex/nirvamedia-web ไม่ใช่โมดูลใน Academy
       - id: media-script-storyboard
         slug: media-script-storyboard
         title_th: สคริปต์และสตอรี่บอร์ด

@@ -58,6 +58,7 @@ export type Track = {
   status: string;
   official_learn: string;
   official_docs: string;
+  internal_path?: string;
   concepts: TrackConcept[];
 };
 

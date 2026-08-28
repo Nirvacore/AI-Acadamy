@@ -5,8 +5,10 @@ status: usable
 official_learn: https://academy.claude.com
 official_docs: https://docs.claude.com
 notes: >
-  โครงแมปสำหรับเฟส 2 ใช้เทียบกับ Cursor โดยไม่ต้องเขียนคอร์ส Core ใหม่
-  เติม labDelta ให้ครบเมื่อลงมือทำแทร็ก Claude
+  official_learn คือหลักสูตรอังกฤษของ Anthropic ไม่ใช่เอกสารของ Nirva Academy
+  เรียนจบแทร็ก Claude ได้ในเว็บนี้
+  โครงแมปใช้เทียบกับ Cursor โดยไม่ต้องเขียนคอร์ส Core ใหม่
+
 
 harness:
   instructions:
@@ -30,7 +32,7 @@ concepts:
   - conceptId: core-02
     uiLabel: Citations / ไฟล์ที่อ่านใน Claude Code
     shortcut: null
-    docsUrl: https://www.anthropic.com/learn
+    docsUrl: https://docs.claude.com
     labDelta: สั่งให้อ้างพาธไฟล์ แล้วตรวจว่าไฟล์นั้นมีจริงในโปรเจกต์
 
   - conceptId: core-03
@@ -84,7 +86,7 @@ concepts:
   - conceptId: lab-05
     uiLabel: รีวิว PR ด้วย Claude
     shortcut: null
-    docsUrl: https://www.anthropic.com/learn
+    docsUrl: https://docs.claude.com
     labDelta: ให้ช่วยสรุปดิฟ แต่คนเป็นคนเปิดไฟล์และตัดสินยอมรับ
 
   - conceptId: lab-06
@@ -96,7 +98,7 @@ concepts:
   - conceptId: lab-07
     uiLabel: โปรเจกต์จบบน Claude Code
     shortcut: null
-    docsUrl: https://academy.claude.com
+    docsUrl: https://docs.claude.com
     labDelta: ทำวงจรสำรวจ แผน สร้าง ดีบัก รีวิว กฎ บน shop/ จนเทสผ่าน
 
   - conceptId: media-brief-evidence
@@ -114,5 +116,5 @@ concepts:
   - conceptId: media-review-publish
     uiLabel: รีวิวด้วย Claude
     shortcut: null
-    docsUrl: https://www.anthropic.com/learn
+    docsUrl: https://docs.claude.com
     labDelta: ให้สรุปความเสี่ยงตามรูบริก แต่คนเป็นคนติ๊กอนุมัติ และห้ามให้เขียนคำสั่งเผยแพร่

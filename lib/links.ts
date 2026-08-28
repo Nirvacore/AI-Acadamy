@@ -8,7 +8,8 @@ function basename(path: string) {
 export function rewriteContentHref(href: string | undefined, lessons: LessonStem[]): string {
   if (!href) return "";
   if (/^https?:\/\//.test(href)) return href;
-  if (href.startsWith("#")) return href;
+  if (href.startsWith("#") || href.startsWith("mailto:")) return href;
+  if (href.startsWith("/")) return href;
 
   const cleaned = href.split("#")[0].replace(/\\/g, "/");
   const hash = href.includes("#") ? `#${href.split("#")[1]}` : "";

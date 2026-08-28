@@ -25,6 +25,7 @@ import {
   type MediaPiece,
 } from "@/lib/media-lab-gates";
 import { TrackedLink, useTrackId } from "@/components/TrackSwitch";
+import { OriginalSources } from "@/components/OriginalSources";
 import { MEDIA_LAB_KEY, PROGRESS_EVENT, readDone, writeJson } from "@/lib/progress";
 
 const LESSON_HREF: Record<string, string> = {
@@ -105,11 +106,11 @@ function TrackCoach({ tracks, lessonId }: { tracks: Track[]; lessonId: string })
           ) : null}
         </dl>
       ) : null}
-      <p className="docs">
-        <a href={concept?.docsUrl ?? track.official_docs} target="_blank" rel="noreferrer">
-          เอกสาร {track.name}
-        </a>
-      </p>
+      <OriginalSources
+        track={track}
+        concept={concept}
+        lessonHref={LESSON_HREF[lessonId]}
+      />
     </aside>
   );
 }
@@ -569,7 +570,7 @@ export function MediaStage({
         </p>
       ) : (
         <p className="note">
-          ดูลำดับทั้งเส้นที่ <TrackedLink href="/media">Nirva Media Lab</TrackedLink>
+          ดูลำดับทั้งเส้นที่ <TrackedLink href="/media">กรณีศึกษาสื่อ</TrackedLink>
         </p>
       )}
     </div>

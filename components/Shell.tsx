@@ -2,7 +2,8 @@
 
 import { Suspense } from "react";
 import { usePathname } from "next/navigation";
-import type { CourseModule, LessonRef, Track } from "@/lib/curriculum";
+import { labSlugFromPath, type CourseModule, type LessonRef, type Track } from "@/lib/curriculum";
+import { OriginalSources } from "@/components/OriginalSources";
 import { DoneDot, TrackedLink, useTrackId } from "@/components/TrackSwitch";
 
 export function SideNav({
@@ -24,7 +25,7 @@ export function SideNav({
           </li>
           <li>
             <TrackedLink className={current === "media" ? "is-on" : ""} href="/media">
-              Nirva Media Lab
+              กรณีศึกษาสื่อ
             </TrackedLink>
           </li>
         </ul>
@@ -58,7 +59,7 @@ export function SideNav({
             <TrackedLink href="/tracks">เทียบแทร็ก</TrackedLink>
           </li>
           <li>
-            <TrackedLink href="/media">Nirva Media Lab</TrackedLink>
+            <TrackedLink href="/media">กรณีศึกษาสื่อ</TrackedLink>
           </li>
           <li>
             <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink>
@@ -118,18 +119,11 @@ function AdapterInner({ tracks, lesson }: { tracks: Track[]; lesson: LessonRef }
           <dd>{concept.labDelta ?? "ใช้โจทย์ร่วมของบทนี้"}</dd>
         </div>
       </dl>
-      <p className="docs">
-        <a href={concept.docsUrl} target="_blank" rel="noreferrer">
-          เอกสาร {track.name}
-        </a>
-      </p>
-      {lesson.lab ? (
-        <p className="docs">
-          <TrackedLink href={`/lab/${lesson.lab.split("/").pop()?.replace(/\.md$/, "")}`}>
-            เปิดแล็บของบทนี้
-          </TrackedLink>
-        </p>
-      ) : null}
+      <OriginalSources
+        track={track}
+        concept={concept}
+        labHref={lesson.lab ? `/lab/${labSlugFromPath(lesson.lab)}` : undefined}
+      />
     </aside>
   );
 }
