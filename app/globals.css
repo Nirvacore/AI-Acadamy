@@ -223,6 +223,11 @@ body.is-focus .frame {
   letter-spacing: 0.02em;
 }
 
+.btn[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .start-hero {
   max-width: 740px;
   padding: 8px 0 12px;
@@ -677,7 +682,8 @@ kbd {
   font-weight: 600;
 }
 
-.skip-link:focus {
+.skip-link:focus,
+.skip-link:focus-visible {
   left: 16px;
 }
 
@@ -1020,6 +1026,10 @@ kbd {
 @media (min-width: 981px) {
   .rail-fold > summary {
     display: none;
+  }
+
+  .rail-fold > .rail-body {
+    display: block !important;
   }
 
   .media-progress {

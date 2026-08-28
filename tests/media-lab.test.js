@@ -263,3 +263,49 @@ test("แคมเปญสังเคราะห์เดินทั้ง�
   assert.equal(auto.published, false);
   assert.equal(auto.code, "ai_cannot_publish");
 });
+
+test("คีย์ localStorage ของ Academy เดิมไม่เปลี่ยน และชิ้นงานเก่าถูก migrate", () => {
+  const progress = fs.readFileSync(path.join(root, "lib/progress.ts"), "utf8");
+  assert.equal(progress.includes('DONE_KEY = "ai-acadamy:done"'), true);
+  assert.equal(progress.includes('TRACK_KEY = "ai-acadamy:track"'), true);
+  assert.equal(progress.includes('MEDIA_LAB_KEY = "ai-acadamy:media-lab"'), true);
+  assert.equal(progress.includes("migratePiece(dump.mediaLab)"), true);
+  assert.equal(gates.PIECE_VERSION, 2);
+
+  const kept = gates.migrateDoneIds(["core-00", "media-lab", "lab-01"]);
+  assert.deepEqual(kept, ["core-00", "media-lab", "lab-01"]);
+  assert.deepEqual(gates.mediaProgressIds(kept), []);
+
+  const legacy = gates.migratePiece({
+    brief: "ลานหนังสือวัดเหนือสังเคราะห์ชวนอ่านด้วยกัน โทนอบอุ่น ไม่ขายคอร์ส",
+    evidence: "เปิดแล้วที่ NirvaMedia/db/schema.ts ช่อง campaigns.brief",
+    script: "เย็นศุกร์นี้ลานหนังสือวัดเหนือสังเคราะห์เปิดพรมให้นั่งอ่าน",
+    storyboard: "ลานว่างมีพรมและโคมไฟ",
+    checklist: ["brief", "evidence", "script", "human"],
+    status: "draft",
+    humanReviewed: false,
+  });
+  assert.equal(legacy.v, 2);
+  assert.equal(legacy.scripts.line.includes("เย็นศุกร์"), true);
+  assert.equal(legacy.storyboard[0].visual.includes("พรม"), true);
+  assert.equal(legacy.storyboardSource, "academy-worksheet");
+  assert.equal(legacy.checklists["media-brief-evidence"].includes("brief"), true);
+  assert.equal(legacy.checklists["media-script-storyboard"].includes("scripts"), true);
+  assert.equal(Object.hasOwn(legacy, "checklist"), false);
+  assert.equal(gates.briefStageOk(legacy), false);
+});
+
+test("progression ต้องเป็นคำนำหน้า ห้ามข้ามตอนกลาง", () => {
+  assert.deepEqual(gates.completedLessonIds(["media-review-publish"]), []);
+  assert.deepEqual(gates.completedLessonIds(["media-brief-evidence", "media-review-publish"]), [
+    "media-brief-evidence",
+  ]);
+  assert.equal(
+    gates.canOpenLesson("media-review-publish", ["media-brief-evidence", "media-review-publish"]),
+    false,
+  );
+  assert.equal(gates.nextLessonId(["media-review-publish"]), "media-brief-evidence");
+  const fresh = gates.migratePiece(null);
+  assert.equal(fresh.v, 2);
+  assert.equal(gates.nextLessonId([], fresh), "media-brief-evidence");
+});

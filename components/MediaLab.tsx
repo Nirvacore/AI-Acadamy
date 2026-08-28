@@ -15,6 +15,7 @@ import {
   canOpenLesson,
   completedLessonIds,
   evidenceBoardOk,
+  mediaProgressIds,
   migratePiece,
   moveStatus,
   nextLessonId,
@@ -132,7 +133,7 @@ export function MediaHub({
     return () => window.removeEventListener(PROGRESS_EVENT, sync);
   }, []);
 
-  const mediaDone = LESSON_IDS.filter((id) => done.includes(id));
+  const mediaDone = mediaProgressIds(done);
   const completed = completedLessonIds(mediaDone, piece);
   const resumeId = nextLessonId(mediaDone, piece);
 
@@ -159,7 +160,7 @@ export function MediaHub({
                   {complete ? "ผ่านในเครื่องนี้" : locked ? "ยังไม่ถึงตอนนี้" : "พร้อมลงมือ"}
                 </p>
                 {locked ? (
-                  <p className="gate">ผ่านตอนก่อนหน้าก่อนจึงเปิดแผ่นงานนี้</p>
+                  <p className="gate">จบตอนก่อนหน้าก่อนจึงเปิดแผ่นงานนี้</p>
                 ) : (
                   <TrackedLink className="btn ghost" href={LESSON_HREF[id]}>
                     {complete ? "ทบทวนตอนนี้" : "เรียนตอนนี้"}
@@ -297,7 +298,7 @@ export function MediaStage({
     return () => window.removeEventListener(PROGRESS_EVENT, sync);
   }, []);
 
-  const mediaDone = done.filter((id) => LESSON_IDS.includes(id));
+  const mediaDone = mediaProgressIds(done);
   const locked = !canOpenLesson(lessonId, mediaDone, piece);
   const items = CHECKLISTS[lessonId] ?? [];
 
@@ -334,8 +335,8 @@ export function MediaStage({
 
   if (locked) {
     return (
-      <p className="gate">
-        ผ่านตอนก่อนหน้าก่อน จึงเปิดแผ่นงานนี้ · <TrackedLink href="/media">กลับฮับ</TrackedLink>
+      <p className="gate" role="status">
+        จบตอนก่อนหน้าก่อน จึงเปิดแผ่นงานนี้ · <TrackedLink href="/media">กลับฮับ</TrackedLink>
       </p>
     );
   }
@@ -473,14 +474,31 @@ export function MediaStage({
               ฉันอ่านร่างด้วยตาตนเอง เธอไม่ได้กดอนุมัติแทน
             </label>
             <div className="actions">
-              <button type="button" className="btn ghost" onClick={sendReview} disabled={!canEnterReview(piece)}>
+              <button
+                type="button"
+                className="btn ghost"
+                aria-disabled={!canEnterReview(piece)}
+                onClick={() => {
+                  if (!canEnterReview(piece)) {
+                    setNotice("ยังส่งตรวจไม่ได้ จบตอน brief และสคริปต์ก่อน");
+                    return;
+                  }
+                  sendReview();
+                }}
+              >
                 ส่งตรวจ
               </button>
               <button
                 type="button"
                 className="btn primary"
-                onClick={approveByHuman}
-                disabled={!(piece.status === "review" && piece.humanReviewed)}
+                aria-disabled={!(piece.status === "review" && piece.humanReviewed)}
+                onClick={() => {
+                  if (!(piece.status === "review" && piece.humanReviewed)) {
+                    setNotice("อนุมัติได้เมื่อสถานะเป็น review คนอ่านเอง และรูบริกครบ");
+                    return;
+                  }
+                  approveByHuman();
+                }}
               >
                 อนุมัติโดยคน
               </button>
@@ -512,7 +530,7 @@ export function MediaStage({
                 {piece.publishResult.published ? " · published" : " · ไม่ได้เผยแพร่"} · {piece.publishResult.message}
               </p>
             ) : null}
-            <label htmlFor="postmortem">Postmortem</label>
+            <label htmlFor="postmortem">บันทึกหลังคิวถูกบล็อก (postmortem)</label>
             <textarea id="postmortem" rows={4} value={piece.postmortem} onChange={(event) => update({ postmortem: event.target.value })} />
           </section>
         </>

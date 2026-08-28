@@ -13,6 +13,7 @@ export type MediaStoryFrame = { beat: string; visual: string; audio: string; not
 export type MediaScripts = { line: string; instagram: string; youtube: string };
 
 export type MediaPiece = {
+  v: number;
   goal: string;
   audience: string;
   brief: string;
@@ -31,6 +32,7 @@ export type MediaPiece = {
   publishResult: MediaPublishResult | null;
   autoPublish?: boolean;
   script?: string;
+  checklist?: string[];
 };
 
 export type MediaPublishResult = {
@@ -50,11 +52,14 @@ export const CHANNELS: string[];
 export const MIN_BRIEF: number;
 export const MIN_EVIDENCE: number;
 export const MIN_SCRIPT: number;
+export const PIECE_VERSION: number;
 export const CHECKLISTS: Record<string, MediaChecklistItem[]>;
 export const RUBRIC: MediaChecklistItem[];
 
 export function emptyPiece(): MediaPiece;
 export function migratePiece(raw: unknown): MediaPiece;
+export function migrateDoneIds(ids: unknown): string[];
+export function mediaProgressIds(ids: unknown): string[];
 export function canTransition(from: MediaStatus, to: MediaStatus): boolean;
 export function briefOk(brief: string): boolean;
 export function evidenceOk(evidence: string): boolean;

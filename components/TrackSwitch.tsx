@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import { TRACK_KEY, PROGRESS_EVENT, readDone, writeDone } from "@/lib/progress";
+import { MEDIA_LAB_KEY, TRACK_KEY, PROGRESS_EVENT, readDone, writeDone } from "@/lib/progress";
+import { canOpenLesson, LESSON_IDS, migratePiece } from "@/lib/media-lab-gates";
 
 export {
   TRACK_KEY,
@@ -74,13 +75,12 @@ export function TrackSwitch() {
   }
 
   return (
-    <div className="track-switch" role="tablist" aria-label="แทร็กบริษัท">
+    <div className="track-switch" role="group" aria-label="แทร็กบริษัท">
       {TRACKS.map((item) => (
         <button
           key={item.id}
           type="button"
-          role="tab"
-          aria-selected={track === item.id}
+          aria-pressed={track === item.id}
           className={track === item.id ? "is-on" : ""}
           onClick={() => select(item.id)}
         >
@@ -89,6 +89,36 @@ export function TrackSwitch() {
       ))}
     </div>
   );
+}
+
+export function MediaLessonMark({ id }: { id: string }) {
+  const [locked, setLocked] = useState(true);
+
+  useEffect(() => {
+    const sync = () => {
+      const done = readDone().filter((item) => LESSON_IDS.includes(item));
+      let piece = migratePiece(null);
+      try {
+        const raw = window.localStorage.getItem(MEDIA_LAB_KEY);
+        piece = migratePiece(raw ? JSON.parse(raw) : null);
+      } catch {
+        piece = migratePiece(null);
+      }
+      setLocked(!canOpenLesson(id, done, piece));
+    };
+    sync();
+    window.addEventListener(PROGRESS_EVENT, sync);
+    return () => window.removeEventListener(PROGRESS_EVENT, sync);
+  }, [id]);
+
+  if (locked) {
+    return (
+      <p className="gate" role="status">
+        จบตอนก่อนหน้าก่อน จึงทำเครื่องหมายว่าเข้าใจบทนี้
+      </p>
+    );
+  }
+  return <ProgressMark id={id} />;
 }
 
 export function ProgressMark({ id }: { id: string }) {

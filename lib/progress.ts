@@ -1,3 +1,5 @@
+import { migratePiece } from "@/lib/media-lab-gates";
+
 export const TRACK_KEY = "ai-acadamy:track";
 export const DONE_KEY = "ai-acadamy:done";
 export const JOURNAL_KEY = "ai-acadamy:journal";
@@ -135,7 +137,7 @@ export function importProgress(dump: ProgressDump) {
   if (typeof dump.seconds === "number") window.localStorage.setItem(SECONDS_KEY, String(dump.seconds));
   if (dump.rubric) writeJson(RUBRIC_KEY, dump.rubric);
   if (dump.nowdo) writeJson(NOWDO_KEY, dump.nowdo);
-  if (dump.mediaLab) writeJson(MEDIA_LAB_KEY, dump.mediaLab);
+  if (dump.mediaLab) writeJson(MEDIA_LAB_KEY, migratePiece(dump.mediaLab));
 }
 
 export function journalFilled(id: string): boolean {

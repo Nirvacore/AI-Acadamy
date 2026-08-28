@@ -9,7 +9,7 @@ import { LessonBeacon } from "@/components/LessonBeacon";
 import { LessonKeys } from "@/components/LessonKeys";
 import { LessonOutline } from "@/components/LessonOutline";
 import { NowDo } from "@/components/NowDo";
-import { ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
+import { MediaLessonMark, ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
 import { lessonMeta } from "@/lib/catalog";
 import { MEDIA_JOURNAL, isMediaLesson, loadMediaCampaign } from "@/lib/media-lab";
 import { sheetForLesson } from "@/lib/nowdo";
@@ -74,7 +74,7 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
             id={lesson.id}
             prompts={MEDIA_JOURNAL[lesson.id] ?? ["วันนี้จิตฉันเร็วหรือนิ่ง", "ขอบของเธอที่ฉันเห็นชัดขึ้น"]}
           />
-          <ProgressMark id={lesson.id} />
+          {isMediaLesson(lesson.id) ? <MediaLessonMark id={lesson.id} /> : <ProgressMark id={lesson.id} />}
           <nav className="pager">
             {prev ? (
               <TrackedLink href={`/learn/${prev.slug}`}>← {prev.title_th}</TrackedLink>

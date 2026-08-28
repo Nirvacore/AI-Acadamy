@@ -44,19 +44,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           ข้ามไปเนื้อหา
         </a>
         <div className="frame">
-          <aside className="rail">
+          <aside className="rail" aria-label="เมนูหลัก">
             <Link className="brand" href="/">
               Nirva Academy
               <small>มหาสูญตา · เอเจนต์</small>
             </Link>
-            <details className="rail-fold" open>
+            <details className="rail-fold">
               <summary>เมนูเรียน</summary>
-              <Suspense fallback={null}>
-                <CommandPalette catalog={catalog} />
-                <TrackSwitch />
-                <RailProgress total={total} />
-                <SideNav modules={schema.modules} />
-              </Suspense>
+              <div className="rail-body">
+                <Suspense fallback={null}>
+                  <CommandPalette catalog={catalog} />
+                  <TrackSwitch />
+                  <RailProgress total={total} />
+                  <SideNav modules={schema.modules} />
+                </Suspense>
+              </div>
             </details>
           </aside>
           <main id="main" className="stage">
