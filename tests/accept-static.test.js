@@ -80,6 +80,17 @@ test("static /: เป็นศูนย์การเรียนรู้ส�
   assert.equal(page.includes("Nirva AI เป็นระบบอีกผลิตภัณฑ์หนึ่ง"), true);
 });
 
+test("static /profile: onboarding เลือกเองและไม่จัดคนตามอายุ", () => {
+  const page = readFile("profile/index.html");
+  const title = pageTitle(page);
+  assert.equal(title.includes("ปรับวิธีเรียน"), true, title);
+  assert.equal(page.includes("เลือกวิธีเรียนของฉัน"), true);
+  assert.equal(page.includes("แบบลองสั้น"), true);
+  assert.equal(page.includes("ไม่ได้วัดอายุ"), true);
+  assert.equal(page.includes("ข้อมูลอยู่ในเบราว์เซอร์นี้"), true);
+  assert.equal(page.includes('href="/start/"') || page.includes('href="/start"'), true);
+});
+
 test("static /learn/how-models-work: บทไทย แล็บภายใน และทางไปแทร็ก OpenAI", () => {
   const page = readFile("learn/how-models-work/index.html");
   const title = pageTitle(page);
