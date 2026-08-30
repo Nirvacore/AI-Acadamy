@@ -119,3 +119,18 @@ test("route ภายในไม่ถูก rewrite ทิ้ง", () => {
   const links = fs.readFileSync(path.join(root, "lib/links.ts"), "utf8");
   assert.equal(links.includes('if (href.startsWith("/")) return href;'), true);
 });
+
+test("Learning Center แยก Media ออกจากเส้นทางเริ่ม และรักษา rail responsive", () => {
+  const home = fs.readFileSync(path.join(root, "components/LearningCenterHome.tsx"), "utf8");
+  const shell = fs.readFileSync(path.join(root, "components/Shell.tsx"), "utf8");
+  const css = fs.readFileSync(path.join(root, "app/globals.css"), "utf8");
+
+  assert.equal(home.includes("Nirva Media เป็นกรณีศึกษา"), true);
+  assert.equal(home.includes("Nirva AI เป็นระบบอีกผลิตภัณฑ์หนึ่ง"), true);
+  assert.equal(home.includes('href="/media"'), true);
+  assert.equal(shell.includes("กรณีศึกษา"), true);
+  assert.equal(shell.includes("ฝึกปฏิบัติ"), true);
+  assert.equal(shell.includes("ความก้าวหน้า"), true);
+  assert.match(css, /@media \(min-width: 981px\)[\s\S]*\.rail-fold > \.rail-body[\s\S]*display: block !important/);
+  assert.match(css, /@media \(max-width: 980px\)[\s\S]*\.rail-fold:not\(\[open\]\) \.rail-body[\s\S]*display: none/);
+});

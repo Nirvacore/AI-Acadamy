@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Dashboard } from "@/components/Dashboard";
 import { WeekPlan } from "@/components/WeekPlan";
-import { HeroStart } from "@/components/HeroStart";
+import { LearningCenterHome } from "@/components/LearningCenterHome";
 import { TrackedLink } from "@/components/TrackSwitch";
 import { courseHours, phaseLabel, portalLessons } from "@/lib/catalog";
 import { loadSchema } from "@/lib/curriculum";
@@ -13,7 +13,7 @@ export default function HomePage() {
 
   return (
     <Suspense fallback={null}>
-      <HeroStart lessons={lessons} />
+      <LearningCenterHome lessons={lessons} />
 
       <details className="more-lms">
         <summary>แผนเรียน ผลการเรียน และรายการบททั้งหมด</summary>

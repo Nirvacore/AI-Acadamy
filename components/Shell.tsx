@@ -16,16 +16,16 @@ export function SideNav({
   return (
     <nav className="side-nav" aria-label="บทเรียน">
       <section>
-        <h2>เริ่มที่นี่</h2>
+        <h2>เริ่มเรียน</h2>
         <ul className="plain">
           <li>
-            <TrackedLink className={current === "start" ? "is-on" : ""} href="/start">
-              ชั่วโมงแรก
+            <TrackedLink className={current === "" ? "is-on" : ""} href="/">
+              ศูนย์การเรียนรู้
             </TrackedLink>
           </li>
           <li>
-            <TrackedLink className={current === "media" ? "is-on" : ""} href="/media">
-              กรณีศึกษาสื่อ
+            <TrackedLink className={current === "start" ? "is-on" : ""} href="/start">
+              ชั่วโมงแรก
             </TrackedLink>
           </li>
           <li>
@@ -55,7 +55,18 @@ export function SideNav({
         </section>
       ))}
       <section>
-        <h2>อื่นๆ</h2>
+        <h2>ฝึกปฏิบัติ</h2>
+        <ul className="plain">
+          <li>
+            <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink>
+          </li>
+          <li>
+            <TrackedLink href="/journal">สมุดสะท้อน</TrackedLink>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>สำรวจความรู้</h2>
         <ul className="plain">
           <li>
             <TrackedLink href="/syllabus">หลักสูตร</TrackedLink>
@@ -64,22 +75,28 @@ export function SideNav({
             <TrackedLink href="/tracks">เทียบแทร็ก</TrackedLink>
           </li>
           <li>
-            <TrackedLink href="/media">กรณีศึกษาสื่อ</TrackedLink>
-          </li>
-          <li>
-            <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink>
-          </li>
-          <li>
-            <TrackedLink href="/journal">สมุดสะท้อน</TrackedLink>
-          </li>
-          <li>
             <TrackedLink href="/glossary">อภิธาน / บัตรคำ</TrackedLink>
           </li>
+        </ul>
+      </section>
+      <section>
+        <h2>ความก้าวหน้า</h2>
+        <ul className="plain">
           <li>
             <TrackedLink href="/progress">ผลการเรียน</TrackedLink>
           </li>
           <li>
             <TrackedLink href="/certificate">เกียรติบัตร</TrackedLink>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>กรณีศึกษา</h2>
+        <ul className="plain">
+          <li>
+            <TrackedLink className={current === "media" ? "is-on" : ""} href="/media">
+              Nirva Media · งานสื่อ
+            </TrackedLink>
           </li>
         </ul>
       </section>

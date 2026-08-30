@@ -59,6 +59,27 @@ test("static /media: กรณีศึกษา แยกชื่อผลิ�
   assert.equal(page.includes("Nirva AI"), true);
 });
 
+test("static /: เป็นศูนย์การเรียนรู้สี่ฮับและเริ่มเรียนภายใน Academy", () => {
+  const page = readFile("index.html");
+  const title = pageTitle(page);
+  assert.equal(title.includes("Nirva Academy"), true, title);
+  for (const label of [
+    "ศูนย์การเรียนรู้",
+    "เส้นทางเรียน",
+    "ฝึกปฏิบัติ",
+    "สำรวจความรู้",
+    "ความก้าวหน้า",
+  ]) {
+    assert.equal(page.includes(label), true, `หน้าแรกไม่มี «${label}»`);
+  }
+  for (const href of ["/start", "/lab/00-mirror-journal", "/syllabus", "/progress"]) {
+    assert.equal(page.includes(`href="${href}/"`) || page.includes(`href="${href}"`), true, href);
+    assert.equal(boundary.isInternalRoute(href), true, href);
+  }
+  assert.equal(page.includes("Nirva Media เป็นกรณีศึกษา"), true);
+  assert.equal(page.includes("Nirva AI เป็นระบบอีกผลิตภัณฑ์หนึ่ง"), true);
+});
+
 test("static /learn/how-models-work: บทไทย แล็บภายใน และทางไปแทร็ก OpenAI", () => {
   const page = readFile("learn/how-models-work/index.html");
   const title = pageTitle(page);
@@ -73,7 +94,7 @@ test("static /learn/how-models-work: บทไทย แล็บภายใน
 test("static chunks: เมนูหาแทร็กได้ details ปิด และลิงก์บริษัทเปิดแท็บใหม่", () => {
   const files = walkExport(path.join(out, "_next/static/chunks"));
   const blob = files.map((item) => item.text).join("\n");
-  assert.equal(blob.includes("เริ่มที่นี่"), true);
+  assert.equal(blob.includes("เริ่มเรียน"), true);
   assert.equal(blob.includes('href:"/tracks/openai"'), true);
   assert.equal(blob.includes("แทร็ก OpenAI"), true);
   assert.equal(blob.includes("เริ่มตอนที่"), true);
