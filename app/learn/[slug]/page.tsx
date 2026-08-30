@@ -1,14 +1,17 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Journal } from "@/components/Journal";
 import { ContentMarkdown } from "@/components/ContentMarkdown";
+import { MediaStage } from "@/components/MediaLab";
 import { AdapterPanel } from "@/components/Shell";
 import { CheckQuiz } from "@/components/CheckQuiz";
 import { LessonBeacon } from "@/components/LessonBeacon";
 import { LessonKeys } from "@/components/LessonKeys";
 import { LessonOutline } from "@/components/LessonOutline";
 import { NowDo } from "@/components/NowDo";
-import { ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
+import { MediaLessonMark, ProgressMark, TrackLabel, TrackedLink } from "@/components/TrackSwitch";
 import { lessonMeta } from "@/lib/catalog";
+import { MEDIA_JOURNAL, isMediaLesson, loadMediaCampaign } from "@/lib/media-lab";
 import { sheetForLesson } from "@/lib/nowdo";
 import { checksFor } from "@/lib/checks";
 import { extractOutline } from "@/lib/outline";
@@ -25,6 +28,12 @@ export function generateStaticParams() {
   return allLessons().map((lesson) => ({ slug: lesson.slug }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const lesson = getLesson(slug);
+  return { title: lesson?.title_th ?? "บทเรียน" };
+}
+
 export default async function LessonPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const lesson = getLesson(slug);
@@ -36,6 +45,7 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
   const items = checksFor(lesson.id);
   const markdown = lessonMarkdown(lesson);
   const outline = extractOutline(markdown);
+  const campaign = isMediaLesson(lesson.id) ? loadMediaCampaign() : undefined;
 
   return (
     <Suspense fallback={null}>
@@ -56,12 +66,15 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
           <NowDo id={lesson.id} sheet={sheetForLesson(lesson.id)} />
           <LessonOutline items={outline} />
           <ContentMarkdown markdown={markdown} />
+          {isMediaLesson(lesson.id) ? (
+            <MediaStage lessonId={lesson.id} tracks={tracks} campaign={campaign} />
+          ) : null}
           <CheckQuiz lessonId={lesson.id} items={items} />
           <Journal
             id={lesson.id}
-            prompts={["วันนี้จิตฉันเร็วหรือนิ่ง", "ขอบของเธอที่ฉันเห็นชัดขึ้น"]}
+            prompts={MEDIA_JOURNAL[lesson.id] ?? ["วันนี้จิตฉันเร็วหรือนิ่ง", "ขอบของเธอที่ฉันเห็นชัดขึ้น"]}
           />
-          <ProgressMark id={lesson.id} />
+          {isMediaLesson(lesson.id) ? <MediaLessonMark id={lesson.id} /> : <ProgressMark id={lesson.id} />}
           <nav className="pager">
             {prev ? (
               <TrackedLink href={`/learn/${prev.slug}`}>← {prev.title_th}</TrackedLink>

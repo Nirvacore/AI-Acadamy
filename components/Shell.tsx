@@ -3,6 +3,7 @@
 import { Suspense } from "react";
 import { usePathname } from "next/navigation";
 import type { CourseModule, LessonRef, Track } from "@/lib/curriculum";
+import { OriginalSources } from "@/components/OriginalSources";
 import { DoneDot, TrackedLink, useTrackId } from "@/components/TrackSwitch";
 
 export function SideNav({
@@ -15,11 +16,26 @@ export function SideNav({
   return (
     <nav className="side-nav" aria-label="บทเรียน">
       <section>
-        <h2>เริ่มที่นี่</h2>
+        <h2>เริ่มเรียน</h2>
         <ul className="plain">
+          <li>
+            <TrackedLink className={current === "" ? "is-on" : ""} href="/">
+              ศูนย์การเรียนรู้
+            </TrackedLink>
+          </li>
           <li>
             <TrackedLink className={current === "start" ? "is-on" : ""} href="/start">
               ชั่วโมงแรก
+            </TrackedLink>
+          </li>
+          <li>
+            <TrackedLink className={current === "profile" ? "is-on" : ""} href="/profile">
+              ปรับวิธีเรียน
+            </TrackedLink>
+          </li>
+          <li>
+            <TrackedLink className={current === "openai" ? "is-on" : ""} href="/tracks/openai">
+              แทร็ก OpenAI
             </TrackedLink>
           </li>
         </ul>
@@ -44,7 +60,18 @@ export function SideNav({
         </section>
       ))}
       <section>
-        <h2>อื่นๆ</h2>
+        <h2>ฝึกปฏิบัติ</h2>
+        <ul className="plain">
+          <li>
+            <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink>
+          </li>
+          <li>
+            <TrackedLink href="/journal">สมุดสะท้อน</TrackedLink>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>สำรวจความรู้</h2>
         <ul className="plain">
           <li>
             <TrackedLink href="/syllabus">หลักสูตร</TrackedLink>
@@ -53,19 +80,28 @@ export function SideNav({
             <TrackedLink href="/tracks">เทียบแทร็ก</TrackedLink>
           </li>
           <li>
-            <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink>
-          </li>
-          <li>
-            <TrackedLink href="/journal">สมุดสะท้อน</TrackedLink>
-          </li>
-          <li>
             <TrackedLink href="/glossary">อภิธาน / บัตรคำ</TrackedLink>
           </li>
+        </ul>
+      </section>
+      <section>
+        <h2>ความก้าวหน้า</h2>
+        <ul className="plain">
           <li>
             <TrackedLink href="/progress">ผลการเรียน</TrackedLink>
           </li>
           <li>
             <TrackedLink href="/certificate">เกียรติบัตร</TrackedLink>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>กรณีศึกษา</h2>
+        <ul className="plain">
+          <li>
+            <TrackedLink className={current === "media" ? "is-on" : ""} href="/media">
+              Nirva Media · งานสื่อ
+            </TrackedLink>
           </li>
         </ul>
       </section>
@@ -110,18 +146,11 @@ function AdapterInner({ tracks, lesson }: { tracks: Track[]; lesson: LessonRef }
           <dd>{concept.labDelta ?? "ใช้โจทย์ร่วมของบทนี้"}</dd>
         </div>
       </dl>
-      <p className="docs">
-        <a href={concept.docsUrl} target="_blank" rel="noreferrer">
-          เอกสาร {track.name}
-        </a>
-      </p>
-      {lesson.lab ? (
-        <p className="docs">
-          <TrackedLink href={`/lab/${lesson.lab.split("/").pop()?.replace(/\.md$/, "")}`}>
-            เปิดแล็บของบทนี้
-          </TrackedLink>
-        </p>
-      ) : null}
+      <OriginalSources
+        track={track}
+        concept={concept}
+        labHref={lesson.lab ? `/lab/${lesson.lab.split("/").pop()?.replace(/\.md$/, "")}` : undefined}
+      />
     </aside>
   );
 }

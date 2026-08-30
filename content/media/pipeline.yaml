@@ -1,0 +1,133 @@
+# Nirva Media applied-learning map
+# Media is work context, not a fifth tool track.
+# Citations are public GitHub paths from Nirvacore/NirvaMedia@codex/nirvamedia-web
+# inspected 2026-08-28. Do not invent repos, routes, secrets, or production systems.
+
+id: nirva-media-lab
+role: applied-learning
+not_a_tool_track: true
+tool_tracks:
+  - cursor
+  - claude
+  - openai
+  - copilot
+
+product:
+  repository: https://github.com/Nirvacore/NirvaMedia
+  default_branch: codex/nirvamedia-web
+  inspected: "2026-08-28"
+
+missing_sources:
+  - id: nirva-ai-live
+    asked: https://github.com/Nirvacore/nirva-AI
+    note: >
+      เอกสาร Media ชี้ไปรีโปนี้และคอมมิต 12b7034 แต่โทเคนนี้ได้ HTTP 404 ทั้ง REST และ GraphQL
+      จึงใช้ได้แค่สแนปช็อตใน NirvaMedia/upstream ห้ามเดาว่ามีบริการคลาวด์ของ nirva-AI ทำงานอยู่
+  - id: storyboard-module
+    asked: สตอรี่บอร์ดเป็นขั้นในไพป์ไลน์
+    note: >
+      พบคำ teaser storyboards ใน mock-data ของ Studio OS เท่านั้น
+      ไม่พบโมดูลสตอรี่บอร์ดที่รันได้ใน app/studio หรือ server/media
+  - id: live-oauth-publish
+    asked: การเผยแพร่จริงและ OAuth
+    note: >
+      docs/NIRVA_MEDIA_PRODUCT_MEMORY.md ระบุชัดว่า live third-party authorization
+      และ publishing ยังไม่ต่อ และ POST /api/publish-jobs ค้างที่ blocked_auth
+  - id: asset-library-search
+    asked: ค้นคลังสินทรัพย์
+    note: upstream/nirva-ai/server/media/library.ts ฟังก์ชัน searchAssets คืนอาร์เรย์ว่าง
+  - id: approval-persistence
+    asked: เวิร์กโฟลว์อนุมัติหลายขั้นที่บันทึกได้
+    note: upstream/nirva-ai/server/media/approval.ts เป็นสตับ คืน success โดยไม่บันทึกฐานข้อมูล
+
+reuse:
+  - id: brief
+    title_th: Brief
+    academy_action: เขียนเป้าหมายชิ้นงาน กลุ่มผู้ชม โทน และสิ่งห้าม
+    files:
+      - NirvaMedia/db/schema.ts — campaigns.brief
+      - NirvaMedia/app/studio/page.tsx — แผง 01 Campaign brief
+      - NirvaMedia/app/api/campaigns/route.ts — POST บังคับ brief
+      - NirvaMedia/upstream/nirva-ai/shared/media.ts — BrandBrief
+      - NirvaMedia/upstream/nirva-ai-complete/docs/NMD_MEDIA_ARCHITECTURE.md — GET/PUT /api/v1/media/brief
+  - id: research
+    title_th: วิจัยและหลักฐาน
+    academy_action: >
+      วางพาธหรือคำที่เปิดตามได้ก่อนเชื่อเธอ ขั้นนี้สอนท่างานวิจัย
+      เพราะ strategy.ts ในต้นทางให้โมเดล research in your head ซึ่งคอร์สนี้ห้าม
+    files:
+      - NirvaMedia/upstream/nirva-ai/server/media/strategy.ts — เป้า → Big Idea + insight → drafts
+      - NirvaMedia/upstream/nirva-ai-complete/docs/NMD_MEDIA_ARCHITECTURE.md — POST /api/v1/media/campaign
+  - id: script
+    title_th: สคริปต์และสตอรี่บอร์ด
+    academy_action: เขียนตะขอ สามจังหวะ และช่องทางก่อนสั่งสร้างสินทรัพย์
+    files:
+      - NirvaMedia/upstream/nirva-ai/shared/media.ts — ContentType รวม script
+      - NirvaMedia/app/api/campaigns/route.ts — แม่แบบ TikTok เตรียมสคริปต์ / YouTube video outline
+      - NirvaMedia/upstream/nirva-ai/apps/nirva-studio-os/src/lib/mock-data/index.ts — คำ storyboards ใน mock เท่านั้น
+  - id: assets
+    title_th: สร้างสินทรัพย์
+    academy_action: สร้างร่างในเบราว์เซอร์นี้ ไม่เรียก API ภาพหรือพับลิชของ Media
+    files:
+      - NirvaMedia/app/api/campaigns/route.ts — สร้าง campaign_posts สถานะ draft
+      - NirvaMedia/lib/upstream-media-adapter.ts — adaptActiveChannelText
+      - NirvaMedia/upstream/nirva-ai/server/media/images.ts — NMD-1200 image providers รวมโหมดเดโม
+      - NirvaMedia/upstream/nirva-ai/server/media/library.ts — โครงคลังสินทรัพย์
+  - id: review
+    title_th: คนตรวจ
+    academy_action: ส่งตรวจแล้วติ๊กว่ารีวิวด้วยตาตนเอง ก่อนอนุมัติ
+    files:
+      - NirvaMedia/upstream/nirva-ai/shared/media.ts — STATUS_FLOW draft → review → approved
+      - NirvaMedia/app/studio/page.tsx — ปุ่มส่งตรวจ / อนุมัติ
+      - NirvaMedia/app/api/posts/[id]/route.ts — PATCH ใช้ canMoveContentStatus ถ้าข้ามขั้นได้ 409
+      - NirvaMedia/lib/upstream-media-adapter.ts — canMoveContentStatus
+      - NirvaMedia/upstream/nirva-ai-complete/docs/NMD_MEDIA_ARCHITECTURE.md — ห้าม publish โดยไม่ผ่าน review
+  - id: publish_qa
+    title_th: ขอเผยแพร่และ QA
+    academy_action: >
+      ขอคิวจำลองหลังคนอนุมัติ ผลคือ blocked_auth ห้ามเลื่อนเป็น published
+      และห้ามให้เธอกดแทน
+    files:
+      - NirvaMedia/db/schema.ts — publishJobs สถานะ queued | blocked_auth | published | failed
+      - NirvaMedia/app/api/publish-jobs/route.ts — ไม่มีบัญชี connected → blocked_auth
+      - NirvaMedia/docs/NIRVA_MEDIA_PRODUCT_MEMORY.md — live OAuth/publish ยังไม่ต่อ
+      - NirvaMedia/app/page.tsx — เวิร์กโฟลว์ 01 รับไอเดีย → 04 เผยแพร่และเรียนรู้
+
+status_flow:
+  draft: [review, archived]
+  review: [approved, draft, archived]
+  approved: [scheduled, published, archived]
+  scheduled: [published, approved, scheduled, archived]
+  published: [archived]
+  archived: []
+
+academy_rules:
+  - Media ไม่ใช่แทร็กบริษัทตัวที่ห้า
+  - เลือกเครื่องมือด้วยตัวสลับ Cursor / Claude / OpenAI / Copilot ชุดเดิม
+  - แล็บสแตติกใช้ localStorage อย่างเดียว ไม่ยิง Studio จริง ไม่เก็บซีเคร็ต
+  - เธอห้ามเผยแพร่อัตโนมัติ แม้ STATUS_FLOW ของต้นทางจะอนุญาต approved → published
+
+academy_lessons:
+  - id: media-brief-evidence
+    maps: [brief, research]
+    title_th: Brief และกระดานหลักฐาน
+  - id: media-script-storyboard
+    maps: [script, assets]
+    title_th: สคริปต์และสตอรี่บอร์ด
+  - id: media-review-publish
+    maps: [review, publish_qa]
+    title_th: คนตรวจและคิวถูกบล็อก
+
+academy_authored:
+  - id: evidence-board
+    note: กระดานแยก fact/assumption เป็นแบบฝึกของ Academy ไม่พบโมดูลนี้ใน Studio runtime
+  - id: storyboard-worksheet
+    note: >
+      แบบฝึกสตอรี่บอร์ดสามจังหวะของ Academy
+      ของจริงใน NirvaMedia มีเพียงคำ teaser storyboards ใน mock-data ไม่ใช่ฟีเจอร์ที่รันได้
+  - id: publish-simulation
+    note: คิว blocked_auth ในแล็บนี้จำลองกฎจาก publish-jobs ไม่ยิง OAuth
+  - id: synthetic-campaign
+    file: content/media/campaign-lan-nangsue.yaml
+    note: แคมเปญสมมติ ห้ามใช้เป็นข้อมูลลูกค้าจริง
+

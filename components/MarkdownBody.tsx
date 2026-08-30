@@ -31,7 +31,7 @@ function MarkdownLinks({ markdown, stems }: { markdown: string; stems: LessonSte
             const external = next.startsWith("http");
             if (external) {
               return (
-                <a href={next} target="_blank" rel="noreferrer">
+                <a href={next} target="_blank" rel="noopener noreferrer">
                   {children}
                 </a>
               );
@@ -50,9 +50,23 @@ function MarkdownLinks({ markdown, stems }: { markdown: string; stems: LessonSte
 }
 
 export function MarkdownBody({ markdown, stems }: { markdown: string; stems: LessonStem[] }) {
+  const split = markdown.search(/\n## (อ่านต้นฉบับ|อ่านคู่กัน)\s*\n/);
+  const body = split >= 0 ? markdown.slice(0, split) : markdown;
+  const extra = split >= 0 ? markdown.slice(split).replace(/^## [^\n]+\n/, "").trim() : "";
+
   return (
     <Suspense fallback={<div className="prose" />}>
-      <MarkdownLinks markdown={markdown} stems={stems} />
+      <MarkdownLinks markdown={body} stems={stems} />
+      {extra ? (
+        <details className="source-fold">
+          <summary>อ่านเพิ่ม (ไม่จำเป็นต่อการจบบท)</summary>
+          <p>
+            ส่วนท้ายบทมีทั้งลิงก์ใน Nirva Academy และต้นฉบับอังกฤษของบริษัทอื่น ไม่ต้องอ่านเพื่อจบบท
+            ต้นฉบับอังกฤษเปิดแท็บใหม่
+          </p>
+          <MarkdownLinks markdown={extra} stems={stems} />
+        </details>
+      ) : null}
     </Suspense>
   );
 }

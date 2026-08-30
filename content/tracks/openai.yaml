@@ -4,8 +4,10 @@ vendor: OpenAI
 status: usable
 official_learn: https://academy.openai.com
 official_docs: https://platform.openai.com/docs
+internal_path: /tracks/openai
 notes: >
-  โครงแมปสำหรับเฟส 2 เน้น ChatGPT และเอเจนต์ในงานทั่วไป
+  เรียนจบแทร็กนี้ใน Nirva Academy เป็นภาษาไทย ไม่ต้องสมัคร academy.openai.com
+  official_learn เป็นหลักสูตรอังกฤษของบริษัท ไม่ใช่เอกสารของคอร์สนี้
   แล็บเขียนโค้ดใช้เมื่อมีสภาพแวดล้อมที่รันคำสั่งได้จริง
 
 harness:
@@ -29,7 +31,7 @@ concepts:
   - conceptId: core-02
     uiLabel: คำตอบและแหล่งที่อ้างใน ChatGPT
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: สั่งให้อ้างไฟล์หรือแหล่ง แล้วตรวจว่าเปิดตามได้จริง
 
   - conceptId: core-03
@@ -41,7 +43,7 @@ concepts:
   - conceptId: core-04
     uiLabel: ไฟล์ที่อัปโหลด / บริบทในเธรด
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: ส่งเฉพาะหน้าที่เกี่ยวกับงาน ไม่วางทั้งเอกสารถ้าไม่จำเป็น
 
   - conceptId: core-05
@@ -53,37 +55,37 @@ concepts:
   - conceptId: core-06
     uiLabel: ChatGPT agent / งานหลายขั้นตอน
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: มอบหมายงานเล็กหนึ่งชิ้น กำหนดผลลัพธ์ที่ตรวจได้ แล้วตรวจเอง
 
   - conceptId: lab-01
     uiLabel: ChatGPT หรือ Codex / Agent
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: วาง README ของ shop/ แล้วสั่งให้อ่านอย่างเดียว ห้ามให้เขียนแพตช์ในรอบแรก
 
   - conceptId: lab-02
     uiLabel: อัปโหลดโค้ดเบสหรือชี้ไฟล์ในเธรด
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: แนบ price.js ให้ชี้บรรทัดเงื่อนไขจำนวนชิ้น ห้ามเดาชื่อฟังก์ชัน
 
   - conceptId: lab-03
     uiLabel: วางแผนก่อนให้ลงมือแก้
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: ขอแผนเป็นข้อๆ อนุมัติก่อนจึงให้เขียนโค้ดใหม่ทั้งฟังก์ชัน
 
   - conceptId: lab-04
     uiLabel: ดีบักด้วยล็อกที่วางในแชท
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: วางผล npm run test:shop ให้ตั้งสมมติฐานจากชื่อเคสที่ล้มก่อนแก้
 
   - conceptId: lab-05
     uiLabel: ให้ช่วยรีวิว แต่คนเป็นคนรวม
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: วางดิฟให้ชี้ของแถม แต่คนเป็นคนตัดสินยอมรับ
 
   - conceptId: lab-06
@@ -95,5 +97,23 @@ concepts:
   - conceptId: lab-07
     uiLabel: โปรเจกต์จบบนแทร็ก OpenAI
     shortcut: null
-    docsUrl: https://academy.openai.com
+    docsUrl: https://platform.openai.com/docs
     labDelta: ทำวงจรทั้งหกขั้นบน shop/ แล้วรันเทสในเครื่องตนเองจนผ่าน
+
+  - conceptId: media-brief-evidence
+    uiLabel: ChatGPT
+    shortcut: null
+    docsUrl: https://platform.openai.com/docs
+    labDelta: วาง brief ที่คุณเขียนแล้วขอให้แยกข้อเท็จจริงกับสมมติฐาน คุณเป็นคนย้ายลงกระดาน
+
+  - conceptId: media-script-storyboard
+    uiLabel: Canvas หรือแชท
+    shortcut: null
+    docsUrl: https://platform.openai.com/docs
+    labDelta: ขอสามเวอร์ชันสั้นจาก brief เดิม แล้วคุณวางลง LINE Instagram YouTube เอง ห้ามให้เธอโพสต์
+
+  - conceptId: media-review-publish
+    uiLabel: ให้ช่วยรีวิว แต่คนเป็นคนอนุมัติ
+    shortcut: null
+    docsUrl: https://platform.openai.com/docs
+    labDelta: วางร่างกับรูบริก แล้วขอคำถามก่อนอนุมัติ คุณตอบเอง ห้ามให้เธอเลื่อนสถานะ published

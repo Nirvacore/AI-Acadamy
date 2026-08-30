@@ -2,7 +2,7 @@
 
 เรียนแนวคิดเอเจนต์จากแหล่งต้นฉบับ แล้วเห็นตนเองผ่านกระจกมหาสูญตา
 
-คอร์สนี้เขียนขึ้นใหม่เป็นไทย อิงโครง [Cursor Learn](https://cursor.com/learn) แต่**ไม่คัดลอก**บทอังกฤษมาพากย์ แต่ละบทมีเนื้อหาเทคนิค ชั้นกระจก แล็บที่ตรวจได้ และลิงก์ไปหน้าทางการ
+คอร์สนี้เขียนขึ้นใหม่เป็นไทย อิงโครงแนวคิดของเครื่องมือเอเจนต์ แต่**ไม่คัดลอก**บทอังกฤษมาพากย์ แต่ละบทมีเนื้อหาเทคนิค ชั้นกระจก แล็บที่ตรวจได้ และต้นฉบับอังกฤษเป็นส่วนอ่านเพิ่มที่ไม่จำเป็นต่อการจบ
 
 แทร็กแรกคือ Cursor แนวคิดเดียวกันสลับไป Claude, OpenAI หรือ GitHub Copilot ได้จากปุ่มบนเว็บ โดยไม่ต้องเรียนพื้นฐานใหม่
 
@@ -48,7 +48,8 @@ npm start
 - อภิธานศัพท์มีบัตรคำแบบ Leitner · หลักสูตร `/syllabus` ผลการเรียน `/progress` เกียรติบัตร `/certificate`
 - ส่งออก JSON จากสมุดสะท้อนหรือหน้าหลักสูตร เพื่อย้ายเครื่อง
 - ติดตั้งเป็นแอปจากเบราว์เซอร์ได้ (PWA)
-- เลือกแทร็ก Cursor / Claude / OpenAI / Copilot ด้านซ้าย หรือเทียบทั้งชุดที่ `/tracks`
+- เลือกแทร็ก Cursor / Claude / OpenAI / Copilot ด้านซ้าย หรือเทียบทั้งชุดที่ `/tracks` — แทร็ก OpenAI เรียนจบเป็นไทยที่ `/tracks/openai`
+- กรณีศึกษาสื่ออยู่ที่ `/media` — ใช้ผลิตภัณฑ์ Nirva Media เป็นกรณี ไม่ใช่โมดูลใน Academy เธอห้ามเผยแพร่แทน
 - เขียนสมุดสะท้อนท้ายบท แล้วดูรวมที่ `/journal` — ห้ามให้เธอเขียนแทน
 - ร้านค้าตัวอย่างอยู่ที่ `/shop` กดรันเทสในหน้าเว็บได้เลย
 - `npm run test:shop` แดงตั้งใจจนกว่าจะแก้ `shop/price.js`
@@ -65,20 +66,21 @@ npm run test:shop
 2. อ่านบทเทคนิคใน `content/core/` รวมหัวข้อกระจกของบทนั้น
 3. เปิดแทร็กเครื่องมือใน `content/tracks/` แล้วหาปุ่มตาม `conceptId`
 4. ทำแล็บใน `content/labs/` จนผ่านเกณฑ์ และตอบคำถามสะท้อนด้วยมือตนเอง
-5. อ่านหน้าอังกฤษที่ท้ายบท เพื่อเทียบคำศัพท์บนจอจริง
+5. ต้นฉบับอังกฤษอยู่ส่วนอ่านเพิ่ม ไม่จำเป็นต่อการจบบท
 6. ถ้าจะอัดคลิป ใช้สคริปต์ใน `content/scripts/th/`
 
 เวลาต่อบทประมาณหนึ่งแล็บ บวกคลิปแปดถึงสิบสองนาทีเมื่อมีวิดีโอ
 
 ## สลับแทร็กบริษัท
 
-ชั้นเรียนมีสามชั้น
+ชั้นเรียนมีสี่ชั้น
 
 | ชั้น | ของใคร | เปลี่ยนเมื่อไหร่ |
 | --- | --- | --- |
 | Core | ทุกคน | ไม่เปลี่ยนตามบริษัท |
 | Adapter | ไฟล์ใน `content/tracks/` | เมื่อสลับเครื่องมือ |
 | Lab | โจทย์ร่วม | เปลี่ยนเฉพาะขั้นตอนใน `labDelta` |
+| Applied | กรณีศึกษาสื่อ | ใช้ Nirva Media เป็นกรณีของผลิตภัณฑ์อีกตัว ไม่ใช่โมดูลใน Academy |
 
 วิธีสลับ:
 
@@ -89,11 +91,11 @@ npm run test:shop
 
 แทร็ก Cursor ครบ แทร็ก Claude / OpenAI / Copilot มีขั้นตอนแล็บให้สลับใช้ได้จากเว็บ
 
-| แทร็ก | ไฟล์ | แหล่งทางการ |
+| แทร็ก | ไฟล์ | ต้นฉบับอังกฤษของบริษัท (ไม่จำเป็นต่อการจบ ไม่ใช่เอกสารของคอร์สนี้) |
 | --- | --- | --- |
 | Cursor | [content/tracks/cursor.yaml](content/tracks/cursor.yaml) | [cursor.com/learn](https://cursor.com/learn) |
 | Claude | [content/tracks/claude.yaml](content/tracks/claude.yaml) | [academy.claude.com](https://academy.claude.com) |
-| OpenAI | [content/tracks/openai.yaml](content/tracks/openai.yaml) | [academy.openai.com](https://academy.openai.com) |
+| OpenAI | [content/tracks/openai.yaml](content/tracks/openai.yaml) · เส้นทางไทย [/tracks/openai](/tracks/openai) | [academy.openai.com](https://academy.openai.com) |
 | Copilot | [content/tracks/copilot.yaml](content/tracks/copilot.yaml) | [Microsoft Learn Copilot](https://learn.microsoft.com/training/paths/copilot) |
 
 ## แทร็ก A — พื้นฐาน AI
@@ -126,6 +128,45 @@ npm run test:shop
 
 สคริปต์วิดีโอมีทั้งแทร็ก A และแทร็ก B ไฟล์วิดีโอจริงยังไม่เก็บในรีโป
 
+## กรณีศึกษาสื่อ — ผลิตภัณฑ์ Nirva Media คนละตัว
+
+ไม่ใช่โมดูลใน Nirva Academy และไม่ใช่แทร็กบริษัทตัวที่ห้า แทร็กยังเป็น Cursor / Claude / OpenAI / Copilot
+Nirva AI เป็นระบบต้นทางอีกตัวที่อ้างจากสแนปช็อต ห้ามจำลองว่าระบบนั้นทำงานในเว็บนี้
+
+เปิด [/media](/media) แล้วเรียนสามตอนต่อกัน ความคืบหน้าอยู่ที่เบราว์เซอร์นี้เท่านั้น
+
+| ตอน | บท | แล็บ | สคริปต์ |
+| --- | --- | --- | --- |
+| ๑ Brief และกระดานหลักฐาน | [media-brief-evidence](content/core/media-brief-evidence.md) | [แล็บ](content/labs/media-brief-evidence.md) | [สคริปต์](content/scripts/th/media-brief-evidence.md) |
+| ๒ สคริปต์และสตอรี่บอร์ด | [media-script-storyboard](content/core/media-script-storyboard.md) | [แล็บ](content/labs/media-script-storyboard.md) | [สคริปต์](content/scripts/th/media-script-storyboard.md) |
+| ๓ คนตรวจและคิวถูกบล็อก | [media-review-publish](content/core/media-review-publish.md) | [แล็บ](content/labs/media-review-publish.md) | [สคริปต์](content/scripts/th/media-review-publish.md) |
+
+แคมเปญตัวอย่างสังเคราะห์: [content/media/campaign-lan-nangsue.yaml](content/media/campaign-lan-nangsue.yaml) — ห้ามใช้เป็นข้อมูลลูกค้าจริง
+
+แผนที่ไฟล์ที่ reuse จาก [NirvaMedia](https://github.com/Nirvacore/NirvaMedia) สาขา `codex/nirvamedia-web` (ตรวจ 2026-08-28) อยู่ที่ [content/media/pipeline.yaml](content/media/pipeline.yaml)
+
+| ขั้น | แหล่งจริง | บท |
+| --- | --- | --- |
+| Brief | `db/schema.ts` (`campaigns.brief`), `app/studio/page.tsx` ขั้น 01, `POST /api/campaigns` | ตอนที่ ๑ |
+| วิจัย | `upstream/nirva-ai/server/media/strategy.ts` — คอร์สนี้บังคับเปิดพาธ เพราะต้นทางยังให้ research in your head | ตอนที่ ๑ |
+| สคริปต์ | `shared/media.ts` มี `ContentType` รวม `script`; แม่แบบ TikTok/YouTube ใน `app/api/campaigns/route.ts` | ตอนที่ ๒ |
+| สินทรัพย์ | `campaign_posts` สถานะ `draft`; `lib/upstream-media-adapter.ts` | ตอนที่ ๒ |
+| คนตรวจ | `STATUS_FLOW` ใน `shared/media.ts`; PATCH ข้ามขั้นได้ 409 | ตอนที่ ๓ |
+| ขอเผยแพร่ | `POST /api/publish-jobs` ค้าง `blocked_auth` ถ้าบัญชียังไม่ `connected` | ตอนที่ ๓ |
+
+แบบฝึกที่ Academy เขียนเอง เพราะไม่พบโมดูล runtime:
+
+- กระดานหลักฐานแยกข้อเท็จจริง/สมมติฐาน
+- สตอรี่บอร์ดสามจังหวะ — ใน NirvaMedia พบแค่คำ teaser storyboards ใน mock-data
+- คิว `blocked_auth` ในเบราว์เซอร์นี้ (ไม่ยิง OAuth)
+- แคมเปญลานหนังสือวัดเหนือสังเคราะห์
+
+ของที่ยังไม่พบแหล่ง: `Nirvacore/nirva-AI` ได้ 404, โมดูลสตอรี่บอร์ดที่รันได้, live OAuth/publish, `searchAssets()` คืนอาร์เรย์ว่าง, `approval.ts` เป็นสตับ
+
+```bash
+npm run test:media-lab
+```
+
 ## โครงสร้าง
 
 ```text
@@ -137,6 +178,7 @@ content/
   labs/                 # โจทย์ร่วม เฉลย และคำถามสะท้อน
   scripts/th/           # สคริปต์วิดีโอภาษาพูดไทย
   tracks/               # อะแดปเตอร์แต่ละบริษัท
+  media/                # แผนที่ไพป์ไลน์ แบบฝึก Academy และแคมเปญสังเคราะห์
 shop/                   # ร้านค้าตัวอย่าง มีบั๊กตั้งใจ
 ```
 

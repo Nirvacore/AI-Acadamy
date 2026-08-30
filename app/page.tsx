@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import { Dashboard } from "@/components/Dashboard";
 import { WeekPlan } from "@/components/WeekPlan";
-import { HeroStart } from "@/components/HeroStart";
+import { LearningCenterHome } from "@/components/LearningCenterHome";
 import { TrackedLink } from "@/components/TrackSwitch";
-import { courseHours, portalLessons } from "@/lib/catalog";
+import { courseHours, phaseLabel, portalLessons } from "@/lib/catalog";
 import { loadSchema } from "@/lib/curriculum";
 
 export default function HomePage() {
@@ -13,7 +13,7 @@ export default function HomePage() {
 
   return (
     <Suspense fallback={null}>
-      <HeroStart lessons={lessons} />
+      <LearningCenterHome lessons={lessons} />
 
       <details className="more-lms">
         <summary>แผนเรียน ผลการเรียน และรายการบททั้งหมด</summary>
@@ -22,7 +22,7 @@ export default function HomePage() {
         <div className="modules">
           {schema.modules.map((module) => (
             <article className="card" key={module.id}>
-              <p className="eyebrow">{module.phase === 1 ? "แทร็ก A · พื้นฐาน" : "แทร็ก B · เขียนโค้ด"}</p>
+              <p className="eyebrow">{phaseLabel(module.phase)}</p>
               <h2>{module.name}</h2>
               <ol>
                 {module.lessons.map((lesson) => (
@@ -40,6 +40,9 @@ export default function HomePage() {
             <div className="actions">
               <TrackedLink className="btn primary" href="/tracks">
                 เทียบแทร็กบริษัท
+              </TrackedLink>
+              <TrackedLink className="btn ghost" href="/media">
+                กรณีศึกษาสื่อ
               </TrackedLink>
               <TrackedLink className="btn ghost" href="/shop">
                 ร้านค้าตัวอย่าง
