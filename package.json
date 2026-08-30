@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "serve out -n -l tcp://0.0.0.0:3000",
     "test:shop": "node --test shop/price.test.js",
-    "test:media-lab": "node --test tests/media-lab.test.js tests/product-boundary.test.js tests/accept-static.test.js tests/openai-path-session.test.js",
+    "test:media-lab": "node --test tests/media-lab.test.js tests/product-boundary.test.js tests/accept-static.test.js tests/openai-path-session.test.js tests/learner-profile.test.js",
     "test": "npm run test:media-lab"
   },
   "dependencies": {
