@@ -80,6 +80,9 @@ export function LearningCenterHome({ lessons }: { lessons: PortalLesson[] }) {
           <TrackedLink className="btn primary" href={continueHref}>
             {continueLabel}
           </TrackedLink>
+          <TrackedLink className="profile-link" href="/profile">
+            ปรับวิธีเรียนของฉัน
+          </TrackedLink>
           <small>ความก้าวหน้าอยู่ในเบราว์เซอร์นี้ และยังไม่ถูกส่งไปให้ AI</small>
         </aside>
       </header>

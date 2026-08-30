@@ -286,6 +286,12 @@ body.is-focus .frame {
   text-align: center;
 }
 
+.next-step .profile-link {
+  justify-self: center;
+  color: var(--paper-2);
+  font-size: 0.88rem;
+}
+
 .learning-hubs {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

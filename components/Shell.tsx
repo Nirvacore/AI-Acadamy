@@ -29,6 +29,11 @@ export function SideNav({
             </TrackedLink>
           </li>
           <li>
+            <TrackedLink className={current === "profile" ? "is-on" : ""} href="/profile">
+              ปรับวิธีเรียน
+            </TrackedLink>
+          </li>
+          <li>
             <TrackedLink className={current === "openai" ? "is-on" : ""} href="/tracks/openai">
               แทร็ก OpenAI
             </TrackedLink>

@@ -92,6 +92,7 @@ export function buildCatalog(): CatalogItem[] {
   const pages: CatalogItem[] = [
     { id: "home", kind: "page", title: "หน้าแรก · เริ่มเรียน", href: "/", hint: "ปุ่มเริ่มและลำดับบท" },
     { id: "start", kind: "page", title: "ชั่วโมงแรก", href: "/start", hint: "นั่งสิบห้านาที ล็อกว่าเธอคือเอเจนต์" },
+    { id: "profile", kind: "page", title: "ปรับวิธีเรียน", href: "/profile", hint: "เลือกจังหวะและระดับตัวช่วย แล้วทำแบบลองสั้นในเครื่องนี้" },
     { id: "syllabus", kind: "page", title: "หลักสูตร", href: "/syllabus", hint: "ผลลัพธ์ ชั่วโมง เกณฑ์ประเมิน" },
     { id: "tracks", kind: "page", title: "เทียบแทร็กบริษัท", href: "/tracks", hint: "Cursor Claude OpenAI Copilot" },
     { id: "openai-path", kind: "page", title: "แทร็ก OpenAI ใน Nirva Academy", href: "/tracks/openai", hint: "นั่ง ๑๐–๑๕ นาที เปิด ChatGPT จดหลักฐาน แล้วจบในเว็บนี้" },

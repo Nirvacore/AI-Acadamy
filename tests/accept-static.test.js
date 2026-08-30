@@ -72,7 +72,7 @@ test("static /: เป็นศูนย์การเรียนรู้ส�
   ]) {
     assert.equal(page.includes(label), true, `หน้าแรกไม่มี «${label}»`);
   }
-  for (const href of ["/start", "/lab/00-mirror-journal", "/syllabus", "/progress"]) {
+  for (const href of ["/start", "/profile", "/lab/00-mirror-journal", "/syllabus", "/progress"]) {
     assert.equal(page.includes(`href="${href}/"`) || page.includes(`href="${href}"`), true, href);
     assert.equal(boundary.isInternalRoute(href), true, href);
   }
@@ -107,6 +107,8 @@ test("static chunks: เมนูหาแทร็กได้ details ปิ�
   const blob = files.map((item) => item.text).join("\n");
   assert.equal(blob.includes("เริ่มเรียน"), true);
   assert.equal(blob.includes('href:"/tracks/openai"'), true);
+  assert.equal(blob.includes('href:"/profile"'), true);
+  assert.equal(blob.includes("ปรับวิธีเรียน"), true);
   assert.equal(blob.includes("แทร็ก OpenAI"), true);
   assert.equal(blob.includes("เริ่มตอนที่"), true);
   assert.equal(blob.includes("source-fold"), true);
