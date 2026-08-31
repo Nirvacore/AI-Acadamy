@@ -96,3 +96,21 @@ concepts:
     shortcut: null
     docsUrl: https://learn.microsoft.com/training/paths/copilot
     labDelta: ทำวงจรทั้งหกขั้นบน shop/ จน npm run test:shop ผ่าน
+
+  - conceptId: media-brief-evidence
+    uiLabel: "Copilot Chat / #file"
+    shortcut: "#"
+    docsUrl: https://docs.github.com/en/copilot
+    labDelta: อ้างเฉพาะไฟล์ที่คุณเปิดเอง แล้วให้ชี้จุดที่บังคับ brief ห้ามให้ตั้งเป้าแทน
+
+  - conceptId: media-script-storyboard
+    uiLabel: Copilot Chat
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot
+    labDelta: ขอโครงคำจาก brief ที่ล็อกแล้ว ห้าม Apply ลงรีโป ให้นำประโยคที่คุณยอมรับไปวางในแบบฝึก
+
+  - conceptId: media-review-publish
+    uiLabel: Copilot code review
+    shortcut: null
+    docsUrl: https://docs.github.com/en/copilot/using-github-copilot/code-review
+    labDelta: ใช้รีวิวเป็นตัวช่วยหลังอ่านร่างเอง แล้วคุณอนุมัติในแผ่นงาน ห้ามให้เธอเผยแพร่

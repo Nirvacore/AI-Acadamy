@@ -49,6 +49,7 @@ npm start
 - ส่งออก JSON จากสมุดสะท้อนหรือหน้าหลักสูตร เพื่อย้ายเครื่อง
 - ติดตั้งเป็นแอปจากเบราว์เซอร์ได้ (PWA)
 - เลือกแทร็ก Cursor / Claude / OpenAI / Copilot ด้านซ้าย หรือเทียบทั้งชุดที่ `/tracks`
+- แล็บประยุกต์ Nirva Media อยู่ที่ `/media` — สามตอนในบริบทงานสื่อ เธอห้ามเผยแพร่แทน
 - เขียนสมุดสะท้อนท้ายบท แล้วดูรวมที่ `/journal` — ห้ามให้เธอเขียนแทน
 - ร้านค้าตัวอย่างอยู่ที่ `/shop` กดรันเทสในหน้าเว็บได้เลย
 - `npm run test:shop` แดงตั้งใจจนกว่าจะแก้ `shop/price.js`
@@ -72,13 +73,14 @@ npm run test:shop
 
 ## สลับแทร็กบริษัท
 
-ชั้นเรียนมีสามชั้น
+ชั้นเรียนมีสี่ชั้น
 
 | ชั้น | ของใคร | เปลี่ยนเมื่อไหร่ |
 | --- | --- | --- |
 | Core | ทุกคน | ไม่เปลี่ยนตามบริษัท |
 | Adapter | ไฟล์ใน `content/tracks/` | เมื่อสลับเครื่องมือ |
 | Lab | โจทย์ร่วม | เปลี่ยนเฉพาะขั้นตอนใน `labDelta` |
+| Applied | Nirva Media Lab | บริบทงานสื่อ ใช้ได้ทุกแทร็ก ไม่ใช่บริษัทตัวที่ห้า |
 
 วิธีสลับ:
 
@@ -126,6 +128,44 @@ npm run test:shop
 
 สคริปต์วิดีโอมีทั้งแทร็ก A และแทร็ก B ไฟล์วิดีโอจริงยังไม่เก็บในรีโป
 
+## Nirva Media Lab — แล็บประยุกต์
+
+ไม่ใช่แทร็กบริษัทตัวที่ห้า แทร็กยังเป็น Cursor / Claude / OpenAI / Copilot
+
+เปิด [/media](/media) แล้วเรียนสามตอนต่อกัน ความคืบหน้าอยู่ที่เบราว์เซอร์นี้เท่านั้น
+
+| ตอน | บท | แล็บ | สคริปต์ |
+| --- | --- | --- | --- |
+| ๑ Brief และกระดานหลักฐาน | [media-brief-evidence](content/core/media-brief-evidence.md) | [แล็บ](content/labs/media-brief-evidence.md) | [สคริปต์](content/scripts/th/media-brief-evidence.md) |
+| ๒ สคริปต์และสตอรี่บอร์ด | [media-script-storyboard](content/core/media-script-storyboard.md) | [แล็บ](content/labs/media-script-storyboard.md) | [สคริปต์](content/scripts/th/media-script-storyboard.md) |
+| ๓ คนตรวจและคิวถูกบล็อก | [media-review-publish](content/core/media-review-publish.md) | [แล็บ](content/labs/media-review-publish.md) | [สคริปต์](content/scripts/th/media-review-publish.md) |
+
+แคมเปญตัวอย่างสังเคราะห์: [content/media/campaign-lan-nangsue.yaml](content/media/campaign-lan-nangsue.yaml) — ห้ามใช้เป็นข้อมูลลูกค้าจริง
+
+แผนที่ไฟล์ที่ reuse จาก [NirvaMedia](https://github.com/Nirvacore/NirvaMedia) สาขา `codex/nirvamedia-web` (ตรวจ 2026-08-28) อยู่ที่ [content/media/pipeline.yaml](content/media/pipeline.yaml)
+
+| ขั้น | แหล่งจริง | บท |
+| --- | --- | --- |
+| Brief | `db/schema.ts` (`campaigns.brief`), `app/studio/page.tsx` ขั้น 01, `POST /api/campaigns` | ตอนที่ ๑ |
+| วิจัย | `upstream/nirva-ai/server/media/strategy.ts` — คอร์สนี้บังคับเปิดพาธ เพราะต้นทางยังให้ research in your head | ตอนที่ ๑ |
+| สคริปต์ | `shared/media.ts` มี `ContentType` รวม `script`; แม่แบบ TikTok/YouTube ใน `app/api/campaigns/route.ts` | ตอนที่ ๒ |
+| สินทรัพย์ | `campaign_posts` สถานะ `draft`; `lib/upstream-media-adapter.ts` | ตอนที่ ๒ |
+| คนตรวจ | `STATUS_FLOW` ใน `shared/media.ts`; PATCH ข้ามขั้นได้ 409 | ตอนที่ ๓ |
+| ขอเผยแพร่ | `POST /api/publish-jobs` ค้าง `blocked_auth` ถ้าบัญชียังไม่ `connected` | ตอนที่ ๓ |
+
+แบบฝึกที่ Academy เขียนเอง เพราะไม่พบโมดูล runtime:
+
+- กระดานหลักฐานแยกข้อเท็จจริง/สมมติฐาน
+- สตอรี่บอร์ดสามจังหวะ — ใน NirvaMedia พบแค่คำ teaser storyboards ใน mock-data
+- คิว `blocked_auth` ในเบราว์เซอร์นี้ (ไม่ยิง OAuth)
+- แคมเปญลานหนังสือวัดเหนือสังเคราะห์
+
+ของที่ยังไม่พบแหล่ง: `Nirvacore/nirva-AI` ได้ 404, โมดูลสตอรี่บอร์ดที่รันได้, live OAuth/publish, `searchAssets()` คืนอาร์เรย์ว่าง, `approval.ts` เป็นสตับ
+
+```bash
+npm run test:media-lab
+```
+
 ## โครงสร้าง
 
 ```text
@@ -137,6 +177,7 @@ content/
   labs/                 # โจทย์ร่วม เฉลย และคำถามสะท้อน
   scripts/th/           # สคริปต์วิดีโอภาษาพูดไทย
   tracks/               # อะแดปเตอร์แต่ละบริษัท
+  media/                # แผนที่ไพป์ไลน์ แบบฝึก Academy และแคมเปญสังเคราะห์
 shop/                   # ร้านค้าตัวอย่าง มีบั๊กตั้งใจ
 ```
 

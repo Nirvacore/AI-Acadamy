@@ -22,6 +22,11 @@ export function SideNav({
               ชั่วโมงแรก
             </TrackedLink>
           </li>
+          <li>
+            <TrackedLink className={current === "media" ? "is-on" : ""} href="/media">
+              Nirva Media Lab
+            </TrackedLink>
+          </li>
         </ul>
       </section>
       {modules.map((module) => (
@@ -51,6 +56,9 @@ export function SideNav({
           </li>
           <li>
             <TrackedLink href="/tracks">เทียบแทร็ก</TrackedLink>
+          </li>
+          <li>
+            <TrackedLink href="/media">Nirva Media Lab</TrackedLink>
           </li>
           <li>
             <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink>

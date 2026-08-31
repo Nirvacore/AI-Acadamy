@@ -11,6 +11,7 @@ export const RUBRIC_KEY = "ai-acadamy:rubric";
 export const TOUR_KEY = "ai-acadamy:tour";
 export const FOCUS_KEY = "ai-acadamy:focus";
 export const NOWDO_KEY = "ai-acadamy:nowdo";
+export const MEDIA_LAB_KEY = "ai-acadamy:media-lab";
 export const PROGRESS_EVENT = "ai-acadamy-progress";
 
 export type PlanId = "intensive" | "evening";
@@ -30,7 +31,7 @@ function readJson<T>(key: string, fallback: T): T {
   }
 }
 
-function writeJson(key: string, value: unknown) {
+export function writeJson(key: string, value: unknown) {
   window.localStorage.setItem(key, JSON.stringify(value));
   window.dispatchEvent(new Event(PROGRESS_EVENT));
 }
@@ -99,6 +100,7 @@ export type ProgressDump = {
   seconds?: number;
   rubric?: Record<string, string[]>;
   nowdo?: Record<string, string[]>;
+  mediaLab?: unknown;
 };
 
 export function exportProgress(): ProgressDump {
@@ -116,6 +118,7 @@ export function exportProgress(): ProgressDump {
     seconds: readSeconds(),
     rubric: readJson(RUBRIC_KEY, {}),
     nowdo: readJson(NOWDO_KEY, {}),
+    mediaLab: readJson(MEDIA_LAB_KEY, null),
   };
 }
 
@@ -132,6 +135,7 @@ export function importProgress(dump: ProgressDump) {
   if (typeof dump.seconds === "number") window.localStorage.setItem(SECONDS_KEY, String(dump.seconds));
   if (dump.rubric) writeJson(RUBRIC_KEY, dump.rubric);
   if (dump.nowdo) writeJson(NOWDO_KEY, dump.nowdo);
+  if (dump.mediaLab) writeJson(MEDIA_LAB_KEY, dump.mediaLab);
 }
 
 export function journalFilled(id: string): boolean {

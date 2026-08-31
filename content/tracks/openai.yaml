@@ -97,3 +97,21 @@ concepts:
     shortcut: null
     docsUrl: https://academy.openai.com
     labDelta: ทำวงจรทั้งหกขั้นบน shop/ แล้วรันเทสในเครื่องตนเองจนผ่าน
+
+  - conceptId: media-brief-evidence
+    uiLabel: ChatGPT
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: วาง brief ที่คุณเขียนแล้วขอให้แยกข้อเท็จจริงกับสมมติฐาน คุณเป็นคนย้ายลงกระดาน
+
+  - conceptId: media-script-storyboard
+    uiLabel: Canvas หรือแชท
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: ขอสามเวอร์ชันสั้นจาก brief เดิม แล้วคุณวางลง LINE Instagram YouTube เอง ห้ามให้เธอโพสต์
+
+  - conceptId: media-review-publish
+    uiLabel: ให้ช่วยรีวิว แต่คนเป็นคนอนุมัติ
+    shortcut: null
+    docsUrl: https://academy.openai.com
+    labDelta: วางร่างกับรูบริก แล้วขอคำถามก่อนอนุมัติ คุณตอบเอง ห้ามให้เธอเลื่อนสถานะ published

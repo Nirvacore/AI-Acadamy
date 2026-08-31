@@ -23,7 +23,7 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
 
   return (
     <Suspense fallback={null}>
-      <LessonKeys prev="/" next="/shop" />
+      <LessonKeys prev="/" next={slug.startsWith("media-") ? "/media" : "/shop"} />
       <header className="lesson-head">
         <p className="kicker">
           แล็บ · <TrackLabel tracks={tracks} />
@@ -38,10 +38,17 @@ export default async function LabPage({ params }: { params: Promise<{ slug: stri
         prompts={["ฉันเห็นอะไรในตนเอง", "ฉันเข้าใจเธอตรงไหน และยังสับสนตรงไหน"]}
       />
       <ProgressMark id={`lab:${slug}`} />
-      <p className="note">
-        รันเทสร้านค้าในหน้า <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink> หรือใช้{" "}
-        <code>npm run test:shop</code> · <TrackedLink href="/journal">เปิดสมุดทั้งหมด</TrackedLink>
-      </p>
+      {slug.startsWith("media-") ? (
+        <p className="note">
+          เปิดฮับเส้นทางที่ <TrackedLink href="/media">Nirva Media Lab</TrackedLink> · คิวนี้ไม่เผยแพร่จริง ·{" "}
+          <TrackedLink href="/journal">เปิดสมุดทั้งหมด</TrackedLink>
+        </p>
+      ) : (
+        <p className="note">
+          รันเทสร้านค้าในหน้า <TrackedLink href="/shop">ร้านค้าตัวอย่าง</TrackedLink> หรือใช้{" "}
+          <code>npm run test:shop</code> · <TrackedLink href="/journal">เปิดสมุดทั้งหมด</TrackedLink>
+        </p>
+      )}
     </Suspense>
   );
 }
